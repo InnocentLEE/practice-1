@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyq.project.dao.UnitGatherMapper" >
+  <resultMap id="BaseResultMap" type="com.lyq.project.pojo.UnitGather" >
+    <constructor >
+      <idArg column="id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="unit_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="parent_unit_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="unit_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="parent_unit_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="is_create" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, unit_id, parent_unit_id, unit_type, parent_unit_type, is_create
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from unit_gather
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from unit_gather
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lyq.project.pojo.UnitGather" >
+    insert into unit_gather (id, unit_id, parent_unit_id, 
+      unit_type, parent_unit_type, is_create
+      )
+    values (#{id,jdbcType=VARCHAR}, #{unitId,jdbcType=VARCHAR}, #{parentUnitId,jdbcType=VARCHAR}, 
+      #{unitType,jdbcType=INTEGER}, #{parentUnitType,jdbcType=INTEGER}, #{isCreate,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lyq.project.pojo.UnitGather" >
+    insert into unit_gather
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="parentUnitId != null" >
+        parent_unit_id,
+      </if>
+      <if test="unitType != null" >
+        unit_type,
+      </if>
+      <if test="parentUnitType != null" >
+        parent_unit_type,
+      </if>
+      <if test="isCreate != null" >
+        is_create,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentUnitId != null" >
+        #{parentUnitId,jdbcType=VARCHAR},
+      </if>
+      <if test="unitType != null" >
+        #{unitType,jdbcType=INTEGER},
+      </if>
+      <if test="parentUnitType != null" >
+        #{parentUnitType,jdbcType=INTEGER},
+      </if>
+      <if test="isCreate != null" >
+        #{isCreate,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lyq.project.pojo.UnitGather" >
+    update unit_gather
+    <set >
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentUnitId != null" >
+        parent_unit_id = #{parentUnitId,jdbcType=VARCHAR},
+      </if>
+      <if test="unitType != null" >
+        unit_type = #{unitType,jdbcType=INTEGER},
+      </if>
+      <if test="parentUnitType != null" >
+        parent_unit_type = #{parentUnitType,jdbcType=INTEGER},
+      </if>
+      <if test="isCreate != null" >
+        is_create = #{isCreate,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lyq.project.pojo.UnitGather" >
+    update unit_gather
+    set unit_id = #{unitId,jdbcType=VARCHAR},
+      parent_unit_id = #{parentUnitId,jdbcType=VARCHAR},
+      unit_type = #{unitType,jdbcType=INTEGER},
+      parent_unit_type = #{parentUnitType,jdbcType=INTEGER},
+      is_create = #{isCreate,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>运输车辆档案</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link href="/Modules/Component/site.css" rel="stylesheet" />
+    <link id="styleLink" href="" rel="stylesheet" />
+    <!--<script type="text/javascript" src="/Modules/Config/SetUserTheam.js"></script>-->
+    <style>
+        body {
+            background-color: #e9ecf3;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header-fixed">
+        <div class="page-header navbar navbar-fixed-top">
+            <div class="page-header-inner">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="page-container">
+            <div class="page-sidebar-wrapper">
+                <div class="page-sidebar page-sidebar-icon">
+                </div>
+            </div>
+            <div class="page-content-wrapper">
+                <div class="page-content padding-default" style=" height:1000px;">
+                    <h5 class="page-title">
+                        <i class="iconfont icon-danganguanli"></i> 运输车辆档案
+                    </h5>
+                    <div class="searchpanel-fixed" style="margin-bottom:15px">
+                        <form class="searchpanel-form form-horizontal">
+                            <input id="hdTag" hidden value="" />
+                            <input id="hdIDS" type="hidden" />
+                            <input id="operationType" type="hidden" />
+                            <input id="ISAnZhuangZhongDuan" value="" type="hidden" />
+                            <div class="searchpanel-main form-body searchpanel-main-border">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <div class="form-group">
+                                            <label class="col-xs-4 control-label" for="ChePaiHao">车牌号码</label>
+                                            <div class="col-xs-7">
+                                                <input type="text" name="ChePaiHao" id="ChePaiHao" class="form-control" placeholder="请输入的车牌号码（至少三位）" style="padding-right:0px;padding-left:0px;width:190px;" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="form-group">
+                                            <label class="col-xs-4 control-label" for="ChePaiYanSe">车牌颜色</label>
+                                            <div class="col-xs-7">
+                                                <select name="ChePaiYanSe" id="ChePaiYanSe" class="form-control">
+                                                    <option value="">请选择</option>
+                                                    <option value="黄色">黄色</option>
+                                                    <option value="蓝色">蓝色</option>
+                                                    <option value="白色">白色</option>
+                                                    <option value="黑色">黑色</option>
+                                                    <!--<option value="其他">其他</option>-->
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="form-group">
+                                            <div class="col-xs-10 pull-right">
+                                                <a id="btnSearch" accesskey="q" title="快捷键 Alt + Q" class="btn btn-success" href="javascript:;" data-rescode="003300230069">
+                                                    <i class="iconfont icon-chaxun">查询</i>
+                                                </a><a id="btnReset" accesskey="r" title="快捷键 Alt + R" class="btn btn-success" href="javascript:;"><i class="iconfont icon-zhongzhi"></i> 重置</a>
+                                                <a id="CheLiangExport" accesskey="r" title="快捷键 Alt + R" class="btn c-yellow" href="javascript:;" data-rescode="003300230077"> 导出</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="searchpanel-extend-border"></div>
+
+                                <div class="row searchpanel-extend-row">
+                                    <div class="col-xs-4 searchpanel-extend">
+                                        <div class="form-group">
+                                            <label class="col-xs-1 control-label" for="ZhuangTai">状态</label>
+                                            <div class="col-xs-7 ">
+                                                <select name="ZhuangTai" id="ZhuangTai" class="form-control">
+                                                    <option value="">请选择</option>
+                                                    <option value="3">营运</option>
+                                                    <option value="4">停用</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-4 searchpanel-extend">
+                                        <div class="form-group">
+                                            <label class="col-xs-1 control-label" for="QiYeMingCheng">业户</label>
+                                            <div class="col-xs-7 ">
+                                                <input maxlength="30" type="text" name="SouYouRen" id="SouYouRen" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-4  searchpanel-extend">
+
+                                        <div class="form-group">
+                                            <label class="col-xs-1 control-label" for="ZhongDuanHao">终端MDT</label>
+                                            <div class="col-xs-7 ">
+                                                <input maxlength="30" type="text" name="ZhongDuanHao" id="ZhongDuanHao" class="form-control" />
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row searchpanel-extend-row">
+                                    <div class="col-xs-4 searchpanel-extend">
+                                        <div class="form-group">
+                                            <label class="col-xs-1 control-label" for="ShouFeiZhuangTai">收费状态</label>
+                                            <div class="col-xs-7 ">
+                                                <select name="ShouFeiZhuangTai" id="ShouFeiZhuangTai" class="form-control">
+                                                    <option value="">全部</option>
+                                                    <option value="1">未收费</option>
+                                                    <option value="2">已收费</option>
+                                                    <option value="3">待续费</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-4 searchpanel-extend">
+                                        <div class="form-group">
+                                            <label class="col-xs-1 control-label" for="FuWuZhuangTai">服务状态</label>
+                                            <div class="col-xs-7 ">
+                                                <select name="FuWuZhuangTai" id="FuWuZhuangTai" class="form-control">
+                                                    <option value="">全部</option>
+                                                    <option value="1">正常</option>
+                                                    <option value="2">预警</option>
+                                                    <option value="3">过期</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-4 searchpanel-extend">
+                                        <div class="form-group">
+                                            <label class="col-xs-1 control-label" for="YeWuBanLiZhuangTai">业务办理状态</label>
+                                            <div class="col-xs-7 ">
+                                                <select name="YeWuBanLiZhuangTai" id="YeWuBanLiZhuangTai" class="form-control">
+                                                    <option value="">全部</option>
+                                                    <option value="1">未办理</option>
+                                                    <option value="2">已办理</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row searchpanel-extend-row">
+                                    <div class="col-xs-4 searchpanel-extend">
+                                        <div class="form-group">
+                                            <label class="col-xs-1 control-label" for="XuFeiQiXian">续费期限</label>
+                                            <div class="col-xs-7 ">
+                                                <select name="XuFeiQiXian" id="XuFeiQiXian" class="form-control">
+                                                    <option value="">全部</option>
+                                                    <option value="0">近三个月</option>
+                                                    <option value="1">本月到期</option>
+                                                    <option value="2">已到期</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4  searchpanel-extend">
+                                        <div class="form-group">
+                                            <label class="col-xs-1 control-label" for="SIMKaHao">SIM卡号</label>
+                                            <div class="col-xs-7 ">
+                                                <input maxlength="30" type="text" name="SIMKaHao" id="SIMKaHao" class="form-control" />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-5  searchpanel-extend">
+
+                                        <div class="form-group">
+                                            <label class="col-xs-1 control-label">新增时间</label>
+                                            <div class="col-xs-2" style="z-index:9999;">
+                                                <input type="text" class="form-control date-picker" readonly data-date-autoclose="true" data-date-language="zh-CN" data-date-format="yyyy-mm-dd" id="TongJiRiQiQi" name="TongJiRiQiQi" style="width:110px;background-color:#fff;" />
+                                            </div>
+                                            <label class="col-xs-1 control-label" style="width:60px;">—</label>
+                                            <div class="col-xs-2" style="z-index:9999;">
+                                                <input type="text" class="form-control date-picker" readonly data-date-autoclose="true" data-date-language="zh-CN" data-date-format="yyyy-mm-dd" id="TongJiRiQiZhi" name="TongJiRiQiZhi" style="width:110px;background-color:#fff;" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="search-more">
+                            <span>
+                                更多
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                        </div>
+                        <div class="row right" style="margin-top: 15px; margin-bottom: -15px; margin-left: 22px;">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <a id="btnView" class="btn c-blue" href="javascript:;" data-rescode="003300230070">
+                                        <i class="fa fa-search"></i> 查看
+                                    </a>
+                                    <a id="btnAdd" class="btn c-yellow" href="javascript:;" data-rescode="003300230066">
+                                        <i class="fa fa-plus"></i> 新增
+                                    </a>
+                                    <a id="btnEdit" class="btn c-green" href="javascript:;" data-rescode="003300230067">
+                                        <i class="fa fa-edit"></i> 修改
+                                    </a>
+                                    <a id="btnDel" class="btn c-yellow" href="javascript:;" data-rescode="003300230068">
+                                        <i class="fa fa-remove"></i> 删除
+                                    </a>
+                                    <a id="btnDisable" class="btn c-blue" href="javascript:;" data-rescode="003300230071">
+                                        <i class="fa fa-remove"></i> 停用
+                                    </a>
+                                    <a id="btnUse" class="btn c-green" href="javascript:;" data-rescode="003300230097">
+                                        <i class="fa fa-plus"></i>启用
+                                    </a>
+                                    <a id="btnInstall" class="btn c-yellow" href="javascript:;" data-rescode="003300230072">
+                                        <i class="fa fa-plus"></i> 安装终端
+                                    </a>
+                                    <a id="btnBusiness" class="btn c-blue" href="javascript:;" data-rescode="003300230073">
+                                        <i class="fa fa-plus"></i> 业务办理
+                                    </a>
+                                    <a id="btnFPJK" class="btn c-green" href="javascript:;" data-rescode="003300230074">
+                                        <i class="fa fa-plus"></i> 分配监控
+                                    </a>
+                                    <a id="DelWhiteList" class="btn c-yellow" href="javascript:;" data-rescode="003300230075">
+                                        <i class="fa fa-remove"></i> 删除白名单
+                                    </a>
+                                    <!--<a id="CheLiangOtherBtnCaoZuo" class="btn c-yellow" href="javascript:;" data-rescode="" style="display: inline" ;>
+                                        <i class="iconfont"></i> 其他操作
+                                    </a>-->
+                                    <div class="btn-group" style="margin-left:3px;width:90px;z-index:9999;">
+                                        <a class="btn dropdown-toggle c-green" data-toggle="dropdown" accesskey="q" title="快捷键 Alt + Q" href="#" aria-expanded="false" data-rescode="003300230212">
+                                            <i class="fa fa-cog"></i>其他操作
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a id="CheLiangImport" href="javascript:;"  data-rescode="003300230075" >导入</a></li>
+                                            <li><a id="CheLiangShouFeiChuLi" href="javascript:;" data-rescode="003300230213">收费处理</a></li>
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table id="tb_CheLiangXinXi" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="table-checkbox">
+                                    <input type="checkbox" class="group-checkable" title="全选/反选" />
+                                </th>
+                                <th data-name="ChePaiHao">
+                                    车牌号
+                                </th>
+                                <th data-name="ChePaiYanSe">
+                                    车牌颜色
+                                </th>
+                                <th data-name="CheLiangZhongLei">
+                                    车辆种类
+                                </th>
+                                <th data-name="GeRenCheZhuMingCheng" width="15%">
+                                    业户
+                                </th>
+                                <th data-name="GuFeiCheLiang">
+                                    固废车辆
+                                </th>
+                                <th data-name="ZhuanWangShuJu">
+                                    专网数据
+                                </th>
+                                <th data-name="FuWuJieZhiRiQi">
+                                    服务状态
+                                </th>
+                                <th data-name="ZuiJinDingWeiShiJian">
+                                    最近定位时间
+                                </th>
+                                <th data-name="ZuiJinDingWeiShiJian">
+                                    是否在线
+                                </th>
+                                <th data-name="YeWuBanLiZhuangTai">
+                                    业务办理状态
+                                </th>
+                                <th data-name="ZhongDuanAnZhangZhunTai">
+                                    终端安装状态
+                                </th>
+                                <th data-name="ZhuangTai">
+                                    车辆状态
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd gradeX">
+                                <td valign="top" colspan="9" class="dataTables_empty">请先进行查询</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-sidebar page-sidebar-basic">
+        <div class="system-name"><a href=""><span class="title">&nbsp;</span></a><a href="javascript:;" class="fixedMenu-icon"><i class="fa fa-bars"></i></a></div>
+    </div>
+    <script data-main="Js/List.js" src="/Modules/Component/require.js"></script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyq.project.dao.UnitMapper" >
+  <resultMap id="BaseResultMap" type="com.lyq.project.pojo.Unit" >
+    <constructor >
+      <idArg column="id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="OrgType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="province" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="city" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="unit_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="business_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="in_net_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="permit_word" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="permit_num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="permit_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="contacts_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="createtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="updatetiem" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, OrgType, province, city, unit_name, business_type, address, in_net_date, permit_word, 
+    permit_num, permit_date, contacts_id, createtime, updatetiem
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from unit
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectShengJiJianGuanBuMen" resultType="com.lyq.project.dto.ShengJiJianGuanBuMenListDto">
+    select u.id as Id, u.unit_name as UnitName, u.province as Province, u.in_net_date as InNetDate, c.contact_name as ContactMen
+    from unit u, contacts c
+    where u.contacts_id = c.id
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="province != null and province != ''" >
+      and u.province like concat('%',#{province},'%')
+    </if>
+    limit #{index} , #{size}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from unit
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lyq.project.pojo.Unit" >
+    insert into unit (id, OrgType, province, 
+      city, unit_name, business_type, 
+      address, in_net_date, permit_word, 
+      permit_num, permit_date, contacts_id, 
+      createtime, updatetiem)
+    values (#{id,jdbcType=VARCHAR}, #{orgtype,jdbcType=INTEGER}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{unitName,jdbcType=VARCHAR}, #{businessType,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, now(), #{permitWord,jdbcType=VARCHAR},
+      #{permitNum,jdbcType=VARCHAR}, #{permitDate,jdbcType=TIMESTAMP}, #{contactsId,jdbcType=VARCHAR}, 
+      now(), now())
+  </insert>
+  <insert id="insertSelective" parameterType="com.lyq.project.pojo.Unit" >
+    insert into unit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orgtype != null" >
+        OrgType,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="unitName != null" >
+        unit_name,
+      </if>
+      <if test="businessType != null" >
+        business_type,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="inNetDate != null" >
+        in_net_date,
+      </if>
+      <if test="permitWord != null" >
+        permit_word,
+      </if>
+      <if test="permitNum != null" >
+        permit_num,
+      </if>
+      <if test="permitDate != null" >
+        permit_date,
+      </if>
+      <if test="contactsId != null" >
+        contacts_id,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetiem != null" >
+        updatetiem,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="orgtype != null" >
+        #{orgtype,jdbcType=INTEGER},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="unitName != null" >
+        #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null" >
+        #{businessType,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="inNetDate != null" >
+        #{inNetDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="permitWord != null" >
+        #{permitWord,jdbcType=VARCHAR},
+      </if>
+      <if test="permitNum != null" >
+        #{permitNum,jdbcType=VARCHAR},
+      </if>
+      <if test="permitDate != null" >
+        #{permitDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contactsId != null" >
+        #{contactsId,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetiem != null" >
+        #{updatetiem,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lyq.project.pojo.Unit" >
+    update unit
+    <set >
+      <if test="orgtype != null" >
+        OrgType = #{orgtype,jdbcType=INTEGER},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="unitName != null" >
+        unit_name = #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null" >
+        business_type = #{businessType,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="inNetDate != null" >
+        in_net_date = #{inNetDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="permitWord != null" >
+        permit_word = #{permitWord,jdbcType=VARCHAR},
+      </if>
+      <if test="permitNum != null" >
+        permit_num = #{permitNum,jdbcType=VARCHAR},
+      </if>
+      <if test="permitDate != null" >
+        permit_date = #{permitDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contactsId != null" >
+        contacts_id = #{contactsId,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetiem != null" >
+        updatetiem = #{updatetiem,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lyq.project.pojo.Unit" >
+    update unit
+    set OrgType = #{orgtype,jdbcType=INTEGER},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      unit_name = #{unitName,jdbcType=VARCHAR},
+      business_type = #{businessType,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      in_net_date = #{inNetDate,jdbcType=TIMESTAMP},
+      permit_word = #{permitWord,jdbcType=VARCHAR},
+      permit_num = #{permitNum,jdbcType=VARCHAR},
+      permit_date = #{permitDate,jdbcType=TIMESTAMP},
+      contacts_id = #{contactsId,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetiem = #{updatetiem,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

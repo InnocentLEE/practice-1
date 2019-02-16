@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>xxxxx平台</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link href="/Modules/Template/Style/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Modules/Template/Style/css/components.css" id="style_components" rel="stylesheet" type="text/css" />
+    <link href="/Modules/Template/Style/css/layout4/css/themes/light.css" rel="stylesheet" type="text/css" />
+    <link href="/Modules/Template/Style/css/font/iconfont.css" rel="stylesheet" />
+    <style type="text/css">
+        html {
+            overflow-x: hidden;
+        }
+        body a:hover {
+            text-decoration: none;
+        }
+        body {
+            position: relative;
+            min-width: 1300px;
+        }
+        .global-bg {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 0;
+        }
+            .global-bg img {
+                width: 100%;
+                height: 100%;
+                position: fixed;
+            }
+        .page-full-width {
+            width: 100%;
+        }
+        .page-header-fixed .page-header {
+            margin: 0;
+        }
+       .page-header.navbar {
+            background-color: #01a4a4;
+            border: none;
+            height: 84px;
+        }
+        .page-header .header-left, .page-header .header-right {
+            display: inline-block;
+            height: 84px;
+        }
+            .page-header .header-left div {
+                display: inline-block;
+            }
+        .page-header .logo {
+            margin-left: 92px;
+        }
+            .page-header .logo img {
+                height: 40px;
+                width: 40px;
+            }
+        .page-header .caption {
+            font-size: 28px;
+            font-weight: bold;
+            font-family: 'Microsoft YaHei';
+            color: #fff;
+            margin: 21px auto;
+        }
+        .page-header .info {
+            margin: 32px;
+        }
+        .page-header .header-right {
+            text-align: right;
+        }
+        .page-header-fixed .iconfont {
+            font-size: 18px;
+            color: #fff;
+        }
+        .page-container {
+            margin: 120px 20px 0;
+        }
+        .block-tile {
+            margin:0px auto;
+            width:1000px;
+        }
+    </style>
+    <style type="text/css">
+        .bg-card-one {
+            background-color: #4AC1F1;
+        }
+        .bg-card-two {
+            background-color: #F0AC4D;
+        }
+        .bg-card-three {
+            background-color: #6A7FEE;
+        }
+        .bg-card-four {
+            background-color: #1C96F7;
+        }
+        .bg-card-five {
+            background-color: #5FC25F;
+        }
+        .bg-card-six {
+            background-color: #3EA1EF;
+        }
+        .bg-card-seven {
+            background-color: #D9534F;
+        }
+        .bg-card-eight {
+            background-color: #07BEBE;
+        }
+        .bg-disabled {
+            background-color: #b7b5b5 !important;
+            border-color: #b7b5b5 !important;
+            cursor: default !important;
+        }
+            .bg-disabled a:hover {
+                cursor: default;
+            }
+    </style>
+</head>
+<body>
+    <div class="global-bg">
+        <img src="/Modules/Template/Style/img/main-bg.png" />
+    </div>
+    <div class="page-header-fixed page-quick-sidebar-over-content page-full-width">
+        <div class="page-header navbar">
+            <div class="row margin-default">
+                <div class="col-md-6 header-left">
+                    <div class="logo">
+                        <img src="/Modules/Component/Img/logo.png" style="margin-top:-12px; width:auto; margin-right:10px;" />
+                    </div>
+                    <div class="caption fg-white">
+                   </div>
+                </div>
+                <div class="col-md-6 header-right">
+                    <div class="info">
+                        <div class="dropdown" style="display:inline-block; z-index:9999">
+                            <a href="javascript:;" title="" class="dropdown-toggle congyerenyuan" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true">
+                                <i class="iconfont icon-congyerenyuan"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li>
+                                    <div style="margin: 5px; text-align: center; display: inline-block;">
+                                        <img alt="头像" src="/Modules/Component/Img/default_user.png" style="width: 65px; height: 65px; margin: 5px;" />
+                                    </div>
+                                    <div style="margin: 5px; display: inline-block;">
+                                        <div><b class="username"></b></div>
+                                    </div>
+                                </li>
+                                <li style="border-top: 1px solid #ddd;">
+                                    <div class="organizationname" style="margin: 5px;"></div>
+                                </li>
+                                <li style="border-top: 1px solid #ddd; height: 46px;">
+                                    <a class="UserInfo btn blue" href="javascript:;" style="text-align:center; width: 60px; margin: 8px 12px; padding: 0; display: inline-block; line-height: 28px; font-size: 12px;">个人信息</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <a class="tuichuxitong" href="javascript:void(0);" title="退出系统" style="margin-left:22px;">
+                            <i class="iconfont icon-tuichuxitong fg-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="page-container">
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="block-tile" >
+                        <span class="block-tile-title hd fg-white"></span>
+                        <div class="tiles">
+                            <div class="tile bg-card-one bg-disabled">
+                                <a href="javascript:;" title="车辆监控" data-key="003300210020"></a>
+                                <div class="tile-body">
+                                    <i class="iconfont icon-dashujuweixingdingwei"></i>
+                                </div>
+                                <div class="tile-object">
+                                    <div class="name">
+                                        车辆监控
+                                    </div>
+                                    <div class="number"></div>
+                                </div>
+                            </div>
+                            <div class="tile bg-card-two bg-disabled">
+                                <a href="javascript:;" title="基础档案管理" data-key="003300210013"></a>
+                                <div class="tile-body">
+                                    <i class="iconfont icon-zonghenongcunkeyun"></i>
+                                </div>
+                                <div class="tile-object">
+                                    <div class="name">
+                                        基础档案管理
+                                    </div>
+                                    <div class="number"></div>
+                                </div>
+                            </div>
+                            <div class="tile bg-card-two bg-disabled">
+                                <a href="javascript:;" title="企业服务" data-key="003300210021"></a>
+                                <div class="tile-body">
+                                    <i class="iconfont icon-zonghenongcunkeyun"></i>
+                                </div>
+                                <div class="tile-object">
+                                    <div class="name">
+                                        企业服务
+                                    </div>
+                                    <div class="number"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-tile">
+                        <span class="block-tile-title hd fg-white"></span>
+                        <div class="tiles">
+                            <div class="tile bg-card-four bg-disabled">
+                                <a href="javascript:;" title="配置管理" data-key="003300210001"></a>
+                                <div class="tile-body">
+                                    <i class="iconfont icon-dashujuyewutongji"></i>
+                                </div>
+                                <div class="tile-object">
+                                    <div class="name">
+                                        配置管理
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tile bg-card-seven bg-disabled">
+                                <a href="javascript:;" title="用户权限管理" data-key="系统用户权限管理,组织用户权限管理"></a>
+                                <div class="tile-body">
+                                    <i class="iconfont icon-yonghuquanxianguanli"></i>
+                                </div>
+                                <div class="tile-object">
+                                    <div class="name">
+                                        用户权限管理
+                                    </div>
+                                    <div class="number"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script data-main="/Modules/Template/Js/Default.js" src="/Modules/Component/require.js"></script>
+</body>
+</html>

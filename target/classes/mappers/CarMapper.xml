@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyq.project.dao.CarMapper" >
+  <resultMap id="BaseResultMap" type="com.lyq.project.pojo.Car" >
+    <constructor >
+      <idArg column="id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="unit_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="unit_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="car_num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="car_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="licence_address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="licence_regist_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="licence_publish_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="fuel" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="engine" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="weight" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="engine_num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="carframe_num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="erwei_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="erwei_date_next" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="permit_num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="seat_num" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="createtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="upatetime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, unit_id, unit_name, car_num, car_type, phone, licence_address, licence_regist_date, 
+    licence_publish_date, fuel, engine, weight, engine_num, carframe_num, erwei_date, 
+    erwei_date_next, permit_num, seat_num, address, createtime, upatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from car
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from car
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lyq.project.pojo.Car" >
+    insert into car (id, unit_id, unit_name, 
+      car_num, car_type, phone, 
+      licence_address, licence_regist_date, licence_publish_date, 
+      fuel, engine, weight, 
+      engine_num, carframe_num, erwei_date, 
+      erwei_date_next, permit_num, seat_num, 
+      address, createtime, upatetime
+      )
+    values (#{id,jdbcType=VARCHAR}, #{unitId,jdbcType=VARCHAR}, #{unitName,jdbcType=VARCHAR}, 
+      #{carNum,jdbcType=VARCHAR}, #{carType,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
+      #{licenceAddress,jdbcType=VARCHAR}, #{licenceRegistDate,jdbcType=TIMESTAMP}, #{licencePublishDate,jdbcType=TIMESTAMP}, 
+      #{fuel,jdbcType=VARCHAR}, #{engine,jdbcType=INTEGER}, #{weight,jdbcType=INTEGER}, 
+      #{engineNum,jdbcType=VARCHAR}, #{carframeNum,jdbcType=VARCHAR}, #{erweiDate,jdbcType=TIMESTAMP}, 
+      #{erweiDateNext,jdbcType=TIMESTAMP}, #{permitNum,jdbcType=VARCHAR}, #{seatNum,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{upatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lyq.project.pojo.Car" >
+    insert into car
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="unitName != null" >
+        unit_name,
+      </if>
+      <if test="carNum != null" >
+        car_num,
+      </if>
+      <if test="carType != null" >
+        car_type,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="licenceAddress != null" >
+        licence_address,
+      </if>
+      <if test="licenceRegistDate != null" >
+        licence_regist_date,
+      </if>
+      <if test="licencePublishDate != null" >
+        licence_publish_date,
+      </if>
+      <if test="fuel != null" >
+        fuel,
+      </if>
+      <if test="engine != null" >
+        engine,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="engineNum != null" >
+        engine_num,
+      </if>
+      <if test="carframeNum != null" >
+        carframe_num,
+      </if>
+      <if test="erweiDate != null" >
+        erwei_date,
+      </if>
+      <if test="erweiDateNext != null" >
+        erwei_date_next,
+      </if>
+      <if test="permitNum != null" >
+        permit_num,
+      </if>
+      <if test="seatNum != null" >
+        seat_num,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="upatetime != null" >
+        upatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="unitName != null" >
+        #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="carNum != null" >
+        #{carNum,jdbcType=VARCHAR},
+      </if>
+      <if test="carType != null" >
+        #{carType,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceAddress != null" >
+        #{licenceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceRegistDate != null" >
+        #{licenceRegistDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="licencePublishDate != null" >
+        #{licencePublishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fuel != null" >
+        #{fuel,jdbcType=VARCHAR},
+      </if>
+      <if test="engine != null" >
+        #{engine,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="engineNum != null" >
+        #{engineNum,jdbcType=VARCHAR},
+      </if>
+      <if test="carframeNum != null" >
+        #{carframeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="erweiDate != null" >
+        #{erweiDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="erweiDateNext != null" >
+        #{erweiDateNext,jdbcType=TIMESTAMP},
+      </if>
+      <if test="permitNum != null" >
+        #{permitNum,jdbcType=VARCHAR},
+      </if>
+      <if test="seatNum != null" >
+        #{seatNum,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upatetime != null" >
+        #{upatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lyq.project.pojo.Car" >
+    update car
+    <set >
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="unitName != null" >
+        unit_name = #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="carNum != null" >
+        car_num = #{carNum,jdbcType=VARCHAR},
+      </if>
+      <if test="carType != null" >
+        car_type = #{carType,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceAddress != null" >
+        licence_address = #{licenceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceRegistDate != null" >
+        licence_regist_date = #{licenceRegistDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="licencePublishDate != null" >
+        licence_publish_date = #{licencePublishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fuel != null" >
+        fuel = #{fuel,jdbcType=VARCHAR},
+      </if>
+      <if test="engine != null" >
+        engine = #{engine,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="engineNum != null" >
+        engine_num = #{engineNum,jdbcType=VARCHAR},
+      </if>
+      <if test="carframeNum != null" >
+        carframe_num = #{carframeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="erweiDate != null" >
+        erwei_date = #{erweiDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="erweiDateNext != null" >
+        erwei_date_next = #{erweiDateNext,jdbcType=TIMESTAMP},
+      </if>
+      <if test="permitNum != null" >
+        permit_num = #{permitNum,jdbcType=VARCHAR},
+      </if>
+      <if test="seatNum != null" >
+        seat_num = #{seatNum,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upatetime != null" >
+        upatetime = #{upatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lyq.project.pojo.Car" >
+    update car
+    set unit_id = #{unitId,jdbcType=VARCHAR},
+      unit_name = #{unitName,jdbcType=VARCHAR},
+      car_num = #{carNum,jdbcType=VARCHAR},
+      car_type = #{carType,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      licence_address = #{licenceAddress,jdbcType=VARCHAR},
+      licence_regist_date = #{licenceRegistDate,jdbcType=TIMESTAMP},
+      licence_publish_date = #{licencePublishDate,jdbcType=TIMESTAMP},
+      fuel = #{fuel,jdbcType=VARCHAR},
+      engine = #{engine,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      engine_num = #{engineNum,jdbcType=VARCHAR},
+      carframe_num = #{carframeNum,jdbcType=VARCHAR},
+      erwei_date = #{erweiDate,jdbcType=TIMESTAMP},
+      erwei_date_next = #{erweiDateNext,jdbcType=TIMESTAMP},
+      permit_num = #{permitNum,jdbcType=VARCHAR},
+      seat_num = #{seatNum,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      upatetime = #{upatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
