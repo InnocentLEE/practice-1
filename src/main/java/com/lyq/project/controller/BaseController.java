@@ -2,10 +2,7 @@ package com.lyq.project.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.JSONPObject;
 import com.alibaba.fastjson.TypeReference;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lyq.project.common.LYQRequest;
 import com.lyq.project.common.LYQResponse;
 import com.lyq.project.dto.LoginDto;
@@ -13,7 +10,6 @@ import com.lyq.project.dto.MenudTO;
 import com.lyq.project.dto.ResourceDto;
 import com.lyq.project.dto.UserInfoDto;
 import com.lyq.project.service.IBaseService;
-import com.lyq.project.util.JedisSingleton;
 import com.lyq.project.util.ValidateCodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +19,6 @@ import redis.clients.jedis.Jedis;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by Lee on 2018/8/31.

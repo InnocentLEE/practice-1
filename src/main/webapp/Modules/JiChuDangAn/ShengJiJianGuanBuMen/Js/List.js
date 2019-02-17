@@ -26,6 +26,25 @@ define(['/Modules/Config/conwin.main.js'], function () {
                 });
             });
 
+            //查看
+            $('#btnView').on('click', function (e) {
+                e.preventDefault();
+                var rows = $("#tb_Template").CustomTable('getSelection'), ids = [];
+                if (rows == undefined) {
+                    tipdialog.errorDialog('请选择需要查看的行');
+                    return false;
+                }
+                //TODO:编写逻辑
+                $(rows).each(function (i, item) {
+                    ids.push(item.data.Id);
+                });
+                $('#hdIDS').val(ids.join(','));
+                popdialog.showIframe({
+                    'url': 'View.html',
+                    head: false
+                });
+            });
+
         };
 
         function initlizableTable() {
@@ -55,7 +74,11 @@ define(['/Modules/Config/conwin.main.js'], function () {
                 },
                        { data: 'UnitName' },
                        { data: 'Province' },
-                       { data: 'InNetDate' },
+                       {
+                           data: 'InNetDate' ,
+                           render: function (data, type, row, meta) {
+                               return helper.LongDateToDate(data);
+                           }},
                        { data: 'ContactMen'}
                 ],
                 pageLength: 10,

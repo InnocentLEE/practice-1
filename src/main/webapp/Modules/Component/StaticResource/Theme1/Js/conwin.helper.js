@@ -458,6 +458,14 @@
         }, overTimes / 2);
     };
 
+    CwHelper.LongDateToDate = function (longTypeDate){
+        var datetimeType = "";
+        var date = new Date();
+        date.setTime(longTypeDate);
+        datetimeType = date.getFullYear()+"-"+getMonth(date)+"-"+getDay(date)+"&nbsp;"+getHours(date)+":"+getMinutes(date)+":"+getSeconds(date);//yyyy-MM-dd 00:00:00格式日期
+        return datetimeType;
+    }
+
     //错误提示
     CwHelper.ErrorMessage = {
         'ERROR0001': '请重新进行登录',
@@ -465,6 +473,51 @@
         'ERROR0003': '必须填写服务代码',
         'ERROR0004': '初次使用系统，请点击IE浏览器的的“工具->Internet 选项->安全->自定义级别”将“其他”选项中的“通过域访问数据源”选中为“启用”'
     };
+    //返回 01-12 的月份值
+    function getMonth(date){
+        var month = "";
+        month = date.getMonth() + 1; //getMonth()得到的月份是0-11
+        if(month<10){
+            month = "0" + month;
+        }
+        return month;
+    }
+//返回01-30的日期
+    function getDay(date){
+        var day = "";
+        day = date.getDate();
+        if(day<10){
+            day = "0" + day;
+        }
+        return day;
+    }
+//返回小时
+    function getHours(date){
+        var hours = "";
+        hours = date.getHours();
+        if(hours<10){
+            hours = "0" + hours;
+        }
+        return hours;
+    }
+//返回分
+    function getMinutes(date){
+        var minute = "";
+        minute = date.getMinutes();
+        if(minute<10){
+            minute = "0" + minute;
+        }
+        return minute;
+    }
+//返回秒
+    function getSeconds(date){
+        var second = "";
+        second = date.getSeconds();
+        if(second<10){
+            second = "0" + second;
+        }
+        return second;
+    }
 
     return CwHelper;
 });

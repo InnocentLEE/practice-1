@@ -1,6 +1,5 @@
 package com.lyq.project;
 
-import com.lyq.project.util.JedisSingleton;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +13,6 @@ import redis.clients.jedis.Jedis;
 public class ProjectApplication {
 
     public static void main(String[] args) {
-        Jedis jedis = JedisSingleton.getInstance();
         SpringApplication.run(ProjectApplication.class, args);
     }
     @RequestMapping("/")
