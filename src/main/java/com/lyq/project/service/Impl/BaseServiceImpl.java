@@ -42,6 +42,9 @@ public class BaseServiceImpl implements IBaseService {
             if(unit!=null){
                 userInfoDto.setOrganProvince(unit.getProvince() == null ? "" : unit.getProvince());
                 userInfoDto.setOrganCity(unit.getCity() == null ? "" : unit.getCity());
+                userInfoDto.setOrganId(unit.getId());
+                userInfoDto.setOrganizationName(unit.getUnitName());
+                userInfoDto.setOrganizationType(unit.getOrgtype().toString());
             }
             session.removeAttribute("current_user");
             session.setAttribute("current_user", JSON.toJSONString(userInfoDto));
