@@ -10,4 +10,5 @@ import javax.servlet.http.HttpSession;
 public interface IQService {
     LYQResponse createShengJiJianGuanBuMen(HttpSession session, CreateShengJiJianGuanBuMenDto createShengJiJianGuanBuMenDto);
     LYQResponse getShengJiJianGuanBuMenList(HttpSession session, SearchDto<ShengJiJianGuanBuMenSearchDto> searchDto);
+    LYQResponse getShengJiJianGuanBuMenDetail(HttpSession session, String id);
 }

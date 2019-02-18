@@ -7,6 +7,7 @@ import com.lyq.project.common.ShengJiJianGuanBuMenSearchDto;
 import com.lyq.project.dao.ContactsMapper;
 import com.lyq.project.dao.UnitMapper;
 import com.lyq.project.dto.CreateShengJiJianGuanBuMenDto;
+import com.lyq.project.dto.ShengJiJianGuanBuMenDetail;
 import com.lyq.project.dto.ShengJiJianGuanBuMenListDto;
 import com.lyq.project.pojo.Contacts;
 import com.lyq.project.pojo.Unit;
@@ -54,5 +55,15 @@ public class QServiceImpl implements IQService {
         pageList.setTotalcount(list.size());
         pageList.setItems(list);
         return LYQResponse.createBySuccess(pageList);
+    }
+
+    @Override
+    @Transactional
+    public LYQResponse getShengJiJianGuanBuMenDetail(HttpSession session, String id){
+        ShengJiJianGuanBuMenDetail detail = unitMapper.selectShengJiJianGuanBuMenDetail(id);
+        if(detail!= null)
+            return LYQResponse.createBySuccess(detail);
+        else
+            return LYQResponse.createByErrorMessage("查询不到详细信息");
     }
 }

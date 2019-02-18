@@ -45,4 +45,14 @@ public class QController {
 
     }
     // endregion
+
+    // region 获取省级监管部门详情
+    @RequestMapping(value = "008808800012",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getShengJiJianGuanBuMenDetail(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return iqService.getShengJiJianGuanBuMenDetail(session,request.getBody());
+
+    }
+    // endregion
 }

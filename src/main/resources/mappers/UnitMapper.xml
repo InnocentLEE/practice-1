@@ -41,6 +41,12 @@
     </if>
     limit #{index} , #{size}
   </select>
+  <select id="selectShengJiJianGuanBuMenDetail" resultType="com.lyq.project.dto.ShengJiJianGuanBuMenDetail">
+    select u.id as Id, u.unit_name as UnitName, u.province as Province, u.in_net_date as InNetDate, u.address as Address,
+    c.contact_name as Name, c.cardNo as IdCard, c.tel as Tel, c.phone as Phone, c.email as Email, c.QQ as QQ, c.memo as Memo
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.id = #{id}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from unit
     where id = #{id,jdbcType=VARCHAR}
