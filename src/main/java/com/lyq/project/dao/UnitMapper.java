@@ -20,6 +20,8 @@ public interface UnitMapper {
 
     ShengJiJianGuanBuMenDetail selectShengJiJianGuanBuMenDetail(@Param("id") String id);
 
+    Unit selectByContactId(String id);
+
     int updateByPrimaryKeySelective(Unit record);
 
     int updateByPrimaryKey(Unit record);

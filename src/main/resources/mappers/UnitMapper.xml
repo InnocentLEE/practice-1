@@ -29,6 +29,12 @@
     from unit
     where id = #{id,jdbcType=VARCHAR}
   </select>
+  <select id="selectByContactId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from unit
+    where contacts_id = #{id,jdbcType=VARCHAR}
+  </select>
   <select id="selectShengJiJianGuanBuMen" resultType="com.lyq.project.dto.ShengJiJianGuanBuMenListDto">
     select u.id as Id, u.unit_name as UnitName, u.province as Province, u.in_net_date as InNetDate, c.contact_name as ContactMen
     from unit u, contacts c

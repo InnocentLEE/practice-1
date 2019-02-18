@@ -4,10 +4,12 @@ import com.alibaba.fastjson.JSON;
 import com.lyq.project.common.LYQRequest;
 import com.lyq.project.common.LYQResponse;
 import com.lyq.project.dao.ContactsMapper;
+import com.lyq.project.dao.UnitMapper;
 import com.lyq.project.dto.LoginDto;
 import com.lyq.project.dto.MenudTO;
 import com.lyq.project.dto.UserInfoDto;
 import com.lyq.project.pojo.Contacts;
+import com.lyq.project.pojo.Unit;
 import com.lyq.project.service.IBaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,8 @@ import java.util.List;
 public class BaseServiceImpl implements IBaseService {
     @Autowired
     private ContactsMapper contactsMapper;
+    @Autowired
+    private UnitMapper unitMapper;
 
     @Override
     public LYQResponse login(HttpSession session, LYQRequest<LoginDto> request){
@@ -34,6 +38,11 @@ public class BaseServiceImpl implements IBaseService {
             userInfoDto.setAccountName(contacts.getCardno());
             userInfoDto.setSysId("60190fc4-5103-4c76-94e4-12a54b62c92a");
             userInfoDto.setRoleCode(contacts.getOrgtype().toString());
+            Unit unit = unitMapper.selectByContactId(contacts.getId());
+            if(unit!=null){
+                userInfoDto.setOrganProvince(unit.getProvince() == null ? "" : unit.getProvince());
+                userInfoDto.setOrganCity(unit.getCity() == null ? "" : unit.getCity());
+            }
             session.removeAttribute("current_user");
             session.setAttribute("current_user", JSON.toJSONString(userInfoDto));
             return LYQResponse.createBySuccess(session.getId());
