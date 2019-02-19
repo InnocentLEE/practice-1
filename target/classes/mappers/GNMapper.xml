@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyq.project.dao.GNMapper" >
+
+  <select id="selectByparentUnitId" parameterType="java.lang.String" resultType="java.lang.String">
+    select id
+    from unit
+    where city is not null
+  </select>
+
+  <select id="selectShiJiJianGuanBuMen" resultType="com.lyq.project.dto.ShiJiJianGuanBuMenListDto">
+    select u.id as Id, u.unit_name as UnitName, u.city as City, u.in_net_date as InNetDate, c.contact_name as ContactMen
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 2
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="city != null and city != ''" >
+      and u.city like concat('%',#{city},'%')
+    </if>
+    limit #{index} , #{size}
+  </select>
+</mapper>

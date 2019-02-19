@@ -2,6 +2,13 @@ define(['/Modules/Config/conwin.main.js'], function () {
     require(['jquery', 'popdialog', 'tipdialog', 'toast', 'helper', 'common', 'formcontrol', 'prevNextpage', 'tableheadfix', 'system', 'selectcity', 'selectCity2', 'filelist', 'metronic', 'customtable', 'bootstrap-datepicker.zh-CN', 'bootstrap-datetimepicker.zh-CN'],
         function ($, popdialog, tipdialog, toast, helper, common, formcontrol, prevNextpage, tableheadfix, system, selectcity,selectCity2, filelist, Metronic, fileupload) {
             var userInfo = helper.GetUserInfo();
+
+            var arr = helper.getCity(userInfo.organProvince);
+            // 循环动态添加option
+            for (var i = 0; i < arr.length ; i++) {
+                $("#City").append("<option value='"+arr[i]+"'>"+arr[i]+"</option>");
+            }
+
             var initPage = function () {
                 common.AutoFormScrollHeight('#Form1');
                 formcontrol.initial();
@@ -14,8 +21,8 @@ define(['/Modules/Config/conwin.main.js'], function () {
                     if ($.trim(fromData.UnitName) == '') {
                         msg += "单位名称 是必填项<br/>";
                     }
-                    if ($.trim(fromData.Province) == '') {
-                        msg += "辖区省 是必填项<br/>";
+                    if ($.trim(fromData.City) == '') {
+                        msg += "辖区市 是必填项<br/>";
                     }
                     if ($.trim(fromData.Address) == '') {
                         msg += "地址 是必填项<br/>";
@@ -43,6 +50,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
                         }
                     });
                 });
+
             };
             //保存
             function save() {
@@ -50,9 +58,10 @@ define(['/Modules/Config/conwin.main.js'], function () {
                 for (var key in jsonData1) {
                     jsonData1[key] = jsonData1[key].replace(/\s/g, "");
                 }
+                jsonData1.Province = userInfo.organProvince;
                 console.log(JSON.stringify(jsonData1));
                 //调用新增接口
-                helper.Ajax("008808800010", jsonData1, function (data) {
+                helper.Ajax("008808800020", jsonData1, function (data) {
                     if ($.type(data) == "string") {
                         data = helper.StrToJson(data);
                     }
@@ -65,6 +74,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
                     }
                 }, false);
             };
+
             initPage();
         });
 

@@ -1,6 +1,14 @@
 define(['/Modules/Config/conwin.main.js'], function () {
     require(['jquery', 'popdialog', 'tipdialog', 'toast', 'helper', 'common', 'tableheadfix', 'system', 'userinfo' ,'selectcity', 'searchbox', 'customtable', 'bootstrap-datepicker.zh-CN', 'permission'],
     function ($, popdialog, tipdialog, toast, helper, common, tableheadfix, system,userinfo) {
+
+        var userInfo = helper.GetUserInfo();
+        var arr = helper.getCity(userInfo.organProvince);
+        // 循环动态添加option
+        for (var i = 0; i < arr.length ; i++) {
+            $("#City").append("<option value='"+arr[i]+"'>"+arr[i]+"</option>");
+        }
+
         var initPage = function () {
             //初始化table
             initlizableTable();
@@ -49,7 +57,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
 
         function initlizableTable() {
             $("#tb_Template").CustomTable({
-                ajax: helper.AjaxData("008808800011",
+                ajax: helper.AjaxData("008808800021",
                      function (data) {
                          var pageInfo = { Page: data.start / data.length + 1, Rows: data.length };
                          for (var i in data) {
@@ -73,7 +81,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
                     }
                 },
                        { data: 'UnitName' },
-                       { data: 'Province' },
+                       { data: 'City' },
                        {
                            data: 'InNetDate' ,
                            render: function (data, type, row, meta) {
