@@ -45,5 +45,14 @@ public class NController {
     }
     // endregion
 
+    // region 获取市级监管部门详情
+    @RequestMapping(value = "008808800022",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getShiJiJianGuanBuMenDetail(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return inService.getShiJiJianGuanBuMenDetail(session,request.getBody());
+    }
+    // endregion
+
 
 }

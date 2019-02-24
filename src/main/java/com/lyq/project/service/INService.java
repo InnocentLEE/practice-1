@@ -12,4 +12,5 @@ import javax.servlet.http.HttpSession;
 public interface INService {
     LYQResponse createShiJiJianGuanBuMen(HttpSession session, CreateShiJiJianGuanBuMenDto createShiJiJianGuanBuMenDto);
     LYQResponse getShiJiJianGuanBuMenList(HttpSession session, SearchDto<ShiJiJianGuanBuMenSearchDto> searchDto);
+    LYQResponse getShiJiJianGuanBuMenDetail(HttpSession session, String id);
 }

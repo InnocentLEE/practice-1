@@ -65,4 +65,16 @@ public class NServiceImpl implements INService {
         pageList.setItems(list);
         return LYQResponse.createBySuccess(pageList);
     }
+
+    @Override
+    @Transactional
+    public LYQResponse getShiJiJianGuanBuMenDetail(HttpSession session, String id){
+        ShiJiJianGuanBuMenDetail detail = gnMapper.selectShiJiJianGuanBuMenDetail(id);
+        if(detail!= null)
+            return LYQResponse.createBySuccess(detail);
+        else
+            return LYQResponse.createByErrorMessage("查询不到详细信息");
+    }
+
+
 }
