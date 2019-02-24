@@ -38,7 +38,7 @@
   <select id="selectShengJiJianGuanBuMen" resultType="com.lyq.project.dto.ShengJiJianGuanBuMenListDto">
     select u.id as Id, u.unit_name as UnitName, u.province as Province, u.in_net_date as InNetDate, c.contact_name as ContactMen
     from unit u, contacts c
-    where u.contacts_id = c.id
+    where u.contacts_id = c.id and u.OrgType = 1
     <if test="unitName != null and unitName != ''" >
       and u.unit_name like concat('%',#{unitName},'%')
     </if>
@@ -196,12 +196,7 @@
       <if test="contactsId != null" >
         contacts_id = #{contactsId,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null" >
-        createtime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatetiem != null" >
-        updatetiem = #{updatetiem,jdbcType=TIMESTAMP},
-      </if>
+        updatetiem = now(),
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>

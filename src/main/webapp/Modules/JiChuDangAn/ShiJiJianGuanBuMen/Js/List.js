@@ -3,12 +3,25 @@ define(['/Modules/Config/conwin.main.js'], function () {
     function ($, popdialog, tipdialog, toast, helper, common, tableheadfix, system,userinfo) {
 
         var userInfo = helper.GetUserInfo();
-        var arr = helper.getCity(userInfo.organProvince);
-        // 循环动态添加option
-        for (var i = 0; i < arr.length ; i++) {
-            $("#City").append("<option value='"+arr[i]+"'>"+arr[i]+"</option>");
+        if(userInfo.organProvince != null){
+            $("#Province").attr("disabled","disabled");
+            $("#Province").val(userInfo.organProvince);
+            var arr = helper.getCity(userInfo.organProvince);
+            // 循环动态添加option
+            for (var i = 0; i < arr.length ; i++) {
+                $("#City").append("<option value='"+arr[i]+"'>"+arr[i]+"</option>");
+            }
         }
-
+        $("#Province").change(function(){
+            var province = $("#Province").val();
+            $("#City").empty();
+            var arr = helper.getCity(province);
+            // 循环动态添加option
+            $("#City").append("<option value=''>"+"请选择"+"</option>");
+            for (var i = 0; i < arr.length ; i++) {
+                $("#City").append("<option value='"+arr[i]+"'>"+arr[i]+"</option>");
+            }
+        });
         var initPage = function () {
             //初始化table
             initlizableTable();
@@ -54,7 +67,6 @@ define(['/Modules/Config/conwin.main.js'], function () {
             });
 
         };
-
         function initlizableTable() {
             $("#tb_Template").CustomTable({
                 ajax: helper.AjaxData("008808800021",

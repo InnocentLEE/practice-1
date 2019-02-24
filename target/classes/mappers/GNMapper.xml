@@ -15,8 +15,11 @@
     <if test="unitName != null and unitName != ''" >
       and u.unit_name like concat('%',#{unitName},'%')
     </if>
+    <if test="province != null and province != ''" >
+      and u.province = #{province}
+    </if>
     <if test="city != null and city != ''" >
-      and u.city like concat('%',#{city},'%')
+      and u.city = #{city}
     </if>
     limit #{index} , #{size}
   </select>

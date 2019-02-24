@@ -58,11 +58,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
                     }
                     if (data.publicresponse.statuscode == 0) {
                         toast.success("创建成功");
-                        setTimeout(function () {
-                            window.location.href = "List.html";
-                            parent.window.$("#btnSearch").click();
-                            parent.window. $("#tb_Template").CustomTable("reload");
-                            }, 2000);
+                        setTimeout(function () { window.location.href = "List.html"; }, 2000);
                     }
                     else {
                         tipdialog.alertMsg(data.publicresponse.message);

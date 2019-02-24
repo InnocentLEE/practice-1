@@ -58,7 +58,8 @@ public class NServiceImpl implements INService {
         int rows = searchDto.getRows();
         String unitName = searchDto.getData().getUnitName();
         String city = searchDto.getData().getCity();
-        List<ShiJiJianGuanBuMenListDto> list = gnMapper.selectShiJiJianGuanBuMen((page-1)*rows,rows,unitName,city);
+        String province = searchDto.getData().getProvince();
+        List<ShiJiJianGuanBuMenListDto> list = gnMapper.selectShiJiJianGuanBuMen((page-1)*rows,rows,unitName,province,city);
         PageList<List<ShiJiJianGuanBuMenListDto>> pageList = new PageList<>();
         pageList.setTotalcount(list.size());
         pageList.setItems(list);

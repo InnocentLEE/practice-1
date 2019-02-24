@@ -52,7 +52,25 @@ public class QController {
     public LYQResponse getShengJiJianGuanBuMenDetail(HttpSession session , @RequestBody JSONObject jsonParam) {
         LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
         return iqService.getShengJiJianGuanBuMenDetail(session,request.getBody());
+    }
+    // endregion
 
+    // region 修改省级监管部门
+    @RequestMapping(value = "008808800013",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse updateShengJiJianGuanBuMen(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<CreateShengJiJianGuanBuMenDto> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<CreateShengJiJianGuanBuMenDto>>(){});
+        return iqService.updateShengJiJianGuanBuMen(session,request.getBody());
+    }
+    // endregion
+
+
+    // region 批量删除省级监管部门
+    @RequestMapping(value = "008808800014",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse deleteShengJiJianGuanBuMenDetail(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return iqService.deleteShengJiJianGuanBuMenDetail(session,request.getBody());
     }
     // endregion
 }

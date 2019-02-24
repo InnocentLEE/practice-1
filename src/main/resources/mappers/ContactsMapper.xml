@@ -38,6 +38,11 @@
     from contacts
     where cardNo = #{cardNo}
   </select>
+  <select id="selectCountByUnitIdAndCardNo" resultType="int">
+    SELECT COUNT(1)
+    FROM contacts
+    WHERE id NOT IN (SELECT contacts_id FROM unit WHERE id = #{id}) AND cardNo = #{cardNo}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from contacts
     where id = #{id,jdbcType=VARCHAR}
@@ -181,8 +186,7 @@
       QQ = #{qq,jdbcType=VARCHAR},
       memo = #{memo,jdbcType=VARCHAR},
       orgType = #{orgtype,jdbcType=INTEGER},
-      createtime = #{createtime,jdbcType=TIMESTAMP},
-      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+      updatetime = now()
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -16,6 +16,8 @@ public interface ContactsMapper {
 
     int selectCountByCardNo(@Param("cardNo")String cardNo);
 
+    int selectCountByUnitIdAndCardNo(@Param("id")String id, @Param("cardNo")String cardNo);
+
     int updateByPrimaryKeySelective(Contacts record);
 
     int updateByPrimaryKey(Contacts record);

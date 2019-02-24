@@ -11,6 +11,8 @@ public interface UnitGatherMapper {
 
     UnitGather selectByPrimaryKey(String id);
 
+    int countChildUnit(String id);
+
     int updateByPrimaryKeySelective(UnitGather record);
 
     int updateByPrimaryKey(UnitGather record);
