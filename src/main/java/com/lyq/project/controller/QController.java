@@ -7,6 +7,7 @@ import com.lyq.project.common.LYQRequest;
 import com.lyq.project.common.LYQResponse;
 import com.lyq.project.common.SearchDto;
 import com.lyq.project.common.ShengJiJianGuanBuMenSearchDto;
+import com.lyq.project.dto.CreateKeYunQiYeDto;
 import com.lyq.project.dto.CreateShengJiJianGuanBuMenDto;
 import com.lyq.project.dto.LoginDto;
 import com.lyq.project.service.IQService;
@@ -73,4 +74,12 @@ public class QController {
         return iqService.deleteShengJiJianGuanBuMenDetail(session,request.getBody());
     }
     // endregion
+
+    // region 新增省级监管部门
+    @RequestMapping(value = "008808800040",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse createKeYunQiYe(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<CreateKeYunQiYeDto> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<CreateKeYunQiYeDto>>(){});
+        return iqService.createKeYunQiYe(session,request.getBody());
+    }
 }

@@ -1,0 +1,214 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>编辑省级监管部门档案</title>
+    <link href="/Modules/Component/site.css" rel="stylesheet" />
+    <link id="styleLink" href="" rel="stylesheet" />
+</head>
+<body>
+    <div class="portlet cus-portlet">
+        <div class="portlet-title" style="background-color: #3190bc">
+            <div class="caption">
+                <span>
+                    <i class="iconfont icon-bianjibiaodantaitou"></i>
+                    <span id="op">编辑省级监管部门档案</span>
+                </span>
+            </div>
+            <div class="btnclose">
+                <a id="btnclose" href="javascript:;">
+                    <i class="glyphicon glyphicon-remove-circle"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5" style="float : right; text-align: right; padding-right: 22px; padding-bottom: 5px;">
+                <button id="prevBtn" type="submit" class="btn c-green disabled"><i class="m-icon-swapleft m-icon-white"></i> 上一条</button>
+                <button id="nextBtn" type="submit" class="btn c-green disabled">下一条 <i class="m-icon-swapright m-icon-white"></i></button>
+                <button id="saveBtn" type="submit" class="btn c-green"><i class="fa fa-save"></i> 保存</button>
+            </div>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="JiChuXinXi">
+                <form action="#" id="Form1" class="form-horizontal form-horizontal form-bordered form-row-stripped form-block">
+                    <input type="hidden" id="SelectData" name="SelectData" />
+                    <input type="hidden" id="Id" name="Id" />
+                    <div class="row">
+                        <div class="col-xs-12" style="margin-top: 10px; margin-bottom: 10px;">
+                            <div class="form-body scroller form-box">
+                                <h4 class="form-section cus-form-section">
+                                    <span>基础信息</span>
+                                </h4>
+                                <div class="form-group-group">
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="UnitName">
+                                            <span class="required">*</span>单位名称
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" name="UnitName" id="UnitName" class="form-control required" data-cwvalid='{"blur":true,"required":true}' maxlength="50" />
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2">
+                                            辖区省
+                                        </label>
+                                        <div class="col-xs-2">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <select name="Province" id="Province" class="form-control required">
+                                                    <option value="">请选择</option>
+                                                    <option value="北京" >北京</option>
+                                                    <option value="上海" >上海</option>
+                                                    <option value="天津" >天津</option>
+                                                    <option value="重庆" >重庆</option>
+                                                    <option value="河北" >河北</option>
+                                                    <option value="山西" >山西</option>
+                                                    <option value="内蒙古" >内蒙古</option>
+                                                    <option value="辽宁" >辽宁</option>
+                                                    <option value="吉林" >吉林</option>
+                                                    <option value="黑龙江" >黑龙江</option>
+                                                    <option value="江苏" >江苏</option>
+                                                    <option value="浙江" >浙江</option>
+                                                    <option value="安徽" >安徽</option>
+                                                    <option value="福建" >福建</option>
+                                                    <option value="江西" >江西</option>
+                                                    <option value="山东" >山东</option>
+                                                    <option value="河南" >河南</option>
+                                                    <option value="湖北" >湖北</option>
+                                                    <option value="湖南" >湖南</option>
+                                                    <option value="广东" >广东</option>
+                                                    <option value="广西" >广西</option>
+                                                    <option value="海南" >海南</option>
+                                                    <option value="四川" >四川</option>
+                                                    <option value="贵州" >贵州</option>
+                                                    <option value="云南" >云南</option>
+                                                    <option value="西藏" >西藏</option>
+                                                    <option value="陕西" >陕西</option>
+                                                    <option value="甘肃" >甘肃</option>
+                                                    <option value="宁夏" >宁夏</option>
+                                                    <option value="青海" >青海</option>
+                                                    <option value="新疆" >新疆</option>
+                                                    <option value="香港" >香港</option>
+                                                    <option value="澳门" >澳门</option>
+                                                    <option value="台湾" >台湾</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="InNetDate">
+                                            入网时间
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="InNetDate" class="form-control-static long-to-date"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Address">
+                                            <span class="required">*</span>地址
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <textarea type="text" name="Address" id="Address" class="form-control required" style="resize: none;" rows="3" data-cwvalid='{"blur":true,"required":true}' maxlength="500"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 class="form-section cus-form-section">
+                                    <span>联系人信息</span>
+                                </h4>
+                                <div class="form-group-group">
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Name">
+                                            <span class="required">*</span>姓名
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" name="Name" id="Name" class="form-control required" data-cwvalid='{"blur":true,"required":true}' maxlength="50" />
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="IdCard">
+                                            <span class="required">*</span>身份证号
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" name="IdCard" id="IdCard" class="form-control required" data-cwvalid='{"blur":true,"required":true}' maxlength="50" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Tel">
+                                            手机号
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" name="Tel" id="Tel" class="form-control" maxlength="50" />
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="Phone">
+                                            电话
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" name="Phone" id="Phone" class="form-control" maxlength="50" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Email">
+                                            邮箱
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" name="Email" id="Email" class="form-control" maxlength="50" />
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="QQ">
+                                            QQ
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" name="QQ" id="QQ" class="form-control" maxlength="50" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Memo">
+                                            备注
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <textarea type="text" name="Memo" id="Memo" class="form-control" style="resize: none;" rows="3" maxlength="500"></textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script data-main="Js/Edit.js" src="/Modules/Component/require.js"></script>
+</body>
+</html>

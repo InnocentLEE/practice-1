@@ -22,6 +22,10 @@ public interface UnitMapper {
 
     Unit selectByContactId(String id);
 
+    int countByPermitWord(@Param("permitWord") String permitWord);
+
+    int countByPermitNum(@Param("permitNum") String permitNum);
+
     int updateByPrimaryKeySelective(Unit record);
 
     int updateByPrimaryKey(Unit record);

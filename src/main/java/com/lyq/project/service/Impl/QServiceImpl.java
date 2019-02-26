@@ -1,5 +1,6 @@
 package com.lyq.project.service.Impl;
 
+import com.alibaba.fastjson.JSON;
 import com.lyq.project.common.LYQResponse;
 import com.lyq.project.common.PageList;
 import com.lyq.project.common.SearchDto;
@@ -7,9 +8,7 @@ import com.lyq.project.common.ShengJiJianGuanBuMenSearchDto;
 import com.lyq.project.dao.ContactsMapper;
 import com.lyq.project.dao.UnitGatherMapper;
 import com.lyq.project.dao.UnitMapper;
-import com.lyq.project.dto.CreateShengJiJianGuanBuMenDto;
-import com.lyq.project.dto.ShengJiJianGuanBuMenDetail;
-import com.lyq.project.dto.ShengJiJianGuanBuMenListDto;
+import com.lyq.project.dto.*;
 import com.lyq.project.pojo.Contacts;
 import com.lyq.project.pojo.Unit;
 import com.lyq.project.pojo.UnitGather;
@@ -20,6 +19,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service("iQService")
@@ -102,5 +104,35 @@ public class QServiceImpl implements IQService {
         contactsMapper.deleteByPrimaryKey(contactId);
         unitMapper.deleteByPrimaryKey(id);
         return LYQResponse.createBySuccess(true);
+    }
+
+    @Override
+    @Transactional
+    public LYQResponse createKeYunQiYe(HttpSession session, CreateKeYunQiYeDto dto){
+        if(contactsMapper.selectCountByCardNo(dto.getIdCard()) > 0){
+            return LYQResponse.createByErrorMessage("联系人身份证号已被使用");
+        }
+        if(unitMapper.countByPermitWord(dto.getPermitWord()) > 0){
+            return LYQResponse.createByErrorMessage("经营许可证字已存在");
+        }
+        if(unitMapper.countByPermitNum(dto.getPermitNum()) > 0){
+            return LYQResponse.createByErrorMessage("经营许可证号已存在");
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Contacts contacts = new Contacts(CommonUtils.getUUID(),dto.getName(),dto.getIdCard(),dto.getTel(),"111111",dto.getPhone(),dto.getEmail(),dto.getQQ(),dto.getMemo(),1,null,null);
+        contactsMapper.insert(contacts);
+        Date date = null;
+        try {
+            date = sdf.parse(dto.getPermitDate());
+        } catch (ParseException e) {
+            return LYQResponse.createByErrorMessage("经营许可证有效日期输入错误已存在");
+        }
+        Unit unit = new Unit(CommonUtils.getUUID(),4,dto.getProvince(),dto.getCity(),dto.getUnitName(),Integer.parseInt(dto.getBusinessType()),dto.getAddress(),null,dto.getPermitWord(),dto.getPermitNum(),date,contacts.getId(),null,null);
+        unitMapper.insert(unit);
+        String userInfoJSON = (String) session.getAttribute("current_user");
+        UserInfoDto userInfoDto = JSON.parseObject(userInfoJSON, UserInfoDto.class);
+        UnitGather unitGather = new UnitGather(CommonUtils.getUUID(),unit.getId(),userInfoDto.getOrganId(),4,Integer.parseInt(userInfoDto.getOrganizationType()),1);
+        unitGatherMapper.insert(unitGather);
+        return LYQResponse.createBySuccess(null);
     }
 }
