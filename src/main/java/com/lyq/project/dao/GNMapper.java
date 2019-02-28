@@ -14,4 +14,8 @@ public interface GNMapper {
     List<ShiJiJianGuanBuMenListDto> selectShiJiJianGuanBuMen(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("province") String province, @Param("city") String city);
 
     ShiJiJianGuanBuMenDetail selectShiJiJianGuanBuMenDetail(@Param("id") String id);
+
+    // 删除unit_gather
+    int deleteShiJiJianGuanBuMenUnitGather(String unit_id);
+
 }

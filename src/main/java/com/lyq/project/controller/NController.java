@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.lyq.project.common.*;
+import com.lyq.project.dto.CreateKeYunZhanDto;
 import com.lyq.project.dto.CreateShengJiJianGuanBuMenDto;
 import com.lyq.project.dto.CreateShiJiJianGuanBuMenDto;
 import com.lyq.project.dto.LoginDto;
@@ -51,6 +52,33 @@ public class NController {
     public LYQResponse getShiJiJianGuanBuMenDetail(HttpSession session , @RequestBody JSONObject jsonParam) {
         LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
         return inService.getShiJiJianGuanBuMenDetail(session,request.getBody());
+    }
+    // endregion
+
+    // region 修改市级监管部门
+    @RequestMapping(value = "008808800023",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse updateShiJiJianGuanBuMen(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<CreateShiJiJianGuanBuMenDto> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<CreateShiJiJianGuanBuMenDto>>(){});
+        return inService.updateShiJiJianGuanBuMen(session,request.getBody());
+    }
+    // endregion
+
+    // region 批量删除市级监管部门
+    @RequestMapping(value = "008808800024",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse deleteShiJiJianGuanBuMenDetail(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return inService.deleteShiJiJianGuanBuMenDetail(session,request.getBody());
+    }
+    // endregion
+
+    // region 新增客运站
+    @RequestMapping(value = "008808800030",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public  LYQResponse createKeYunZhan(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<CreateKeYunZhanDto> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<CreateKeYunZhanDto>>(){});
+        return inService.createKeYunZhan(session,request.getBody());
     }
     // endregion
 

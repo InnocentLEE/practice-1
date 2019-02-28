@@ -1,7 +1,22 @@
 define(['/Modules/Config/conwin.main.js'], function () {
     require(['jquery', 'popdialog', 'tipdialog', 'toast', 'helper', 'common', 'formcontrol', 'prevNextpage', 'tableheadfix', 'system', 'selectcity', 'selectCity2', 'filelist', 'metronic', 'customtable', 'bootstrap-datepicker.zh-CN', 'bootstrap-datetimepicker.zh-CN'],
         function ($, popdialog, tipdialog, toast, helper, common, formcontrol, prevNextpage, tableheadfix, system, selectcity,selectCity2, filelist, Metronic, fileupload) {
+            common.AutoFormScrollHeight('#Form1');
+            $('.date-picker').datepicker({ format: 'yyyy-mm-dd', autoclose: true, language: 'zh-CN' });
+            formcontrol.initial();
+
             var userInfo = helper.GetUserInfo();
+            $("#Province").change(function(){
+                var province = $("#Province").val();
+                $("#City").empty();
+                var arr = helper.getCity(province);
+                // 循环动态添加option
+                $("#City").append("<option value=''>"+"请选择"+"</option>");
+                for (var i = 0; i < arr.length ; i++) {
+                    $("#City").append("<option value='"+arr[i]+"'>"+arr[i]+"</option>");
+                }
+            });
+
             var initPage = function () {
                 common.AutoFormScrollHeight('#Form1');
                 formcontrol.initial();
@@ -16,6 +31,21 @@ define(['/Modules/Config/conwin.main.js'], function () {
                     }
                     if ($.trim(fromData.Province) == '') {
                         msg += "辖区省 是必填项<br/>";
+                    }
+                    if ($.trim(fromData.City) == '') {
+                        msg += "辖区市 是必填项<br/>";
+                    }
+                    if ($.trim(fromData.BusinessType) == '') {
+                        msg += "经济类型 是必填项<br/>";
+                    }
+                    if ($.trim(fromData.PermitWord) == '') {
+                        msg += "经营许可证字 是必填项<br/>";
+                    }
+                    if ($.trim(fromData.PermitNum) == '') {
+                        msg += "经营许可证号 是必填项<br/>";
+                    }
+                    if ($.trim(fromData.PermitDate) == '') {
+                        msg += "经营许可证有效期 是必填项<br/>";
                     }
                     if ($.trim(fromData.Address) == '') {
                         msg += "地址 是必填项<br/>";
@@ -52,7 +82,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
                 }
                 console.log(JSON.stringify(jsonData1));
                 //调用新增接口
-                helper.Ajax("008808800010", jsonData1, function (data) {
+                helper.Ajax("008808800030", jsonData1, function (data) {
                     if ($.type(data) == "string") {
                         data = helper.StrToJson(data);
                     }

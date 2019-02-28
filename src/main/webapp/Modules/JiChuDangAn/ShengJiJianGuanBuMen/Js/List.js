@@ -62,7 +62,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
                 }
                 tipdialog.confirm("确定要删除选中的记录？", function (r) {
                     if (r) {
-                        helper.Ajax("008808800014", ids[0], function (data) {
+                        helper.Ajax("008808800024", ids[0], function (data) {
                             if ($.type(data) == "string") {
                                 data = helper.StrToJson(data);
                             }

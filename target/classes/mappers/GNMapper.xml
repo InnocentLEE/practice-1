@@ -30,4 +30,9 @@
     from unit u, contacts c
     where u.contacts_id = c.id and u.id = #{id}
   </select>
+
+  <delete id="deleteShiJiJianGuanBuMenUnitGather" parameterType="java.lang.String">
+    delete from unit_gather
+    where unit_id = #{unit_id}
+  </delete>
 </mapper>

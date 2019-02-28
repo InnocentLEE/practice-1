@@ -66,6 +66,62 @@ define(['/Modules/Config/conwin.main.js'], function () {
                 });
             });
 
+            //删除
+            $('#btnDel').on('click', function (e) {
+                e.preventDefault();
+                var rows = $("#tb_Template").CustomTable('getSelection'), ids = [];
+                if (rows == undefined) {
+                    tipdialog.errorDialog('请选择需要删除的行');
+                    return false;
+                }
+                $(rows).each(function (i, item) {
+                    ids.push(item.data.Id);
+                });
+                if(ids.length > 1) {
+                    tipdialog.errorDialog('只能选择一行进行删除');
+                    return false;
+                }
+                tipdialog.confirm("确定要删除选中的记录？", function (r) {
+                    if (r) {
+                        helper.Ajax("008808800014", ids[0], function (data) {
+                            if ($.type(data) == "string") {
+                                data = helper.StrToJson(data);
+                            }
+                            if (data.publicresponse.statuscode == 0) {
+                                if (data.body) {
+                                    toast.success("删除成功");
+                                    $("#tb_Template").CustomTable("reload");
+                                }
+                                else {
+                                    tipdialog.errorDialog('删除失败');
+                                }
+                            }
+                            else {
+                                tipdialog.alertMsg(data.publicresponse.message);
+                            }
+                        }, false);
+                    }
+                });
+            });
+
+            //更新
+            $('#btnEdit').on('click', function (e) {
+                e.preventDefault();
+                var rows = $("#tb_Template").CustomTable('getSelection'), ids = [];
+                if (rows == undefined) {
+                    tipdialog.errorDialog('请选择需要修改的行');
+                    return false;
+                }
+                $(rows).each(function (i, item) {
+                    ids.push(item.data.Id);
+                });
+                $('#hdIDS').val(ids.join(','));
+                popdialog.showIframe({
+                    'url': 'Edit.html',
+                    head: false
+                });
+            });
+
         };
         function initlizableTable() {
             $("#tb_Template").CustomTable({

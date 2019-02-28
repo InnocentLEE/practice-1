@@ -74,6 +74,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
                 },
                        { data: 'UnitName' },
                        { data: 'Province' },
+                        { data: 'Province' },
                        {
                            data: 'InNetDate' ,
                            render: function (data, type, row, meta) {
