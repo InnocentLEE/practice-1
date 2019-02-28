@@ -102,6 +102,7 @@ public class NServiceImpl implements INService {
     @Override
     @Transactional
     public LYQResponse deleteShiJiJianGuanBuMenDetail(HttpSession session, String id){
+        System.out.println(id);
         gnMapper.deleteShiJiJianGuanBuMenUnitGather(id);
         //删除contact
         String contactId = unitMapper.selectByPrimaryKey(id).getContactsId();

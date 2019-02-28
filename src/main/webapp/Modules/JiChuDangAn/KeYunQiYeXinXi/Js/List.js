@@ -107,7 +107,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
 
         function initlizableTable() {
             $("#tb_Template").CustomTable({
-                ajax: helper.AjaxData("008808800011",
+                ajax: helper.AjaxData("008808800041",
                      function (data) {
                          var pageInfo = { Page: data.start / data.length + 1, Rows: data.length };
                          for (var i in data) {
@@ -117,6 +117,10 @@ define(['/Modules/Config/conwin.main.js'], function () {
                          $('.searchpanel-form').find('[disabled]').each(function (i, item) {
                              para[$(item).attr('name')] = $(item).val();
                          });
+                         para.Province = userInfo.organProvince;
+                         para.City = userInfo.organCity;
+                         para.ParentUnitId = userInfo.organId;
+                         para.OrgType = userInfo.organizationType;
                          pageInfo.data = para;
                          $.extend(data, pageInfo);
                      }, null),
@@ -130,14 +134,28 @@ define(['/Modules/Config/conwin.main.js'], function () {
                         return '<input type=checkbox class=checkboxes />';
                     }
                 },
-                       { data: 'UnitName' },
-                       { data: 'Province' },
-                       {
-                           data: 'InNetDate' ,
-                           render: function (data, type, row, meta) {
-                               return helper.LongDateToDate(data);
-                           }},
-                       { data: 'ContactMen'}
+                   { data: 'UnitName' },
+                   { data: 'Popedom' },
+                   {
+                       data: 'BusinessType' ,
+                       render: function (data, type, row, meta) {
+                           if(data == '1')
+                               return "国有企业";
+                           if(data == '2')
+                               return "民营企业";
+                           if(data == '3')
+                               return "外资独资";
+                           if(data == '4')
+                               return "中外合资";
+                           if(data == '5')
+                               return "其他";
+                       }},
+                   {
+                       data: 'InNetDate' ,
+                       render: function (data, type, row, meta) {
+                           return helper.LongDateToDate(data);
+                       }},
+                   { data: 'ContactMen'}
                 ],
                 pageLength: 10,
                 "fnDrawCallback": function (oSettings) {

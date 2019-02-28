@@ -3,10 +3,7 @@ package com.lyq.project.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import com.lyq.project.common.LYQRequest;
-import com.lyq.project.common.LYQResponse;
-import com.lyq.project.common.SearchDto;
-import com.lyq.project.common.ShengJiJianGuanBuMenSearchDto;
+import com.lyq.project.common.*;
 import com.lyq.project.dto.CreateKeYunQiYeDto;
 import com.lyq.project.dto.CreateShengJiJianGuanBuMenDto;
 import com.lyq.project.dto.LoginDto;
@@ -75,11 +72,21 @@ public class QController {
     }
     // endregion
 
-    // region 新增省级监管部门
+    // region 新增客运企业
     @RequestMapping(value = "008808800040",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public LYQResponse createKeYunQiYe(HttpSession session , @RequestBody JSONObject jsonParam) {
         LYQRequest<CreateKeYunQiYeDto> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<CreateKeYunQiYeDto>>(){});
         return iqService.createKeYunQiYe(session,request.getBody());
     }
+    // endregion
+
+    // region 获取客运企业列表
+    @RequestMapping(value = "008808800041",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getKeYunQiYeList(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<SearchDto<KeYunQiYeSearchDto>> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<SearchDto<KeYunQiYeSearchDto>>>(){});
+        return iqService.getKeYunQiYeList(session,request.getBody());
+    }
+    // endregion
 }

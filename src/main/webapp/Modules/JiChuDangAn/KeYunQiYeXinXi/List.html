@@ -52,7 +52,7 @@
                                 <div class="row">
                                     <div class="col-xs-4">
                                         <div class="form-group">
-                                            <label class="col-xs-1 control-label" for="UnitName">单位名称</label>
+                                            <label class="col-xs-1 control-label" for="UnitName">企业名称</label>
                                             <div class="col-xs-7">
                                                 <input type="text" name="UnitName" id="UnitName" class="form-control" />
                                             </div>
@@ -60,44 +60,15 @@
                                     </div>
                                     <div class="col-xs-4">
                                         <div class="form-group">
-                                            <label class="col-xs-1 control-label" for="Province">辖区省</label>
+                                            <label class="col-xs-1 control-label" for="BusinessType">经济类型</label>
                                             <div class="col-xs-7">
-                                                <select name="Province" id="Province" class="form-control">
+                                                <select name="BusinessType" id="BusinessType" class="form-control">
                                                     <option value="">请选择</option>
-                                                    <option value="北京" >北京</option>
-                                                    <option value="上海" >上海</option>
-                                                    <option value="天津" >天津</option>
-                                                    <option value="重庆" >重庆</option>
-                                                    <option value="河北" >河北</option>
-                                                    <option value="山西" >山西</option>
-                                                    <option value="内蒙古" >内蒙古</option>
-                                                    <option value="辽宁" >辽宁</option>
-                                                    <option value="吉林" >吉林</option>
-                                                    <option value="黑龙江" >黑龙江</option>
-                                                    <option value="江苏" >江苏</option>
-                                                    <option value="浙江" >浙江</option>
-                                                    <option value="安徽" >安徽</option>
-                                                    <option value="福建" >福建</option>
-                                                    <option value="江西" >江西</option>
-                                                    <option value="山东" >山东</option>
-                                                    <option value="河南" >河南</option>
-                                                    <option value="湖北" >湖北</option>
-                                                    <option value="湖南" >湖南</option>
-                                                    <option value="广东" >广东</option>
-                                                    <option value="广西" >广西</option>
-                                                    <option value="海南" >海南</option>
-                                                    <option value="四川" >四川</option>
-                                                    <option value="贵州" >贵州</option>
-                                                    <option value="云南" >云南</option>
-                                                    <option value="西藏" >西藏</option>
-                                                    <option value="陕西" >陕西</option>
-                                                    <option value="甘肃" >甘肃</option>
-                                                    <option value="宁夏" >宁夏</option>
-                                                    <option value="青海" >青海</option>
-                                                    <option value="新疆" >新疆</option>
-                                                    <option value="香港" >香港</option>
-                                                    <option value="澳门" >澳门</option>
-                                                    <option value="台湾" >台湾</option>
+                                                    <option value="1">国有企业</option>
+                                                    <option value="2">民营企业</option>
+                                                    <option value="3">外资独资</option>
+                                                    <option value="4">中外合资</option>
+                                                    <option value="5">其他</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -141,10 +112,13 @@
                                     <input type="checkbox" class="group-checkable" title="全选/反选" />
                                 </th>
                                 <th data-name="UnitName" style="width:40%;">
-                                    单位名称
+                                    企业名称
                                 </th>
-                                <th data-name="Province">
-                                    辖区省
+                                <th data-name="Popedom">
+                                    辖区
+                                </th>
+                                <th data-name="BuinsessType">
+                                    经济类型
                                 </th>
                                 <th data-name="InNetDate" style="width:20%;">
                                     入网时间

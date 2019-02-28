@@ -16,6 +16,6 @@ public interface GNMapper {
     ShiJiJianGuanBuMenDetail selectShiJiJianGuanBuMenDetail(@Param("id") String id);
 
     // 删除unit_gather
-    int deleteShiJiJianGuanBuMenUnitGather(String unit_id);
+    int deleteShiJiJianGuanBuMenUnitGather(@Param("unit_id") String unit_id);
 
 }
