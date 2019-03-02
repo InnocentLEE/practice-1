@@ -5,6 +5,8 @@ import com.lyq.project.pojo.UnitGather;
 public interface UnitGatherMapper {
     int deleteByPrimaryKey(String id);
 
+    int deleteByUnitId(String id);
+
     int insert(UnitGather record);
 
     int insertSelective(UnitGather record);

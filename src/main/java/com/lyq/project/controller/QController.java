@@ -107,4 +107,13 @@ public class QController {
         return iqService.updateKeYunQiYe(session,request.getBody());
     }
     // endregion
+
+    // region 批量删除客运企业
+    @RequestMapping(value = "008808800044",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse deleteKeYunQiYeDetail(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return iqService.deleteKeYunQiYeDetail(session,request.getBody());
+    }
+    // endregion
 }

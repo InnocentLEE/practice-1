@@ -289,4 +289,14 @@ public class QServiceImpl implements IQService {
         unitMapper.updateByPrimaryKeySelective(unit);
         return LYQResponse.createBySuccess(null);
     }
+
+    @Override
+    @Transactional
+    public LYQResponse deleteKeYunQiYeDetail(HttpSession session, String id){
+        String contactId = unitMapper.selectByPrimaryKey(id).getContactsId();
+        contactsMapper.deleteByPrimaryKey(contactId);
+        unitMapper.deleteByPrimaryKey(id);
+        unitGatherMapper.deleteByUnitId(id);
+        return LYQResponse.createBySuccess(true);
+    }
 }

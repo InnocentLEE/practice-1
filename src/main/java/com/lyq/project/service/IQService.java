@@ -20,5 +20,6 @@ public interface IQService {
     LYQResponse getKeYunQiYeList(HttpSession session, SearchDto<KeYunQiYeSearchDto> searchDto);
     LYQResponse getKeYunQiYeDetail(HttpSession session, String id);
     LYQResponse updateKeYunQiYe(HttpSession session, CreateKeYunQiYeDto createKeYunQiYeDto);
+    LYQResponse deleteKeYunQiYeDetail(HttpSession session, String id);
 
 }

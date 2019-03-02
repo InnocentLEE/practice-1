@@ -3,6 +3,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
     function ($, popdialog, tipdialog, toast, helper, common, tableheadfix, system,userinfo) {
 
         var userInfo = helper.GetUserInfo();
+        $(".popedom").text(userInfo.organProvince + userInfo.organCity);
         if(userInfo.organProvince != null){
             $("#Province").attr("disabled","disabled");
             $("#Province").val(userInfo.organProvince);

@@ -2,6 +2,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
     require(['jquery', 'popdialog', 'tipdialog', 'toast', 'helper', 'common', 'tableheadfix', 'system', 'userinfo' ,'selectcity', 'searchbox', 'customtable', 'bootstrap-datepicker.zh-CN', 'permission'],
     function ($, popdialog, tipdialog, toast, helper, common, tableheadfix, system,userinfo) {
         var userInfo = helper.GetUserInfo();
+        $(".popedom").text(userInfo.organProvince + userInfo.organCity);
         console.log(userInfo);
         var initPage = function () {
             //初始化table
@@ -64,7 +65,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
                 }
                 tipdialog.confirm("确定要删除选中的记录？", function (r) {
                     if (r) {
-                        helper.Ajax("008808800014", ids[0], function (data) {
+                        helper.Ajax("008808800044", ids[0], function (data) {
                             if ($.type(data) == "string") {
                                 data = helper.StrToJson(data);
                             }

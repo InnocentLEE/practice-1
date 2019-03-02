@@ -1,6 +1,8 @@
 define(['/Modules/Config/conwin.main.js'], function () {
     require(['jquery', 'popdialog', 'tipdialog', 'toast', 'helper', 'common', 'tableheadfix', 'system', 'userinfo' ,'selectcity', 'searchbox', 'customtable', 'bootstrap-datepicker.zh-CN', 'permission'],
     function ($, popdialog, tipdialog, toast, helper, common, tableheadfix, system,userinfo) {
+        var userInfo = helper.GetUserInfo();
+        $(".popedom").text(userInfo.organProvince + userInfo.organCity);
         var initPage = function () {
             //初始化table
             initlizableTable();

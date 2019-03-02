@@ -12,7 +12,7 @@
         '<div class="dropdown" style="display:inline-block;">' +
         '<a href="javascript:;" title="" class="dropdown-toggle congyerenyuan" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true">' +
         '<i class="iconfont icon-congyerenyuan"></i>' +
-        '</a>' +
+        '</a>' /*+
         '<ul class="dropdown-menu dropdown-menu-default" style="text-align:center;">' +
         '<li style="margin-top:10px;">' +
         '<b class="username" href="javascript:;"></b>' +
@@ -26,7 +26,7 @@
         '<li>' +
         '<a class="ChangePwd" href="javascript:;">密码修改</a>' +
         '</li>' +
-        '</ul>' +
+        '</ul>' */+
         '</div>' +
         '<a class="fanhuixitongshouye" href="" title="返回系统首页">' +
         '<i class="iconfont icon-fanhuixitongshouye"></i>' +

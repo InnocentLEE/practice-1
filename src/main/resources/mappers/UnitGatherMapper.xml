@@ -29,6 +29,10 @@
     delete from unit_gather
     where id = #{id,jdbcType=VARCHAR}
   </delete>
+  <delete id="deleteByUnitId" parameterType="java.lang.String" >
+    delete from unit_gather
+    where unit_id = #{id,jdbcType=VARCHAR}
+  </delete>
   <insert id="insert" parameterType="com.lyq.project.pojo.UnitGather" >
     insert into unit_gather (id, unit_id, parent_unit_id, 
       unit_type, parent_unit_type, is_create
