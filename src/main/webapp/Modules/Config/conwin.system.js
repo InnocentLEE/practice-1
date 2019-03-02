@@ -16,7 +16,7 @@
         AppName: '',
         IsTest: true,
         AdaptLogin: false,
-        DefaultUrl: '/Modules/JiChuDangAn/FuWuQuXinXi/List.html',
+        DefaultUrl: '/Modules/JiChuDangAn/KeCheXinXi/List.html',
         LoginUrl: '/Modules/Home/Index.html',
         LogoutUrl: '/Modules/Home/Logout.html',
         Exponent: '010001',         //加密需要，Exponent参数

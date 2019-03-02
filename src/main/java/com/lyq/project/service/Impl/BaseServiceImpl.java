@@ -7,6 +7,7 @@ import com.lyq.project.dao.ContactsMapper;
 import com.lyq.project.dao.UnitMapper;
 import com.lyq.project.dto.LoginDto;
 import com.lyq.project.dto.MenudTO;
+import com.lyq.project.dto.ResourceDto;
 import com.lyq.project.dto.UserInfoDto;
 import com.lyq.project.pojo.Contacts;
 import com.lyq.project.pojo.Unit;
@@ -180,19 +181,6 @@ public class BaseServiceImpl implements IBaseService {
                 keche.setIsEnabled("True");
                 keche.setCode("003300210014");
                 // endregion
-                // region 服务区信息
-                MenudTO fuwuqu = new MenudTO();
-                fuwuqu.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                fuwuqu.setTitle("服务区信息");
-                fuwuqu.setUrl("/Modules/JiChuDangAn/FuWuQuXinXi/List.html");
-                fuwuqu.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> fuwuquSub = new ArrayList<>();
-                List<MenudTO> fuwuquExt = new ArrayList<>();
-                fuwuqu.setSubMenu(fuwuquSub);
-                fuwuqu.setExtends(fuwuquExt);
-                fuwuqu.setIsEnabled("True");
-                fuwuqu.setCode("003300210014");
-                // endregion
                 MenudTO jichudangan = new MenudTO();
                 jichudangan.setId("d8fba846-971f-4f80-8dd4-da0213390416");
                 jichudangan.setTitle("基础档案");
@@ -204,7 +192,6 @@ public class BaseServiceImpl implements IBaseService {
                 jichudanganSub.add(keyunqiye);
                 jichudanganSub.add(keyunchedui);
                 jichudanganSub.add(keche);
-                jichudanganSub.add(fuwuqu);
                 List<MenudTO> jichudanganExt = new ArrayList<>();
                 jichudangan.setSubMenu(jichudanganSub);
                 jichudangan.setExtends(jichudanganExt);
@@ -472,19 +459,6 @@ public class BaseServiceImpl implements IBaseService {
                 keche.setIsEnabled("True");
                 keche.setCode("003300210014");
                 // endregion
-                // region 服务区信息
-                MenudTO fuwuqu = new MenudTO();
-                fuwuqu.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                fuwuqu.setTitle("服务区信息");
-                fuwuqu.setUrl("/Modules/JiChuDangAn/FuWuQuXinXi/List.html");
-                fuwuqu.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> fuwuquSub = new ArrayList<>();
-                List<MenudTO> fuwuquExt = new ArrayList<>();
-                fuwuqu.setSubMenu(fuwuquSub);
-                fuwuqu.setExtends(fuwuquExt);
-                fuwuqu.setIsEnabled("True");
-                fuwuqu.setCode("003300210014");
-                // endregion
                 MenudTO jichudangan = new MenudTO();
                 jichudangan.setId("d8fba846-971f-4f80-8dd4-da0213390416");
                 jichudangan.setTitle("基础档案");
@@ -496,7 +470,6 @@ public class BaseServiceImpl implements IBaseService {
                 jichudanganSub.add(keyunqiye);
                 jichudanganSub.add(keyunchedui);
                 jichudanganSub.add(keche);
-                jichudanganSub.add(fuwuqu);
                 List<MenudTO> jichudanganExt = new ArrayList<>();
                 jichudangan.setSubMenu(jichudanganSub);
                 jichudangan.setExtends(jichudanganExt);
@@ -625,19 +598,6 @@ public class BaseServiceImpl implements IBaseService {
                 keche.setIsEnabled("True");
                 keche.setCode("003300210014");
                 // endregion
-                // region 服务区信息
-                MenudTO fuwuqu = new MenudTO();
-                fuwuqu.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                fuwuqu.setTitle("服务区信息");
-                fuwuqu.setUrl("/Modules/JiChuDangAn/FuWuQuXinXi/List.html");
-                fuwuqu.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> fuwuquSub = new ArrayList<>();
-                List<MenudTO> fuwuquExt = new ArrayList<>();
-                fuwuqu.setSubMenu(fuwuquSub);
-                fuwuqu.setExtends(fuwuquExt);
-                fuwuqu.setIsEnabled("True");
-                fuwuqu.setCode("003300210014");
-                // endregion
                 MenudTO jichudangan = new MenudTO();
                 jichudangan.setId("d8fba846-971f-4f80-8dd4-da0213390416");
                 jichudangan.setTitle("基础档案");
@@ -648,7 +608,6 @@ public class BaseServiceImpl implements IBaseService {
                 jichudanganSub.add(keyunqiye);
                 jichudanganSub.add(keyunchedui);
                 jichudanganSub.add(keche);
-                jichudanganSub.add(fuwuqu);
                 List<MenudTO> jichudanganExt = new ArrayList<>();
                 jichudangan.setSubMenu(jichudanganSub);
                 jichudangan.setExtends(jichudanganExt);
@@ -764,19 +723,6 @@ public class BaseServiceImpl implements IBaseService {
                 keche.setIsEnabled("True");
                 keche.setCode("003300210014");
                 // endregion
-                // region 服务区信息
-                MenudTO fuwuqu = new MenudTO();
-                fuwuqu.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                fuwuqu.setTitle("服务区信息");
-                fuwuqu.setUrl("/Modules/JiChuDangAn/FuWuQuXinXi/List.html");
-                fuwuqu.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> fuwuquSub = new ArrayList<>();
-                List<MenudTO> fuwuquExt = new ArrayList<>();
-                fuwuqu.setSubMenu(fuwuquSub);
-                fuwuqu.setExtends(fuwuquExt);
-                fuwuqu.setIsEnabled("True");
-                fuwuqu.setCode("003300210014");
-                // endregion
                 MenudTO jichudangan = new MenudTO();
                 jichudangan.setId("d8fba846-971f-4f80-8dd4-da0213390416");
                 jichudangan.setTitle("基础档案");
@@ -786,7 +732,6 @@ public class BaseServiceImpl implements IBaseService {
                 jichudanganSub.add(keyunqiye);
                 jichudanganSub.add(keyunchedui);
                 jichudanganSub.add(keche);
-                jichudanganSub.add(fuwuqu);
                 List<MenudTO> jichudanganExt = new ArrayList<>();
                 jichudangan.setSubMenu(jichudanganSub);
                 jichudangan.setExtends(jichudanganExt);
@@ -971,159 +916,9 @@ public class BaseServiceImpl implements IBaseService {
                 response = LYQResponse.createBySuccess(menudTO);
                 break;
             }
-            case 4:{
-                // region 客运企业的菜单
-                // region 基础档案
-                // region 客车信息
-                MenudTO keche = new MenudTO();
-                keche.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                keche.setTitle("客车信息");
-                keche.setUrl("/Modules/JiChuDangAn/KeCheXinXi/List.html");
-                keche.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> kecheSub = new ArrayList<>();
-                List<MenudTO> kecheExt = new ArrayList<>();
-                keche.setSubMenu(kecheSub);
-                keche.setExtends(kecheExt);
-                keche.setIsEnabled("True");
-                keche.setCode("003300210014");
-                // endregion
-                // region 服务区信息
-                MenudTO fuwuqu = new MenudTO();
-                fuwuqu.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                fuwuqu.setTitle("服务区信息");
-                fuwuqu.setUrl("/Modules/JiChuDangAn/FuWuQuXinXi/List.html");
-                fuwuqu.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> fuwuquSub = new ArrayList<>();
-                List<MenudTO> fuwuquExt = new ArrayList<>();
-                fuwuqu.setSubMenu(fuwuquSub);
-                fuwuqu.setExtends(fuwuquExt);
-                fuwuqu.setIsEnabled("True");
-                fuwuqu.setCode("003300210014");
-                // endregion
-                MenudTO jichudangan = new MenudTO();
-                jichudangan.setId("d8fba846-971f-4f80-8dd4-da0213390416");
-                jichudangan.setTitle("基础档案");
-                jichudangan.setUrl("/");
-                jichudangan.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> jichudanganSub = new ArrayList<>();
-                jichudanganSub.add(keche);
-                jichudanganSub.add(fuwuqu);
-                List<MenudTO> jichudanganExt = new ArrayList<>();
-                jichudangan.setSubMenu(jichudanganSub);
-                jichudangan.setExtends(jichudanganExt);
-                jichudangan.setIsEnabled("True");
-                jichudangan.setCode("003300210013");
-                // endregion
-                // region 班次管理
-                // region 班车查询
-                MenudTO banchechaxun = new MenudTO();
-                banchechaxun.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                banchechaxun.setTitle("班车查询");
-                banchechaxun.setUrl("/Modules/BanCiGuanLi/BanCheChaXun/List.html");
-                banchechaxun.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> banchechaxunSub = new ArrayList<>();
-                List<MenudTO> banchechaxunExt = new ArrayList<>();
-                banchechaxun.setSubMenu(banchechaxunSub);
-                banchechaxun.setExtends(banchechaxunExt);
-                banchechaxun.setIsEnabled("True");
-                banchechaxun.setCode("003300210014");
-                // endregion
-                // region 包车查询
-                MenudTO baochechaxun = new MenudTO();
-                baochechaxun.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                baochechaxun.setTitle("包车查询");
-                baochechaxun.setUrl("/Modules/BanCiGuanLi/BaoCheChaXun/List.html");
-                baochechaxun.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> baochechaxunSub = new ArrayList<>();
-                List<MenudTO> baochechaxunExt = new ArrayList<>();
-                baochechaxun.setSubMenu(baochechaxunSub);
-                baochechaxun.setExtends(baochechaxunExt);
-                baochechaxun.setIsEnabled("True");
-                baochechaxun.setCode("003300210014");
-                // endregion
-                // region 客车班次查询
-                MenudTO kechebancichaxun = new MenudTO();
-                kechebancichaxun.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                kechebancichaxun.setTitle("客车班次查询");
-                kechebancichaxun.setUrl("/Modules/BanCiGuanLi/KeCheBanCi/List.html");
-                kechebancichaxun.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> kechebancichaxunSub = new ArrayList<>();
-                List<MenudTO> kechebancichaxunExt = new ArrayList<>();
-                kechebancichaxun.setSubMenu(kechebancichaxunSub);
-                kechebancichaxun.setExtends(kechebancichaxunExt);
-                kechebancichaxun.setIsEnabled("True");
-                kechebancichaxun.setCode("003300210014");
-                // endregion
-                MenudTO banciguanli = new MenudTO();
-                banciguanli.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                banciguanli.setTitle("班次管理");
-                banciguanli.setUrl("/");
-                banciguanli.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> banciguanliSub = new ArrayList<>();
-                List<MenudTO> banciguanliExt = new ArrayList<>();
-                banciguanliSub.add(banchechaxun);
-                banciguanliSub.add(baochechaxun);
-                banciguanliSub.add(kechebancichaxun);
-                banciguanli.setSubMenu(banciguanliSub);
-                banciguanli.setExtends(banciguanliExt);
-                banciguanli.setIsEnabled("True");
-                banciguanli.setCode("003300210014");
-                // endregion
-                // region 售票统计
-                // region 客车出勤统计
-                MenudTO kechechuqintongji = new MenudTO();
-                kechechuqintongji.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                kechechuqintongji.setTitle("客车出勤统计");
-                kechechuqintongji.setUrl("/Modules/ShouPiaoTongJi/KeCheChuQinTongJi/List.html");
-                kechechuqintongji.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> kechechuqintongjiSub = new ArrayList<>();
-                List<MenudTO> kechechuqintongjiExt = new ArrayList<>();
-                kechechuqintongji.setSubMenu(kechechuqintongjiSub);
-                kechechuqintongji.setExtends(kechechuqintongjiExt);
-                kechechuqintongji.setIsEnabled("True");
-                kechechuqintongji.setCode("003300210014");
-                // endregion
-                MenudTO shoupiaotongji = new MenudTO();
-                shoupiaotongji.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                shoupiaotongji.setTitle("售票统计");
-                shoupiaotongji.setUrl("/");
-                shoupiaotongji.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> shoupiaotongjiSub = new ArrayList<>();
-                List<MenudTO> shoupiaotongjiExt = new ArrayList<>();
-                shoupiaotongjiSub.add(kechechuqintongji);
-                shoupiaotongji.setSubMenu(shoupiaotongjiSub);
-                shoupiaotongji.setExtends(shoupiaotongjiExt);
-                shoupiaotongji.setIsEnabled("True");
-                shoupiaotongji.setCode("003300210014");
-                // endregion
-
-                MenudTO guanligongneng = new MenudTO();
-                guanligongneng.setId("678bda20-b992-43df-afc0-e1343ff8d44a");
-                guanligongneng.setTitle("管理功能");
-                guanligongneng.setUrl("/");
-                guanligongneng.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> guanligongnengSub = new ArrayList<>();
-                guanligongnengSub.add(jichudangan);
-                guanligongnengSub.add(banciguanli);
-                guanligongnengSub.add(shoupiaotongji);
-                List<MenudTO> guanligongnengExt = new ArrayList<>();
-                guanligongneng.setSubMenu(guanligongnengSub);
-                guanligongneng.setExtends(guanligongnengExt);
-                guanligongneng.setIsEnabled("True");
-                guanligongneng.setCode("003300210024");
-
-                MenudTO menudTO = new MenudTO();
-                List<MenudTO> menudTOSub = new ArrayList<>();
-                List<MenudTO> menudTOExt = new ArrayList<>();
-                menudTOSub.add(guanligongneng);
-                menudTO.setSubMenu(menudTOSub);
-                menudTO.setExtends(menudTOExt);
-                // endregion
-                response = LYQResponse.createBySuccess(menudTO);
-                break;
-            }
+            case 4:
             case 5:{
-                // region 客运车队的菜单
+                // region 客运企业、客运车队的菜单
                 // region 基础档案
                 // region 客车信息
                 MenudTO keche = new MenudTO();
@@ -1138,19 +933,6 @@ public class BaseServiceImpl implements IBaseService {
                 keche.setIsEnabled("True");
                 keche.setCode("003300210014");
                 // endregion
-                // region 服务区信息
-                MenudTO fuwuqu = new MenudTO();
-                fuwuqu.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                fuwuqu.setTitle("服务区信息");
-                fuwuqu.setUrl("/Modules/JiChuDangAn/FuWuQuXinXi/List.html");
-                fuwuqu.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> fuwuquSub = new ArrayList<>();
-                List<MenudTO> fuwuquExt = new ArrayList<>();
-                fuwuqu.setSubMenu(fuwuquSub);
-                fuwuqu.setExtends(fuwuquExt);
-                fuwuqu.setIsEnabled("True");
-                fuwuqu.setCode("003300210014");
-                // endregion
                 MenudTO jichudangan = new MenudTO();
                 jichudangan.setId("d8fba846-971f-4f80-8dd4-da0213390416");
                 jichudangan.setTitle("基础档案");
@@ -1158,7 +940,6 @@ public class BaseServiceImpl implements IBaseService {
                 jichudangan.setIcon("glyphicon glyphicon-list-alt");
                 List<MenudTO> jichudanganSub = new ArrayList<>();
                 jichudanganSub.add(keche);
-                jichudanganSub.add(fuwuqu);
                 List<MenudTO> jichudanganExt = new ArrayList<>();
                 jichudangan.setSubMenu(jichudanganSub);
                 jichudangan.setExtends(jichudanganExt);
@@ -1275,5 +1056,99 @@ public class BaseServiceImpl implements IBaseService {
             }
         }
         return response;
+    }
+
+    @Override
+    public LYQResponse HasResource(int type){
+        List<ResourceDto> list = new ArrayList<>();
+        switch (type){
+            //region 平台管理员
+            case 0:{
+                list.add(new ResourceDto("20190100","true","true"));
+                list.add(new ResourceDto("20190101","true","true"));
+                list.add(new ResourceDto("20190102","true","true"));
+                list.add(new ResourceDto("20190103","true","true"));
+                list.add(new ResourceDto("20190104","true","true"));
+                list.add(new ResourceDto("20190200","true","true"));
+                list.add(new ResourceDto("20190201","true","true"));
+                list.add(new ResourceDto("20190300","true","true"));
+                list.add(new ResourceDto("20190301","true","true"));
+                list.add(new ResourceDto("20190302","true","true"));
+                list.add(new ResourceDto("20190303","true","true"));
+                list.add(new ResourceDto("20190304","true","true"));
+                list.add(new ResourceDto("20190400","true","true"));
+                list.add(new ResourceDto("20190401","true","true"));
+                list.add(new ResourceDto("20190500","true","true"));
+                list.add(new ResourceDto("20190501","true","true"));
+                list.add(new ResourceDto("20190600","true","true"));
+                list.add(new ResourceDto("20190601","true","true"));
+                break;
+            }
+            //endregion
+            //region 省级监管部门
+            case 1:{
+                list.add(new ResourceDto("20190200","true","true"));
+                list.add(new ResourceDto("20190201","true","true"));
+                list.add(new ResourceDto("20190202","true","true"));
+                list.add(new ResourceDto("20190203","true","true"));
+                list.add(new ResourceDto("20190204","true","true"));
+                list.add(new ResourceDto("20190300","true","true"));
+                list.add(new ResourceDto("20190301","true","true"));
+                list.add(new ResourceDto("20190400","true","true"));
+                list.add(new ResourceDto("20190401","true","true"));
+                list.add(new ResourceDto("20190500","true","true"));
+                list.add(new ResourceDto("20190501","true","true"));
+                list.add(new ResourceDto("20190600","true","true"));
+                list.add(new ResourceDto("20190601","true","true"));
+                break;
+            }
+            //endregion
+            //region 市级监管部门
+            case 2:{
+                list.add(new ResourceDto("20190300","true","true"));
+                list.add(new ResourceDto("20190301","true","true"));
+                list.add(new ResourceDto("20190400","true","true"));
+                list.add(new ResourceDto("20190401","true","true"));
+                list.add(new ResourceDto("20190500","true","true"));
+                list.add(new ResourceDto("20190501","true","true"));
+                list.add(new ResourceDto("20190600","true","true"));
+                list.add(new ResourceDto("20190601","true","true"));
+                break;
+            }
+            //endregion
+            //region 客运站
+            case 3:{
+                list.add(new ResourceDto("20190400","true","true"));
+                list.add(new ResourceDto("20190401","true","true"));
+                list.add(new ResourceDto("20190402","true","true"));
+                list.add(new ResourceDto("20190403","true","true"));
+                list.add(new ResourceDto("20190404","true","true"));
+                list.add(new ResourceDto("20190500","true","true"));
+                list.add(new ResourceDto("20190501","true","true"));
+                list.add(new ResourceDto("20190502","true","true"));
+                list.add(new ResourceDto("20190503","true","true"));
+                list.add(new ResourceDto("20190504","true","true"));
+                list.add(new ResourceDto("20190600","true","true"));
+                list.add(new ResourceDto("20190601","true","true"));
+                list.add(new ResourceDto("20190602","true","true"));
+                list.add(new ResourceDto("20190603","true","true"));
+                list.add(new ResourceDto("20190604","true","true"));
+                list.add(new ResourceDto("20190605","true","true"));
+                break;
+            }
+            //endregion
+            //region 客运企业、客运车队
+            case 4:
+            case 5:{
+                list.add(new ResourceDto("20190600","true","true"));
+                list.add(new ResourceDto("20190601","true","true"));
+                list.add(new ResourceDto("20190602","true","true"));
+                list.add(new ResourceDto("20190603","true","true"));
+                list.add(new ResourceDto("20190606","true","true"));
+                break;
+            }
+            //endregion
+        }
+        return LYQResponse.createBySuccess(list);
     }
 }

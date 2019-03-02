@@ -9,4 +9,5 @@ import javax.servlet.http.HttpSession;
 public interface IBaseService {
     LYQResponse login(HttpSession session, LYQRequest<LoginDto> request);
     LYQResponse getMenu(int type);
+    LYQResponse HasResource(int type);
 }

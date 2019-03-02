@@ -1,28 +1,9 @@
 define(['/Modules/Config/conwin.main.js'], function () {
     require(['jquery', 'popdialog', 'tipdialog', 'toast', 'helper', 'common', 'tableheadfix', 'system', 'userinfo' ,'selectcity', 'searchbox', 'customtable', 'bootstrap-datepicker.zh-CN', 'permission'],
     function ($, popdialog, tipdialog, toast, helper, common, tableheadfix, system,userinfo) {
-
         var userInfo = helper.GetUserInfo();
         $(".popedom").text(userInfo.organProvince + userInfo.organCity);
-        if(userInfo.organProvince != null && userInfo.organProvince != ''){
-            $("#Province").attr("disabled","disabled");
-            $("#Province").val(userInfo.organProvince);
-            var arr = helper.getCity(userInfo.organProvince);
-            // 循环动态添加option
-            for (var i = 0; i < arr.length ; i++) {
-                $("#City").append("<option value='"+arr[i]+"'>"+arr[i]+"</option>");
-            }
-        }
-        $("#Province").change(function(){
-            var province = $("#Province").val();
-            $("#City").empty();
-            var arr = helper.getCity(province);
-            // 循环动态添加option
-            $("#City").append("<option value=''>"+"请选择"+"</option>");
-            for (var i = 0; i < arr.length ; i++) {
-                $("#City").append("<option value='"+arr[i]+"'>"+arr[i]+"</option>");
-            }
-        });
+        console.log(userInfo);
         var initPage = function () {
             //初始化table
             initlizableTable();
@@ -84,7 +65,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
                 }
                 tipdialog.confirm("确定要删除选中的记录？", function (r) {
                     if (r) {
-                        helper.Ajax("008808800024", ids[0], function (data) {
+                        helper.Ajax("008808800044", ids[0], function (data) {
                             if ($.type(data) == "string") {
                                 data = helper.StrToJson(data);
                             }
@@ -124,9 +105,10 @@ define(['/Modules/Config/conwin.main.js'], function () {
             });
 
         };
+
         function initlizableTable() {
             $("#tb_Template").CustomTable({
-                ajax: helper.AjaxData("008808800021",
+                ajax: helper.AjaxData("008808800041",
                      function (data) {
                          var pageInfo = { Page: data.start / data.length + 1, Rows: data.length };
                          for (var i in data) {
@@ -136,6 +118,10 @@ define(['/Modules/Config/conwin.main.js'], function () {
                          $('.searchpanel-form').find('[disabled]').each(function (i, item) {
                              para[$(item).attr('name')] = $(item).val();
                          });
+                         para.Province = userInfo.organProvince;
+                         para.City = userInfo.organCity;
+                         para.ParentUnitId = userInfo.organId;
+                         para.OrgType = userInfo.organizationType;
                          pageInfo.data = para;
                          $.extend(data, pageInfo);
                      }, null),
@@ -149,14 +135,28 @@ define(['/Modules/Config/conwin.main.js'], function () {
                         return '<input type=checkbox class=checkboxes />';
                     }
                 },
-                       { data: 'UnitName' },
-                       { data: 'City' },
-                       {
-                           data: 'InNetDate' ,
-                           render: function (data, type, row, meta) {
-                               return helper.LongDateToDate(data);
-                           }},
-                       { data: 'ContactMen'}
+                   { data: 'UnitName' },
+                   { data: 'Popedom' },
+                   {
+                       data: 'BusinessType' ,
+                       render: function (data, type, row, meta) {
+                           if(data == '1')
+                               return "国有企业";
+                           if(data == '2')
+                               return "民营企业";
+                           if(data == '3')
+                               return "外资独资";
+                           if(data == '4')
+                               return "中外合资";
+                           if(data == '5')
+                               return "其他";
+                       }},
+                   {
+                       data: 'InNetDate' ,
+                       render: function (data, type, row, meta) {
+                           return helper.LongDateToDate(data);
+                       }},
+                   { data: 'ContactMen'}
                 ],
                 pageLength: 10,
                 "fnDrawCallback": function (oSettings) {

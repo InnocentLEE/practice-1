@@ -9,6 +9,8 @@ public class Car {
 
     private String unitName;
 
+    private Integer status;
+
     private String carNum;
 
     private Integer carType;
@@ -45,10 +47,11 @@ public class Car {
 
     private Date upatetime;
 
-    public Car(String id, String unitId, String unitName, String carNum, Integer carType, String phone, String licenceAddress, Date licenceRegistDate, Date licencePublishDate, String fuel, Integer engine, Integer weight, String engineNum, String carframeNum, Date erweiDate, Date erweiDateNext, String permitNum, Integer seatNum, String address, Date createtime, Date upatetime) {
+    public Car(String id, String unitId, String unitName, Integer status, String carNum, Integer carType, String phone, String licenceAddress, Date licenceRegistDate, Date licencePublishDate, String fuel, Integer engine, Integer weight, String engineNum, String carframeNum, Date erweiDate, Date erweiDateNext, String permitNum, Integer seatNum, String address, Date createtime, Date upatetime) {
         this.id = id;
         this.unitId = unitId;
         this.unitName = unitName;
+        this.status = status;
         this.carNum = carNum;
         this.carType = carType;
         this.phone = phone;
@@ -95,6 +98,14 @@ public class Car {
 
     public void setUnitName(String unitName) {
         this.unitName = unitName == null ? null : unitName.trim();
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getCarNum() {

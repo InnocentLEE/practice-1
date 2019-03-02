@@ -85,11 +85,8 @@ public class BaseController {
     @ResponseBody
     public LYQResponse<List<ResourceDto>> HasResource(HttpSession session , @RequestBody JSONObject jsonParam) {
         String userInfoJSON = (String) session.getAttribute("current_user");
-        List<ResourceDto> list = new ArrayList<>();
-        list.add(new ResourceDto("003300230044","true","true"));
-        list.add(new ResourceDto("003300230040","true","true"));
-        LYQResponse response =  LYQResponse.createBySuccess(list);
-        return response;
+        UserInfoDto userInfoDto = JSON.parseObject(userInfoJSON,UserInfoDto.class);
+        return iBaseService.HasResource(Integer.parseInt(userInfoDto.getRoleCode()));
     }
     // endregion
 }
