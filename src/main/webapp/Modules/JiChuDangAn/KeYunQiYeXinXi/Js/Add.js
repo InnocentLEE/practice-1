@@ -17,7 +17,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
                         msg += "单位名称 是必填项<br/>";
                     }
                     if ($.trim(fromData.BusinessType) == '') {
-                        msg += "辖区省 是必填项<br/>";
+                        msg += "经济类型 是必填项<br/>";
                     }
                     if ($.trim(fromData.Address) == '') {
                         msg += "地址 是必填项<br/>";

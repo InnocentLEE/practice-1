@@ -10,6 +10,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
                     me.parent().css('height', boxHeight);
                     me.css('height', boxHeight);
                 });
+                $('.date-picker').datepicker({ format: 'yyyy-mm-dd', autoclose: true, language: 'zh-CN' });
                 formcontrol.initial();
                 //翻页控件
                 var ids = window.parent.document.getElementById('hdIDS').value;
@@ -47,11 +48,20 @@ define(['/Modules/Config/conwin.main.js'], function () {
                     if ($.trim(fromData.UnitName) == '') {
                         msg += "单位名称 是必填项<br/>";
                     }
-                    if ($.trim(fromData.Province) == '') {
-                        msg += "辖区省 是必填项<br/>";
+                    if ($.trim(fromData.BusinessType) == '') {
+                        msg += "经济类型 是必填项<br/>";
                     }
                     if ($.trim(fromData.Address) == '') {
                         msg += "地址 是必填项<br/>";
+                    }
+                    if ($.trim(fromData.PermitWord) == '') {
+                        msg += "经营许可证字 是必填项<br/>";
+                    }
+                    if ($.trim(fromData.PermitNum) == '') {
+                        msg += "经营许可证号 是必填项<br/>";
+                    }
+                    if ($.trim(fromData.PermitDate) == '') {
+                        msg += "经营许可证有效日期 是必填项<br/>";
                     }
                     if ($.trim(fromData.Name) == '') {
                         msg += "联系人姓名 是必填项<br/>";
@@ -72,7 +82,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
             };
             //取单个代理商信息接口
             function getShengJiJianGuanBuMenXinXi(id, callback) {
-                helper.Ajax("008808800012", id, function (resultdata) {
+                helper.Ajax("008808800042", id, function (resultdata) {
                     if (typeof callback == 'function') {
                         callback(resultdata);
                     }
@@ -92,6 +102,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
             };
 
             function fillFormData(resource) {
+                resource.PermitDate = resource.PermitDateValue;
                 $('#Form1').find('input[name],select[name],textarea[name]').each(function (i, item) {
                     $(item).val('');
                     var tempValue = resource[$(item).attr('name')];
@@ -133,7 +144,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
                 }
                 console.log(JSON.stringify(jsonData1));
                 //调用新增接口
-                helper.Ajax("008808800013", jsonData1, function (data) {
+                helper.Ajax("008808800043", jsonData1, function (data) {
                     if ($.type(data) == "string") {
                         data = helper.StrToJson(data);
                     }

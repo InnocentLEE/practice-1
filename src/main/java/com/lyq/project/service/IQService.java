@@ -19,4 +19,6 @@ public interface IQService {
     LYQResponse createKeYunQiYe(HttpSession session, CreateKeYunQiYeDto createKeYunQiYeDto);
     LYQResponse getKeYunQiYeList(HttpSession session, SearchDto<KeYunQiYeSearchDto> searchDto);
     LYQResponse getKeYunQiYeDetail(HttpSession session, String id);
+    LYQResponse updateKeYunQiYe(HttpSession session, CreateKeYunQiYeDto createKeYunQiYeDto);
+
 }

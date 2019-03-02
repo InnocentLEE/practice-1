@@ -36,7 +36,11 @@ public interface UnitMapper {
 
     int countByPermitWord(@Param("permitWord") String permitWord);
 
+    int countByPermitWordAndUnitId(@Param("permitWord") String permitWord,@Param("id") String id);
+
     int countByPermitNum(@Param("permitNum") String permitNum);
+
+    int countByPermitNumAndUnitId(@Param("permitNum") String permitNum,@Param("id") String id);
 
     int updateByPrimaryKeySelective(Unit record);
 
