@@ -89,4 +89,13 @@ public class QController {
         return iqService.getKeYunQiYeList(session,request.getBody());
     }
     // endregion
+
+    // region 获取客运企业详情
+    @RequestMapping(value = "008808800042",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getKeYunQiYeDetail(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return iqService.getKeYunQiYeDetail(session,request.getBody());
+    }
+    // endregion
 }

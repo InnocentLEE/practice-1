@@ -228,4 +228,32 @@ public class QServiceImpl implements IQService {
         }
         return LYQResponse.createByErrorMessage("查询出错");
     }
+
+    @Override
+    @Transactional
+    public LYQResponse getKeYunQiYeDetail(HttpSession session, String id){
+        KeYunQiYeDetail detail = unitMapper.selectKeYunQiYeDetail(id);
+        if(detail!= null){
+            detail.setPopedom(detail.getProvince()+detail.getCity());
+            detail.setPermitDateValue((new java.text.SimpleDateFormat("yyyy-MM-dd")).format(detail.getPermitDate()));
+            if(detail.getBusinessType() == 1){
+                detail.setBusinessTypeValue("国有企业");
+            }
+            if(detail.getBusinessType() == 2){
+                detail.setBusinessTypeValue("民营企业");
+            }
+            if(detail.getBusinessType() == 3){
+                detail.setBusinessTypeValue("外资独资");
+            }
+            if(detail.getBusinessType() == 4){
+                detail.setBusinessTypeValue("中外合资");
+            }
+            if(detail.getBusinessType() == 5){
+                detail.setBusinessTypeValue("其他");
+            }
+            return LYQResponse.createBySuccess(detail);
+        }
+        else
+            return LYQResponse.createByErrorMessage("查询不到详细信息");
+    }
 }

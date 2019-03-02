@@ -111,6 +111,27 @@
     from unit u, contacts c
     where u.contacts_id = c.id and u.id = #{id}
   </select>
+  <select id="selectKeYunQiYeDetail" resultType="com.lyq.project.dto.KeYunQiYeDetail">
+    select u.id as Id,
+    u.unit_name as UnitName,
+    u.province as Province,
+    u.city as City,
+    u.business_type as BusinessType,
+    u.in_net_date as InNetDate,
+    u.address as Address,
+    u.permit_word as PermitWord,
+    u.permit_num as PermitNum,
+    u.permit_date as PermitDate,
+    c.contact_name as Name,
+    c.cardNo as IdCard,
+    c.tel as Tel,
+    c.phone as Phone,
+    c.email as Email,
+    c.QQ as QQ,
+    c.memo as Memo
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.id = #{id}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from unit
     where id = #{id,jdbcType=VARCHAR}

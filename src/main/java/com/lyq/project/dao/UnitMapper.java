@@ -1,5 +1,6 @@
 package com.lyq.project.dao;
 
+import com.lyq.project.dto.KeYunQiYeDetail;
 import com.lyq.project.dto.KeYunQiYeListDto;
 import com.lyq.project.dto.ShengJiJianGuanBuMenDetail;
 import com.lyq.project.dto.ShengJiJianGuanBuMenListDto;
@@ -28,6 +29,8 @@ public interface UnitMapper {
     List<KeYunQiYeListDto> selectKeYunQiYeByKeYunZhan(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("businessType") int businessType, @Param("parentId") String parentId);
 
     ShengJiJianGuanBuMenDetail selectShengJiJianGuanBuMenDetail(@Param("id") String id);
+
+    KeYunQiYeDetail selectKeYunQiYeDetail(@Param("id") String id);
 
     Unit selectByContactId(String id);
 
