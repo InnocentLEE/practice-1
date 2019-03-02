@@ -2,7 +2,26 @@ define(['/Modules/Config/conwin.main.js'], function () {
     require(['jquery', 'popdialog', 'tipdialog', 'toast', 'helper', 'common', 'tableheadfix', 'system', 'userinfo' ,'selectcity', 'searchbox', 'customtable', 'bootstrap-datepicker.zh-CN', 'permission'],
     function ($, popdialog, tipdialog, toast, helper, common, tableheadfix, system,userinfo) {
         var userInfo = helper.GetUserInfo();
-        $(".popedom").text(userInfo.organProvince + userInfo.organCity);
+        var organizationType = null;
+        if(userInfo.organizationType == "0"){
+            organizationType = "平台运营商"
+        }
+        if(userInfo.organizationType == "1"){
+            organizationType = "省级监管部门"
+        }
+        if(userInfo.organizationType == "2"){
+            organizationType = "市级监管部门"
+        }
+        if(userInfo.organizationType == "3"){
+            organizationType = "客运站"
+        }
+        if(userInfo.organizationType == "4"){
+            organizationType = "客运企业"
+        }
+        if(userInfo.organizationType == "5"){
+            organizationType = "客运车队"
+        }
+        $(".popedom").text(userInfo.organizationName+" ["+organizationType+"] - "+userInfo.organProvince + userInfo.organCity);
         console.log(userInfo);
         var initPage = function () {
             //初始化table
