@@ -35,4 +35,52 @@
     delete from unit_gather
     where unit_id = #{unit_id}
   </delete>
+  <select id="selectKeYunZhanByAdmin" resultType="com.lyq.project.dto.KeYunZhanListDto">
+    select u.Id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.business_type as BusinessType, u.in_net_date as InNetDate, c.contact_name as ContactMen
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 3
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="businessType != 0" >
+      and u.business_type = #{businessType}
+    </if>
+    <if test="province != null and province != ''" >
+      and u.province = #{province}
+    </if>
+    <if test="city != null and city != ''" >
+      and u.city = #{city}
+    </if>
+    limit #{index} , #{size}
+  </select>
+  <select id="selectKeYunZhanByShengJiJianGuanBuMen" resultType="com.lyq.project.dto.KeYunZhanListDto">
+    select u.Id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.business_type as BusinessType, u.in_net_date as InNetDate, c.contact_name as ContactMen
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 3 and province = #{province}
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="businessType != 0" >
+      and u.business_type = #{businessType}
+    </if>
+    <if test="city != null and city != ''" >
+      and u.city = #{city}
+    </if>
+    limit #{index} , #{size}
+  </select>
+  <select id="selectKeYunZhanByShiJiJianGuanBuMen" resultType="com.lyq.project.dto.KeYunZhanListDto">
+    select u.Id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.business_type as BusinessType, u.in_net_date as InNetDate, c.contact_name as ContactMen
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 3 and province = #{province}
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="businessType != 0" >
+      and u.business_type = #{businessType}
+    </if>
+    <if test="city != null and city != ''" >
+      and u.city = #{city}
+    </if>
+    limit #{index} , #{size}
+  </select>
 </mapper>

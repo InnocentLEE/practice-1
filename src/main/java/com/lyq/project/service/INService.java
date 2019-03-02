@@ -1,9 +1,6 @@
 package com.lyq.project.service;
 
-import com.lyq.project.common.LYQResponse;
-import com.lyq.project.common.SearchDto;
-import com.lyq.project.common.ShengJiJianGuanBuMenSearchDto;
-import com.lyq.project.common.ShiJiJianGuanBuMenSearchDto;
+import com.lyq.project.common.*;
 import com.lyq.project.dto.CreateKeYunZhanDto;
 import com.lyq.project.dto.CreateShengJiJianGuanBuMenDto;
 import com.lyq.project.dto.CreateShiJiJianGuanBuMenDto;
@@ -18,4 +15,5 @@ public interface INService {
     LYQResponse deleteShiJiJianGuanBuMenDetail(HttpSession session, String id);
 
     LYQResponse createKeYunZhan(HttpSession session, CreateKeYunZhanDto createKeYunZhanDto);
+    LYQResponse getKeYunZhanList(HttpSession session, SearchDto<KeYunZhanSearchDto> searchDto);
 }

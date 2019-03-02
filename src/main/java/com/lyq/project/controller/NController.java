@@ -82,5 +82,12 @@ public class NController {
     }
     // endregion
 
-
+    // region 获取客运站列表
+    @RequestMapping(value = "008808800031",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getKeYunZhanList(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<SearchDto<KeYunZhanSearchDto>> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<SearchDto<KeYunZhanSearchDto>>>(){});
+        return inService.getKeYunZhanList(session,request.getBody());
+    }
+    // endregion
 }

@@ -137,4 +137,78 @@ public class NServiceImpl implements INService {
         unitMapper.insert(unit);
         return LYQResponse.createBySuccess(null);
     }
+
+    @Override
+    @Transactional
+    public LYQResponse getKeYunZhanList(HttpSession session, SearchDto<KeYunZhanSearchDto> searchDto){
+        int page = searchDto.getPage();
+        int rows = searchDto.getRows();
+        if(searchDto.getData().getOrgType().equals("0")){
+            if(searchDto.getData().getBusinessType().equals("")){
+                List<KeYunZhanListDto> list = gnMapper.selectKeYunZhanByAdmin((page-1)*rows,rows,searchDto.getData().getUnitName(),0,searchDto.getData().getProvince(),searchDto.getData().getCity());
+                for (KeYunZhanListDto listDto : list) {
+                    listDto.setPopedom(listDto.getProvince()+listDto.getCity());
+                }
+                PageList<List<KeYunZhanListDto>> pageList = new PageList<>();
+                pageList.setTotalcount(list.size());
+                pageList.setItems(list);
+                return LYQResponse.createBySuccess(pageList);
+            }else{
+                int busineeType = Integer.parseInt(searchDto.getData().getBusinessType());
+                List<KeYunZhanListDto> list = gnMapper.selectKeYunZhanByAdmin((page-1)*rows,rows,searchDto.getData().getUnitName(),busineeType,searchDto.getData().getProvince(),searchDto.getData().getCity());
+                for (KeYunZhanListDto listDto : list) {
+                    listDto.setPopedom(listDto.getProvince()+listDto.getCity());
+                }
+                PageList<List<KeYunZhanListDto>> pageList = new PageList<>();
+                pageList.setTotalcount(list.size());
+                pageList.setItems(list);
+                return LYQResponse.createBySuccess(pageList);
+            }
+        }
+        if(searchDto.getData().getOrgType().equals("1")){
+            if(searchDto.getData().getBusinessType().equals("")){
+                List<KeYunZhanListDto> list = gnMapper.selectKeYunZhanByShengJiJianGuanBuMen((page-1)*rows,rows,searchDto.getData().getUnitName(),0,searchDto.getData().getProvince(),searchDto.getData().getCity());
+                for (KeYunZhanListDto listDto : list) {
+                    listDto.setPopedom(listDto.getProvince()+listDto.getCity());
+                }
+                PageList<List<KeYunZhanListDto>> pageList = new PageList<>();
+                pageList.setTotalcount(list.size());
+                pageList.setItems(list);
+                return LYQResponse.createBySuccess(pageList);
+            }else{
+                int busineeType = Integer.parseInt(searchDto.getData().getBusinessType());
+                List<KeYunZhanListDto> list = gnMapper.selectKeYunZhanByShengJiJianGuanBuMen((page-1)*rows,rows,searchDto.getData().getUnitName(),busineeType,searchDto.getData().getProvince(),searchDto.getData().getCity());
+                for (KeYunZhanListDto listDto : list) {
+                    listDto.setPopedom(listDto.getProvince()+listDto.getCity());
+                }
+                PageList<List<KeYunZhanListDto>> pageList = new PageList<>();
+                pageList.setTotalcount(list.size());
+                pageList.setItems(list);
+                return LYQResponse.createBySuccess(pageList);
+            }
+        }
+        if(searchDto.getData().getOrgType().equals("2")){
+            if(searchDto.getData().getBusinessType().equals("")){
+                List<KeYunZhanListDto> list = gnMapper.selectKeYunZhanByShiJiJianGuanBuMen((page-1)*rows,rows,searchDto.getData().getUnitName(),0,searchDto.getData().getProvince(),searchDto.getData().getCity());
+                for (KeYunZhanListDto listDto : list) {
+                    listDto.setPopedom(listDto.getProvince()+listDto.getCity());
+                }
+                PageList<List<KeYunZhanListDto>> pageList = new PageList<>();
+                pageList.setTotalcount(list.size());
+                pageList.setItems(list);
+                return LYQResponse.createBySuccess(pageList);
+            }else{
+                int busineeType = Integer.parseInt(searchDto.getData().getBusinessType());
+                List<KeYunZhanListDto> list = gnMapper.selectKeYunZhanByShiJiJianGuanBuMen((page-1)*rows,rows,searchDto.getData().getUnitName(),busineeType,searchDto.getData().getProvince(),searchDto.getData().getCity());
+                for (KeYunZhanListDto listDto : list) {
+                    listDto.setPopedom(listDto.getProvince()+listDto.getCity());
+                }
+                PageList<List<KeYunZhanListDto>> pageList = new PageList<>();
+                pageList.setTotalcount(list.size());
+                pageList.setItems(list);
+                return LYQResponse.createBySuccess(pageList);
+            }
+        }
+        return LYQResponse.createByErrorMessage("查询出错");
+    }
 }
