@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
-public class CreateKeYunZhanDto {
+public class KeYunZhanDetail {
     @JsonProperty
     private String Id;
     @JsonProperty
@@ -15,7 +15,13 @@ public class CreateKeYunZhanDto {
     @JsonProperty
     private String City;
     @JsonProperty
-    private String BusinessType;
+    private String Popedom;
+    @JsonProperty
+    private int BusinessType;
+    @JsonProperty
+    private String BusinessTypeValue;
+    @JsonProperty
+    private Date InNetDate;
     @JsonProperty
     private String Address;
     @JsonProperty
@@ -23,7 +29,9 @@ public class CreateKeYunZhanDto {
     @JsonProperty
     private String PermitNum;
     @JsonProperty
-    private String PermitDate;
+    private Date PermitDate;
+    @JsonProperty
+    private String PermitDateValue;
     @JsonProperty
     private String Name;
     @JsonProperty
@@ -39,19 +47,23 @@ public class CreateKeYunZhanDto {
     @JsonProperty
     private String Memo;
 
-    public CreateKeYunZhanDto() {
+    public KeYunZhanDetail() {
     }
 
-    public CreateKeYunZhanDto(String id, String unitName, String province, String city, String businessType, String address, String permitWord, String permitNum, String permitDate, String name, String idCard, String tel, String phone, String email, String QQ, String memo) {
+    public KeYunZhanDetail(String id, String unitName, String province, String city, String popedom, int businessType, String businessTypeValue, Date inNetDate, String address, String permitWord, String permitNum, Date permitDate, String permitDateValue, String name, String idCard, String tel, String phone, String email, String QQ, String memo) {
         Id = id;
         UnitName = unitName;
         Province = province;
         City = city;
+        Popedom = popedom;
         BusinessType = businessType;
+        BusinessTypeValue = businessTypeValue;
+        InNetDate = inNetDate;
         Address = address;
         PermitWord = permitWord;
         PermitNum = permitNum;
         PermitDate = permitDate;
+        PermitDateValue = permitDateValue;
         Name = name;
         IdCard = idCard;
         Tel = tel;
@@ -60,6 +72,33 @@ public class CreateKeYunZhanDto {
         this.QQ = QQ;
         Memo = memo;
     }
+
+    @Override
+    public String toString() {
+        return "KeYunQiYeDetail{" +
+                "Id='" + Id + '\'' +
+                ", UnitName='" + UnitName + '\'' +
+                ", Province='" + Province + '\'' +
+                ", City='" + City + '\'' +
+                ", Popedom='" + Popedom + '\'' +
+                ", BusinessType=" + BusinessType +
+                ", BusinessTypeValue='" + BusinessTypeValue + '\'' +
+                ", InNetDate=" + InNetDate +
+                ", Address='" + Address + '\'' +
+                ", PermitWord='" + PermitWord + '\'' +
+                ", PermitNum='" + PermitNum + '\'' +
+                ", PermitDate=" + PermitDate +
+                ", PermitDateValue='" + PermitDateValue + '\'' +
+                ", Name='" + Name + '\'' +
+                ", IdCard='" + IdCard + '\'' +
+                ", Tel='" + Tel + '\'' +
+                ", Phone='" + Phone + '\'' +
+                ", Email='" + Email + '\'' +
+                ", QQ='" + QQ + '\'' +
+                ", Memo='" + Memo + '\'' +
+                '}';
+    }
+
     @JsonIgnore
     public String getId() {
         return Id;
@@ -93,12 +132,36 @@ public class CreateKeYunZhanDto {
         City = city;
     }
     @JsonIgnore
-    public String getBusinessType() {
+    public String getPopedom() {
+        return Popedom;
+    }
+    @JsonIgnore
+    public void setPopedom(String popedom) {
+        Popedom = popedom;
+    }
+    @JsonIgnore
+    public int getBusinessType() {
         return BusinessType;
     }
     @JsonIgnore
-    public void setBusinessType(String businessType) {
+    public void setBusinessType(int businessType) {
         BusinessType = businessType;
+    }
+    @JsonIgnore
+    public String getBusinessTypeValue() {
+        return BusinessTypeValue;
+    }
+    @JsonIgnore
+    public void setBusinessTypeValue(String businessTypeValue) {
+        BusinessTypeValue = businessTypeValue;
+    }
+    @JsonIgnore
+    public Date getInNetDate() {
+        return InNetDate;
+    }
+    @JsonIgnore
+    public void setInNetDate(Date inNetDate) {
+        InNetDate = inNetDate;
     }
     @JsonIgnore
     public String getAddress() {
@@ -125,12 +188,20 @@ public class CreateKeYunZhanDto {
         PermitNum = permitNum;
     }
     @JsonIgnore
-    public String getPermitDate() {
+    public Date getPermitDate() {
         return PermitDate;
     }
     @JsonIgnore
-    public void setPermitDate(String permitDate) {
+    public void setPermitDate(Date permitDate) {
         PermitDate = permitDate;
+    }
+    @JsonIgnore
+    public String getPermitDateValue() {
+        return PermitDateValue;
+    }
+    @JsonIgnore
+    public void setPermitDateValue(String permitDateValue) {
+        PermitDateValue = permitDateValue;
     }
     @JsonIgnore
     public String getName() {
@@ -187,27 +258,5 @@ public class CreateKeYunZhanDto {
     @JsonIgnore
     public void setMemo(String memo) {
         Memo = memo;
-    }
-
-    @Override
-    public String toString() {
-        return "CreateKeYunQiYeDto{" +
-                "Id='" + Id + '\'' +
-                ", UnitName='" + UnitName + '\'' +
-                ", Province='" + Province + '\'' +
-                ", City='" + City + '\'' +
-                ", BusinessType='" + BusinessType + '\'' +
-                ", Address='" + Address + '\'' +
-                ", PermitWord='" + PermitWord + '\'' +
-                ", PermitNum='" + PermitNum + '\'' +
-                ", PermitDate='" + PermitDate + '\'' +
-                ", Name='" + Name + '\'' +
-                ", IdCard='" + IdCard + '\'' +
-                ", Tel='" + Tel + '\'' +
-                ", Phone='" + Phone + '\'' +
-                ", Email='" + Email + '\'' +
-                ", QQ='" + QQ + '\'' +
-                ", Memo='" + Memo + '\'' +
-                '}';
     }
 }

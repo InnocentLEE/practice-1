@@ -1,9 +1,6 @@
 package com.lyq.project.dao;
 
-import com.lyq.project.dto.KeYunZhanListDto;
-import com.lyq.project.dto.ShengJiJianGuanBuMenDetail;
-import com.lyq.project.dto.ShiJiJianGuanBuMenDetail;
-import com.lyq.project.dto.ShiJiJianGuanBuMenListDto;
+import com.lyq.project.dto.*;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -22,4 +19,5 @@ public interface GNMapper {
     List<KeYunZhanListDto> selectKeYunZhanByAdmin(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("businessType") int businessType,@Param("province") String province, @Param("city") String city);
     List<KeYunZhanListDto> selectKeYunZhanByShengJiJianGuanBuMen(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("businessType") int businessType, @Param("province") String province,@Param("city") String city);
     List<KeYunZhanListDto> selectKeYunZhanByShiJiJianGuanBuMen(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("businessType") int businessType, @Param("province") String province, @Param("city") String city);
+    KeYunZhanDetail selectKeYunZhanDetail(@Param("id") String id);
 }

@@ -90,4 +90,31 @@ public class NController {
         return inService.getKeYunZhanList(session,request.getBody());
     }
     // endregion
+
+    // region 获取客运站详情
+    @RequestMapping(value = "008808800032",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getKeYunQiYeDetail(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return inService.getKeYunZhanDetail(session,request.getBody());
+    }
+    // endregion
+
+    // region 修改客运站
+    @RequestMapping(value = "008808800033",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse updateKeYunZhan(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<CreateKeYunZhanDto> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<CreateKeYunZhanDto>>(){});
+        return inService.updateKeYunZhan(session,request.getBody());
+    }
+    // endregion
+
+    // region 批量删除客运站
+    @RequestMapping(value = "008808800034",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse deleteKeYunZhanDetail(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return inService.deleteKeYunZhanDetail(session,request.getBody());
+    }
+    // endregion
 }

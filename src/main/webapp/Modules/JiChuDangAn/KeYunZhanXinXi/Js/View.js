@@ -50,7 +50,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
             //主表-获取主表数据
             function getShengJiJianGuanBuMenXinXi(id, callback) {
                 //调用获取单条信息接口
-                helper.Ajax("008808800012", id, function (resultdata) {
+                helper.Ajax("008808800032", id, function (resultdata) {
                     if (typeof callback == 'function') {
                         callback(resultdata);
                     }

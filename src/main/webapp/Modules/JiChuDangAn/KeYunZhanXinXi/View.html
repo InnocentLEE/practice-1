@@ -5,196 +5,217 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>查看省级监管部门档案</title>
+    <title>查看客运站档案</title>
     <link href="/Modules/Component/site.css" rel="stylesheet" />
     <link id="styleLink" href="" rel="stylesheet" />
 </head>
 <body>
-    <div class="portlet cus-portlet">
-        <div class="portlet-title" style="background-color: #3190bc">
-            <div class="caption">
+<div class="portlet cus-portlet">
+    <div class="portlet-title" style="background-color: #3190bc">
+        <div class="caption">
                 <span>
                     <i class="iconfont icon-bianjibiaodantaitou"></i>
-                    <span id="op">查看省级监管部门档案</span>
+                    <span id="op">查看客运站档案</span>
                 </span>
-            </div>
-            <div class="btnclose">
-                <a id="btnclose" href="javascript:;">
-                    <i class="glyphicon glyphicon-remove-circle"></i>
-                </a>
-            </div>
         </div>
-        <div class="row" style="clear: both;">
-            <div class="col-sm-5" style="float : right; text-align: right; padding-right: 80px; padding-bottom: 5px; ">
-                <button id="prevBtn" type="submit" class="btn c-green disabled"><i class="m-icon-swapleft m-icon-white"></i> 上一条</button>
-                <button id="nextBtn" type="submit" class="btn c-green disabled">下一条 <i class="m-icon-swapright m-icon-white"></i></button>
-            </div>
+        <div class="btnclose">
+            <a id="btnclose" href="javascript:;">
+                <i class="glyphicon glyphicon-remove-circle"></i>
+            </a>
         </div>
-        <div class="portlet-body form">
-            <div class="tab-content">
-                <div class="tab-pane fade active in" id="JiChuXinXi">
-                    <form action="#" id="Form1" class="form-horizontal form-horizontal form-bordered form-row-stripped form-block">
-                        <input type="hidden" id="SelectData" name="SelectData" />
-                        <input type="hidden" id="Id" name="Id" />
-                        <input type="hidden" id="PingTaiDaiLiBiaoZhiId" name="PingTaiDaiLiBiaoZhiId" />
-                        <div class="row">
-                            <div class="col-xs-12" style="margin-top: 10px; margin-bottom: 10px; ">
-                                <div class="form-body scroller form-box">
-                                    <h4 class="form-section cus-form-section">
-                                        <span>基础信息</span>
-                                    </h4>
-                                    <div class="form-group-group">
-                                        <div class="form-group" style="display:none">
-                                            <label class="control-label col-xs-2" for="ChuangJianDanWeiOrgCode">
-                                                创建单位组织代码
-                                            </label>
-                                            <div class="col-xs-4">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <input type="hidden" id="ChuangJianDanWeiOrgCode" name="ChuangJianDanWeiOrgCode" />
-                                                </div>
-                                            </div>
-                                            <label class="control-label col-xs-2" for="ChuangJianDanWeiOrgCode">
-                                                本单位组织代码
-                                            </label>
-                                            <div class="col-xs-4">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <input type="hidden" id="BenDanWeiOrgCode" name="BenDanWeiOrgCode" />
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-xs-2" for="UnitName">
-                                                单位名称
-                                            </label>
-                                            <div class="col-xs-4">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <label for="UnitName" class="form-control-static"></label>
-                                                </div>
-                                            </div>
-                                            <label class="control-label col-xs-2" for="Province">
-                                                辖区省
-                                            </label>
-                                            <div class="col-xs-4">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <label for="Province" class="form-control-static"></label>
-                                                </div>
+    </div>
+    <div class="row" style="clear: both;">
+        <div class="col-sm-5" style="float : right; text-align: right; padding-right: 80px; padding-bottom: 5px; ">
+            <button id="prevBtn" type="submit" class="btn c-green disabled"><i class="m-icon-swapleft m-icon-white"></i> 上一条</button>
+            <button id="nextBtn" type="submit" class="btn c-green disabled">下一条 <i class="m-icon-swapright m-icon-white"></i></button>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="JiChuXinXi">
+                <form action="#" id="Form1" class="form-horizontal form-horizontal form-bordered form-row-stripped form-block">
+                    <input type="hidden" id="SelectData" name="SelectData" />
+                    <input type="hidden" id="Id" name="Id" />
+                    <div class="row">
+                        <div class="col-xs-12" style="margin-top: 10px; margin-bottom: 10px; ">
+                            <div class="form-body scroller form-box">
+                                <h4 class="form-section cus-form-section">
+                                    <span>基础信息</span>
+                                </h4>
+                                <div class="form-group-group">
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="UnitName">
+                                            企业名称
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="UnitName" class="form-control-static"></label>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-xs-2" for="InNetDate">
-                                                入网时间
-                                            </label>
-                                            <div class="col-xs-4">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <label for="InNetDate" class="form-control-static long-to-date"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-xs-2" for="Address">
-                                                地址
-                                            </label>
-                                            <div class="col-xs-10">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <label for="Address" class="form-control-static"></label>
-                                                </div>
+                                        <label class="control-label col-xs-2" for="Popedom">
+                                            辖区
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="Popedom" class="form-control-static"></label>
                                             </div>
                                         </div>
                                     </div>
-                                    <h4 class="form-section cus-form-section">
-                                        <span>联系人信息</span>
-                                    </h4>
-                                    <div class="form-group-group">
-                                        <div class="form-group">
-                                            <label class="control-label col-xs-2" for="Name">
-                                                姓名
-                                            </label>
-                                            <div class="col-xs-4">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <label for="Name" class="form-control-static"></label>
-                                                </div>
-                                            </div>
-                                            <label class="control-label col-xs-2" for="IdCard">
-                                                身份证号
-                                            </label>
-                                            <div class="col-xs-4">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <label for="IdCard" class="form-control-static"></label>
-                                                </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="InNetDate">
+                                            入网时间
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="InNetDate" class="form-control-static long-to-date"></label>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-xs-2" for="Tel">
-                                                手机号
-                                            </label>
-                                            <div class="col-xs-4">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <label for="Tel" class="form-control-static"></label>
-                                                </div>
-                                            </div>
-                                            <label class="control-label col-xs-2" for="Phone">
-                                                电话
-                                            </label>
-                                            <div class="col-xs-4">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <label for="Phone" class="form-control-static"></label>
-                                                </div>
+                                        <label class="control-label col-xs-2" for="BusinessTypeValue">
+                                            经济类型
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="BusinessTypeValue" class="form-control-static"></label>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-xs-2" for="Email">
-                                                邮箱
-                                            </label>
-                                            <div class="col-xs-4">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <label for="Email" class="form-control-static"></label>
-                                                </div>
-                                            </div>
-                                            <label class="control-label col-xs-2" for="QQ">
-                                                QQ
-                                            </label>
-                                            <div class="col-xs-4">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <label for="QQ" class="form-control-static"></label>
-                                                </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Address">
+                                            地址
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="Address" class="form-control-static"></label>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-xs-2" for="Memo">
-                                                备注
-                                            </label>
-                                            <div class="col-xs-10">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <label for="Memo" class="form-control-static"></label>
-                                                </div>
+                                    </div>
+                                </div>
+                                <h4 class="form-section cus-form-section">
+                                    <span>许可证信息</span>
+                                </h4>
+                                <div class="form-group-group">
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="PermitWord">
+                                            经营许可证字
+                                        </label>
+                                        <div class="col-xs-2">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="PermitWord" class="form-control-static"></label>
                                             </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="PermitNum">
+                                            经营许可证号
+                                        </label>
+                                        <div class="col-xs-2">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="PermitNum" class="form-control-static"></label>
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="PermitDateValue">
+                                            经营许可证有效期
+                                        </label>
+                                        <div class="col-xs-2">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="PermitDateValue" class="form-control-static"></label>
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                </div>
+                                <h4 class="form-section cus-form-section">
+                                    <span>联系人信息</span>
+                                </h4>
+                                <div class="form-group-group">
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Name">
+                                            姓名
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="Name" class="form-control-static"></label>
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="IdCard">
+                                            身份证号
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="IdCard" class="form-control-static"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Tel">
+                                            手机号
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="Tel" class="form-control-static"></label>
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="Phone">
+                                            电话
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="Phone" class="form-control-static"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Email">
+                                            邮箱
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="Email" class="form-control-static"></label>
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="QQ">
+                                            QQ
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="QQ" class="form-control-static"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Memo">
+                                            备注
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <label for="Memo" class="form-control-static"></label>
+                                            </div>
                                         </div>
 
                                     </div>
+
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <script data-main="Js/View.js" src="/Modules/Component/require.js"></script>
+</div>
+<script data-main="Js/View.js" src="/Modules/Component/require.js"></script>
 </body>
 </html>

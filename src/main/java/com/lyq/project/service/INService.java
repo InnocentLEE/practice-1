@@ -16,4 +16,8 @@ public interface INService {
 
     LYQResponse createKeYunZhan(HttpSession session, CreateKeYunZhanDto createKeYunZhanDto);
     LYQResponse getKeYunZhanList(HttpSession session, SearchDto<KeYunZhanSearchDto> searchDto);
+    LYQResponse getKeYunZhanDetail(HttpSession session, String id);
+    LYQResponse updateKeYunZhan(HttpSession session, CreateKeYunZhanDto createKeYunZhanDto);
+    LYQResponse deleteKeYunZhanDetail(HttpSession session, String id);
+
 }
