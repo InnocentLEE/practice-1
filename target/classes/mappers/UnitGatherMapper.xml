@@ -25,6 +25,11 @@
     from unit_gather
     where parent_unit_id = #{id,jdbcType=VARCHAR}
   </select>
+  <select id="selectByChildUnit" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from unit_gather
+    where unit_id = #{id,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from unit_gather
     where id = #{id,jdbcType=VARCHAR}

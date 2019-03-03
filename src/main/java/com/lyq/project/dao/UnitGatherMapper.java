@@ -2,6 +2,8 @@ package com.lyq.project.dao;
 
 import com.lyq.project.pojo.UnitGather;
 
+import java.util.List;
+
 public interface UnitGatherMapper {
     int deleteByPrimaryKey(String id);
 
@@ -18,4 +20,6 @@ public interface UnitGatherMapper {
     int updateByPrimaryKeySelective(UnitGather record);
 
     int updateByPrimaryKey(UnitGather record);
+
+    List<UnitGather> selectByChildUnit(String id);
 }

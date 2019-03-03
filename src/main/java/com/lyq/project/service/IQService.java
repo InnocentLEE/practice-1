@@ -1,9 +1,8 @@
 package com.lyq.project.service;
 
-import com.lyq.project.common.KeYunQiYeSearchDto;
-import com.lyq.project.common.LYQResponse;
-import com.lyq.project.common.SearchDto;
-import com.lyq.project.common.ShengJiJianGuanBuMenSearchDto;
+import com.lyq.project.common.*;
+import com.lyq.project.dto.CreateKeCheDto;
+import com.lyq.project.dto.CreateKeYunCheDuiDto;
 import com.lyq.project.dto.CreateKeYunQiYeDto;
 import com.lyq.project.dto.CreateShengJiJianGuanBuMenDto;
 
@@ -21,5 +20,15 @@ public interface IQService {
     LYQResponse getKeYunQiYeDetail(HttpSession session, String id);
     LYQResponse updateKeYunQiYe(HttpSession session, CreateKeYunQiYeDto createKeYunQiYeDto);
     LYQResponse deleteKeYunQiYeDetail(HttpSession session, String id);
-
+    LYQResponse createKeYunCheDui(HttpSession session, CreateKeYunCheDuiDto createKeYunCheDuiDto);
+    LYQResponse getKeYunCheDuiList(HttpSession session, SearchDto<KeYunCheDuiSearchDto> searchDto);
+    LYQResponse getKeYunCheDuiDetail(HttpSession session, String id);
+    LYQResponse updateKeYunCheDui(HttpSession session, CreateKeYunCheDuiDto createKeYunCheDuiDto);
+    LYQResponse deleteKeYunCheDuiDetail(HttpSession session, String id);
+    LYQResponse createKeChe(HttpSession session, CreateKeCheDto createKeCheDto);
+    LYQResponse getKeCheList(HttpSession session, SearchDto<KeCheSearchDto> searchDto);
+    LYQResponse submitKeCheDetail(HttpSession session, String id);
+    LYQResponse checkKeCheDetail(HttpSession session, KeCheCheckDto keCheCheckDto);
+    LYQResponse deleteKeCheDetail(HttpSession session, String id);
+    LYQResponse getKeCheDetail(HttpSession session, String id);
 }

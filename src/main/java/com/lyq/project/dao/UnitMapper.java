@@ -1,9 +1,6 @@
 package com.lyq.project.dao;
 
-import com.lyq.project.dto.KeYunQiYeDetail;
-import com.lyq.project.dto.KeYunQiYeListDto;
-import com.lyq.project.dto.ShengJiJianGuanBuMenDetail;
-import com.lyq.project.dto.ShengJiJianGuanBuMenListDto;
+import com.lyq.project.dto.*;
 import com.lyq.project.pojo.Unit;
 import org.apache.ibatis.annotations.Param;
 
@@ -28,9 +25,19 @@ public interface UnitMapper {
 
     List<KeYunQiYeListDto> selectKeYunQiYeByKeYunZhan(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("businessType") int businessType, @Param("parentId") String parentId);
 
+    List<KeYunCheDuiListDto> selectKeYunCheDuiByAdmin(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName);
+
+    List<KeYunCheDuiListDto> selectKeYunCheDuiByShengJiJianGuanBuMen(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("province") String province);
+
+    List<KeYunCheDuiListDto> selectKeYunCheDuiByShiJiJianGuanBuMen(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("province") String province, @Param("city") String city);
+
+    List<KeYunCheDuiListDto> selectKeYunCheDuiByKeYunZhan(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("parentId") String parentId);
+
     ShengJiJianGuanBuMenDetail selectShengJiJianGuanBuMenDetail(@Param("id") String id);
 
     KeYunQiYeDetail selectKeYunQiYeDetail(@Param("id") String id);
+
+    KeYunCheDuiDetail selectKeYunCheDuiDetail(@Param("id") String id);
 
     Unit selectByContactId(String id);
 

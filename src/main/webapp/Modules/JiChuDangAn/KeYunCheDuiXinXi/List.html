@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8" />
-    <title>客车档案</title>
+    <title>客运车队档案</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -41,7 +41,7 @@
             <div class="page-content-wrapper">
                 <div class="page-content padding-default" style=" height:1000px;">
                     <h5 class="page-title">
-                        <i class="iconfont icon-danganguanli"></i> 客车档案
+                        <i class="iconfont icon-danganguanli"></i> 客运车队档案
                         <p class="popedom" style="float: right;font-size: x-small;color: red;margin-right: 10px;"></p>
                     </h5>
                     <!--搜索代码-->
@@ -51,42 +51,18 @@
                             <input id="operationType" type="hidden" />
                             <div class="searchpanel-main form-body searchpanel-main-border">
                                 <div class="row">
-                                    <div class="col-xs-3">
+                                    <div class="col-xs-4">
                                         <div class="form-group">
-                                            <label class="col-xs-1 control-label" for="CarNum">车牌号</label>
+                                            <label class="col-xs-1 control-label" for="UnitName">车队名称</label>
                                             <div class="col-xs-7">
-                                                <input type="text" name="CarNum" id="CarNum" class="form-control" />
+                                                <input type="text" name="UnitName" id="UnitName" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-3">
-                                        <div class="form-group">
-                                            <label class="col-xs-1 control-label" for="CarType">车牌颜色</label>
-                                            <div class="col-xs-7">
-                                                <select name="CarType" id="CarType" class="form-control">
-                                                    <option value="0">请选择</option>
-                                                    <option value="1">蓝色</option>
-                                                    <option value="2">黄色</option>
-                                                    <option value="3">白色</option>
-                                                    <option value="4">黑色</option>
-                                                    <option value="5">绿色</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <div class="form-group">
-                                            <label class="col-xs-1 control-label" for="Status">审核状态</label>
-                                            <div class="col-xs-7">
-                                                <select name="Status" id="Status" class="form-control">
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-3">
+                                    <div class="col-xs-8">
                                         <div class="form-group">
                                             <div class="col-xs-12 pull-right">
-                                                <a id="btnSearch" accesskey="q" title="快捷键 Alt + Q" class="btn btn-success" href="javascript:;" data-rescode="20190600"><i class="iconfont icon-chaxun"></i> 查询</a>
+                                                <a id="btnSearch" accesskey="q" title="快捷键 Alt + Q" class="btn btn-success" href="javascript:;" data-rescode="20190500"><i class="iconfont icon-chaxun"></i> 查询</a>
                                                 <a id="btnReset" accesskey="r" title="快捷键 Alt + R" class="btn btn-success" href="javascript:;"><i class="iconfont icon-zhongzhi"></i> 重置</a>
                                             </div>
                                         </div>
@@ -97,23 +73,17 @@
                         <div class="row" style="margin-top: 15px; margin-bottom: -15px; margin-left: 22px;">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <a id="btnView" accesskey="v" title="快捷键 Alt + V" class="btn c-blue " href="javascript:;" data-rescode="20190601">
+                                    <a id="btnView" accesskey="v" title="快捷键 Alt + V" class="btn c-blue " href="javascript:;" data-rescode="20190501">
                                         <i class="fa fa-search"></i> 查看
                                     </a>
-                                    <a id="btnCreate" accesskey="c" title="快捷键 Alt + C" class="btn c-blue" href="javascript:;" data-rescode="20190602">
+                                    <a id="btnCreate" accesskey="c" title="快捷键 Alt + C" class="btn c-blue" href="javascript:;" data-rescode="20190502">
                                         <i class="fa fa-plus"></i> 新增
                                     </a>
-                                    <a id="btnEdit" accesskey="u" title="快捷键 Alt + U" class="btn c-green" href="javascript:;" data-rescode="20190603">
+                                    <a id="btnEdit" accesskey="u" title="快捷键 Alt + U" class="btn c-green" href="javascript:;" data-rescode="20190503">
                                         <i class="fa fa-edit"></i> 修改
                                     </a>
-                                    <a id="btnDel" accesskey="x" title="快捷键 Alt + X" class="btn c-yellow" href="javascript:;" data-rescode="20190604">
+                                    <a id="btnDel" accesskey="x" title="快捷键 Alt + X" class="btn c-yellow" href="javascript:;" data-rescode="20190504">
                                         <i class="fa fa-remove"></i> 删除
-                                    </a>
-                                    <a id="btnCheck" accesskey="v" title="快捷键 Alt + V" class="btn c-yellow" href="javascript:;" data-rescode="20190605">
-                                        <i class="icon iconfont icon-yonghu"></i> 审核
-                                    </a>
-                                    <a id="btnSubmit" accesskey="v" title="快捷键 Alt + V" class="btn c-blue" href="javascript:;" data-rescode="20190606">
-                                        <i class="fa fa-upload"></i> 提交
                                     </a>
                                 </div>
                             </div>
@@ -126,20 +96,17 @@
                                 <th class="table-checkbox">
                                     <input type="checkbox" class="group-checkable" title="全选/反选" />
                                 </th>
-                                <th data-name="CarNum">
-                                    车牌号
+                                <th data-name="UnitName" style="width:40%;">
+                                    车队名称
                                 </th>
-                                <th data-name="CarType">
-                                    车牌颜色
+                                <th data-name="Popedom">
+                                    辖区
                                 </th>
-                                <th data-name="UnitName"style="width:40%;">
-                                    业户名称
+                                <th data-name="InNetDate" style="width:20%;">
+                                    入网时间
                                 </th>
-                                <th data-name="Status" >
-                                    审核状态
-                                </th>
-                                <th data-name="PermitNum">
-                                    道路运输证号
+                                <th data-name="ContactMen">
+                                    联系人
                                 </th>
                             </tr>
                         </thead>
