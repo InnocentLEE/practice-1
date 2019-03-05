@@ -179,9 +179,35 @@ define(['/Modules/Config/conwin.main.js'], function () {
                     tipdialog.errorDialog('请选择需要修改的行');
                     return false;
                 }
-                $(rows).each(function (i, item) {
-                    ids.push(item.data.Id);
-                });
+                var validResult = true;
+                if(userInfo.organizationType == "3"){
+                    $(rows).each(function (i, item) {
+                        if (item.data.Status != "2") {
+                            validResult = false;
+                        }
+                        else {
+                            ids.push(item.data.Id);
+                        }
+                    });
+                    if (!validResult) {
+                        tipdialog.errorDialog("只能选择审核通过的记录");
+                        return false;
+                    }
+                }
+                if(userInfo.organizationType == "5" || userInfo.organizationType == "4"){
+                    $(rows).each(function (i, item) {
+                        if (!(item.data.Status == "0" || item.data.Status == "3")){
+                            validResult = false;
+                        }
+                        else {
+                            ids.push(item.data.Id);
+                        }
+                    });
+                    if (!validResult) {
+                        tipdialog.errorDialog("只能选择待提交或审核不通过的记录");
+                        return false;
+                    }
+                }
                 $('#hdIDS').val(ids.join(','));
                 popdialog.showIframe({
                     'url': 'Edit.html',

@@ -655,4 +655,65 @@ public class QServiceImpl implements IQService {
         //endregion
         return LYQResponse.createBySuccess(detail);
     }
+
+    @Override
+    @Transactional
+    public LYQResponse updateKeChe(HttpSession session, CreateKeCheDto dto) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date LicenceRegistDate = null;
+        Date LicencePublishDate = null;
+        Date ErweiDate = null;
+        Date ErweiDateNext = null;
+        try {
+            LicenceRegistDate = sdf.parse(dto.getLicenceRegistDate());
+        } catch (ParseException e) {
+            return LYQResponse.createByErrorMessage("行驶证注册日期输入不准确！");
+        }
+        try {
+            LicencePublishDate = sdf.parse(dto.getLicencePublishDate());
+        } catch (ParseException e) {
+            return LYQResponse.createByErrorMessage("行驶证发证日期输入不准确！");
+        }
+        try {
+            ErweiDate = sdf.parse(dto.getErweiDate());
+        } catch (ParseException e) {
+            return LYQResponse.createByErrorMessage("二维日期输入不准确！");
+        }
+        try {
+            ErweiDateNext = sdf.parse(dto.getErweiDateNext());
+        } catch (ParseException e) {
+            return LYQResponse.createByErrorMessage("下次二维日期输入不准确！");
+        }
+        Integer Weight = null;
+        try {
+            if(!dto.getWeight().equals("")){
+                Weight = Integer.parseInt(dto.getWeight());
+            }
+        } catch (Exception e){
+            return LYQResponse.createByErrorMessage("总质量输入不准确！请输入整数");
+        }
+        Integer Engine = null;
+        try {
+            if(!dto.getEngine().equals("")){
+                Engine = Integer.parseInt(dto.getEngine());
+            }
+        } catch (Exception e){
+            return LYQResponse.createByErrorMessage("排气量输入不准确！请输入整数");
+        }
+        Integer SeatNum = null;
+        try {
+            if(!dto.getSeatNum().equals("")){
+                SeatNum = Integer.parseInt(dto.getSeatNum());
+            }
+        } catch (Exception e){
+            return LYQResponse.createByErrorMessage("座位数输入不准确！请输入整数");
+        }
+        // 校验客车车牌号和车牌号码重复
+        if(carMapper.countByCarNumAndTypeAndCarId(dto.getId(),dto.getCarNum(),Integer.parseInt(dto.getCarType())) > 0){
+            return LYQResponse.createByErrorMessage("车牌号码和车牌颜色重复！");
+        }
+        Car updatecar = new Car(dto.getId(),dto.getUnitId(),dto.getUnitName(),dto.getOrgType().equals("3")?2:0,dto.getCarNum(),Integer.parseInt(dto.getCarType()),dto.getPhone(),dto.getLicenceAddress(),LicenceRegistDate,LicencePublishDate,dto.getFuel(),Engine,Weight,dto.getEngineNum(),dto.getCarFrameNum(),ErweiDate,ErweiDateNext,dto.getPermitNum(),SeatNum,null,null,null);
+        carMapper.updateByPrimaryKeySelective(updatecar);
+        return LYQResponse.createBySuccess(null);
+    }
 }

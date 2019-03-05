@@ -31,4 +31,5 @@ public interface IQService {
     LYQResponse checkKeCheDetail(HttpSession session, KeCheCheckDto keCheCheckDto);
     LYQResponse deleteKeCheDetail(HttpSession session, String id);
     LYQResponse getKeCheDetail(HttpSession session, String id);
+    LYQResponse updateKeChe(HttpSession session, CreateKeCheDto createKeCheDto);
 }

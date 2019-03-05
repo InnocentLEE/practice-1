@@ -213,4 +213,13 @@ public class QController {
         return iqService.getKeCheDetail(session,request.getBody());
     }
     // endregion
+
+    // region 修改客运车队
+    @RequestMapping(value = "008808800063",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse updateKeChe(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<CreateKeCheDto> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<CreateKeCheDto>>(){});
+        return iqService.updateKeChe(session,request.getBody());
+    }
+    // endregion
 }

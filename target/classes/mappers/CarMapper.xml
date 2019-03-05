@@ -43,6 +43,11 @@
     from car
     where car_num = #{carNum} and car_type = #{carType}
   </select>
+  <select id="countByCarNumAndTypeAndCarId" resultType="int">
+    select count(1)
+    from car
+    where car_num = #{carNum} and car_type = #{carType} and id != #{id}
+  </select>
   <select id="selectByAdmin" resultType="com.lyq.project.dto.KeCheListDto">
     select id as Id, car_num as CarNum, car_type as CarType, unit_name as UnitName, permit_num as PermitNum, status as Status
     from car

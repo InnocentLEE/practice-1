@@ -22,6 +22,8 @@ public interface CarMapper {
 
     int countByCarNumAndType(@Param("carNum")String carNum,@Param("carType")int carType);
 
+    int countByCarNumAndTypeAndCarId(@Param("id")String carId,@Param("carNum")String carNum,@Param("carType")int carType);
+
     List<KeCheListDto> selectByAdmin(@Param("index") int index, @Param("size") int size,@Param("carNum")String carNum,@Param("carType")int carType);
 
     List<KeCheListDto> selectByShengJiJianGuanBuMen(@Param("index") int index, @Param("size") int size,@Param("carNum")String carNum,@Param("carType")int carType,@Param("unitId")String id);

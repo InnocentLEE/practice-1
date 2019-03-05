@@ -1,7 +1,8 @@
 define(['/Modules/Config/conwin.main.js'], function () {
     require(['jquery', 'popdialog', 'tipdialog', 'toast', 'helper', 'common', 'formcontrol', 'prevNextpage', 'tableheadfix', 'system', 'selectcity', 'filelist', 'fileupload', 'selectCity2', 'metronic', 'customtable', 'bootstrap-datepicker.zh-CN', 'bootstrap-datetimepicker.zh-CN'],
         function ($, popdialog, tipdialog, toast, helper, common, formcontrol, prevNextpage, tableheadfix, system, selectcity, filelist, fileupload, selectCity2) {
-            //模块初始化
+            var userInfo = helper.GetUserInfo();
+        //模块初始化
             var initPage = function () {
                 //初始化页面样式
                common.AutoFormScrollHeight('#Form1', function (hg) {
@@ -45,29 +46,29 @@ define(['/Modules/Config/conwin.main.js'], function () {
                     var flags = true;
                     var msg = '';
                     var fromData = $('#Form1').serializeObject();
-                    if ($.trim(fromData.UnitName) == '') {
-                        msg += "单位名称 是必填项<br/>";
+                    if ($.trim(fromData.CarNum) == '') {
+                        msg += "车牌号码 是必填项<br/>";
                     }
-                    if ($.trim(fromData.BusinessType) == '') {
-                        msg += "经济类型 是必填项<br/>";
+                    if ($.trim(fromData.CarType) == '') {
+                        msg += "车牌颜色 是必填项<br/>";
                     }
-                    if ($.trim(fromData.Address) == '') {
-                        msg += "地址 是必填项<br/>";
+                    if ($.trim(fromData.LicenceRegistDate) == '') {
+                        msg += "行驶证注册日期 是必填项<br/>";
                     }
-                    if ($.trim(fromData.PermitWord) == '') {
-                        msg += "经营许可证字 是必填项<br/>";
+                    if ($.trim(fromData.LicencePublishDate) == '') {
+                        msg += "行驶证发证日期 是必填项<br/>";
+                    }
+                    if ($.trim(fromData.ErweiDate) == '') {
+                        msg += "二维日期 是必填项<br/>";
+                    }
+                    if ($.trim(fromData.ErweiDateNext) == '') {
+                        msg += "下次二维日期 是必填项<br/>";
                     }
                     if ($.trim(fromData.PermitNum) == '') {
-                        msg += "经营许可证号 是必填项<br/>";
+                        msg += "道路运输证号 是必填项<br/>";
                     }
-                    if ($.trim(fromData.PermitDate) == '') {
-                        msg += "经营许可证有效日期 是必填项<br/>";
-                    }
-                    if ($.trim(fromData.Name) == '') {
-                        msg += "联系人姓名 是必填项<br/>";
-                    }
-                    if ($.trim(fromData.IdCard) == '') {
-                        msg += "联系人身份证号 是必填项<br/>";
+                    if ($.trim(fromData.LicenceAddress) == '') {
+                        msg += "行驶证地址 是必填项<br/>";
                     }
                     if (msg != '') {
                         flags = false;
@@ -81,8 +82,8 @@ define(['/Modules/Config/conwin.main.js'], function () {
                 updateData();
             };
             //取单个代理商信息接口
-            function getShengJiJianGuanBuMenXinXi(id, callback) {
-                helper.Ajax("008808800042", id, function (resultdata) {
+            function getKeCheXinXi(id, callback) {
+                helper.Ajax("008808800062", id, function (resultdata) {
                     if (typeof callback == 'function') {
                         callback(resultdata);
                     }
@@ -92,7 +93,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
             //绑定基本信息数据方法
             function updateData() {
                 var id = prevNextpage.PageInfo.IDS[prevNextpage.PageInfo.Index];
-                getShengJiJianGuanBuMenXinXi(id, function (serviceData) {
+                getKeCheXinXi(id, function (serviceData) {
                     if (serviceData.publicresponse.statuscode == 0) {
                         fillFormData(serviceData.body);
                     } else {
@@ -102,7 +103,10 @@ define(['/Modules/Config/conwin.main.js'], function () {
             };
 
             function fillFormData(resource) {
-                resource.PermitDate = resource.PermitDateValue;
+                resource.LicenceRegistDate = resource.LicenceRegistDateValue;
+                resource.LicencePublishDate = resource.LicencePublishDateValue;
+                resource.ErweiDate = resource.ErweiDateValue;
+                resource.ErweiDateNext = resource.ErweiDateNextValue;
                 $('#Form1').find('input[name],select[name],textarea[name]').each(function (i, item) {
                     $(item).val('');
                     var tempValue = resource[$(item).attr('name')];
@@ -142,9 +146,11 @@ define(['/Modules/Config/conwin.main.js'], function () {
                 for (var key in jsonData1) {
                     jsonData1[key] = jsonData1[key].replace(/\s/g, "");
                 }
-                console.log(JSON.stringify(jsonData1));
+                jsonData1.UnitId = userInfo.organId;
+                jsonData1.UnitName = userInfo.organizationName;
+                jsonData1.OrgType = userInfo.organizationType;
                 //调用新增接口
-                helper.Ajax("008808800043", jsonData1, function (data) {
+                helper.Ajax("008808800063", jsonData1, function (data) {
                     if ($.type(data) == "string") {
                         data = helper.StrToJson(data);
                     }
