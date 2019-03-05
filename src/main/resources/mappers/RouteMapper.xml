@@ -6,6 +6,7 @@
       <idArg column="id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="unit_id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="begin_id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="end_id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="total_time" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -14,7 +15,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, unit_id, name, begin_id, end_id, total_time, createtime, updatetime
+    id, unit_id, name, status, begin_id, end_id, total_time, createtime, updatetime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -28,11 +29,13 @@
   </delete>
   <insert id="insert" parameterType="com.lyq.project.pojo.Route" >
     insert into route (id, unit_id, name, 
-      begin_id, end_id, total_time, 
-      createtime, updatetime)
+      status, begin_id, end_id, 
+      total_time, createtime, updatetime
+      )
     values (#{id,jdbcType=VARCHAR}, #{unitId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{beginId,jdbcType=VARCHAR}, #{endId,jdbcType=VARCHAR}, #{totalTime,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+      #{status,jdbcType=INTEGER}, #{beginId,jdbcType=VARCHAR}, #{endId,jdbcType=VARCHAR}, 
+      #{totalTime,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.lyq.project.pojo.Route" >
     insert into route
@@ -45,6 +48,9 @@
       </if>
       <if test="name != null" >
         name,
+      </if>
+      <if test="status != null" >
+        status,
       </if>
       <if test="beginId != null" >
         begin_id,
@@ -72,6 +78,9 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
       <if test="beginId != null" >
         #{beginId,jdbcType=VARCHAR},
       </if>
@@ -98,6 +107,9 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
       <if test="beginId != null" >
         begin_id = #{beginId,jdbcType=VARCHAR},
       </if>
@@ -120,6 +132,7 @@
     update route
     set unit_id = #{unitId,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
       begin_id = #{beginId,jdbcType=VARCHAR},
       end_id = #{endId,jdbcType=VARCHAR},
       total_time = #{totalTime,jdbcType=VARCHAR},

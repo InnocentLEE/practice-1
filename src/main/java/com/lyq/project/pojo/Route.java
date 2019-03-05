@@ -9,6 +9,8 @@ public class Route {
 
     private String name;
 
+    private Integer status;
+
     private String beginId;
 
     private String endId;
@@ -19,10 +21,11 @@ public class Route {
 
     private Date updatetime;
 
-    public Route(String id, String unitId, String name, String beginId, String endId, String totalTime, Date createtime, Date updatetime) {
+    public Route(String id, String unitId, String name, Integer status, String beginId, String endId, String totalTime, Date createtime, Date updatetime) {
         this.id = id;
         this.unitId = unitId;
         this.name = name;
+        this.status = status;
         this.beginId = beginId;
         this.endId = endId;
         this.totalTime = totalTime;
@@ -56,6 +59,14 @@ public class Route {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getBeginId() {
