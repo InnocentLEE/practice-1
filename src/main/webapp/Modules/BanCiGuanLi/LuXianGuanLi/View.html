@@ -1,0 +1,238 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>查看客车档案</title>
+    <link href="/Modules/Component/site.css" rel="stylesheet" />
+    <link id="styleLink" href="" rel="stylesheet" />
+</head>
+<body>
+    <div class="portlet cus-portlet">
+        <div class="portlet-title" style="background-color: #3190bc">
+            <div class="caption">
+                <span>
+                    <i class="iconfont icon-bianjibiaodantaitou"></i>
+                    <span id="op">查看客车档案</span>
+                </span>
+            </div>
+            <div class="btnclose">
+                <a id="btnclose" href="javascript:;">
+                    <i class="glyphicon glyphicon-remove-circle"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row" style="clear: both;">
+            <div class="col-sm-5" style="float : right; text-align: right; padding-right: 80px; padding-bottom: 5px; ">
+                <button id="prevBtn" type="submit" class="btn c-green disabled"><i class="m-icon-swapleft m-icon-white"></i> 上一条</button>
+                <button id="nextBtn" type="submit" class="btn c-green disabled">下一条 <i class="m-icon-swapright m-icon-white"></i></button>
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <div class="tab-content">
+                <div class="tab-pane fade active in" id="JiChuXinXi">
+                    <form action="#" id="Form1" class="form-horizontal form-horizontal form-bordered form-row-stripped form-block">
+                        <input type="hidden" id="SelectData" name="SelectData" />
+                        <input type="hidden" id="Id" name="Id" />
+                        <div class="row">
+                            <div class="col-xs-12" style="margin-top: 10px; margin-bottom: 10px; ">
+                                <div class="form-body scroller form-box">
+                                    <h4 class="form-section cus-form-section">
+                                        <span>基础信息</span>
+                                    </h4>
+                                    <div class="form-group-group">
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2" for="CarNum">
+                                                车牌号码
+                                            </label>
+                                            <div class="col-xs-4">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="CarNum" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                            <label class="control-label col-xs-2" for="CarTypeValue">
+                                                车牌颜色
+                                            </label>
+                                            <div class="col-xs-4">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="CarTypeValue" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2" for="Phone">
+                                                车载电话
+                                            </label>
+                                            <div class="col-xs-4">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="Phone" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                            <label class="control-label col-xs-2" for="StatusValue">
+                                                审核状态
+                                            </label>
+                                            <div class="col-xs-4">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="StatusValue" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2" for="UnitName">
+                                                业户名称
+                                            </label>
+                                            <div class="col-xs-4">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="UnitName" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4 class="form-section cus-form-section">
+                                        <span>证件信息</span>
+                                    </h4>
+                                    <div class="form-group-group">
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2" for="LicenceRegistDateValue">
+                                                行驶证注册日期
+                                            </label>
+                                            <div class="col-xs-4">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="LicenceRegistDateValue" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                            <label class="control-label col-xs-2" for="LicencePublishDateValue">
+                                                行驶证发证日期
+                                            </label>
+                                            <div class="col-xs-4">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="LicencePublishDateValue" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2" for="ErweiDateValue">
+                                                二维日期
+                                            </label>
+                                            <div class="col-xs-4">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="ErweiDateValue" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                            <label class="control-label col-xs-2" for="ErweiDateNextValue">
+                                                下次二维日期
+                                            </label>
+                                            <div class="col-xs-4">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="ErweiDateNextValue" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2" for="PermitNum">
+                                                道路运输证号
+                                            </label>
+                                            <div class="col-xs-4">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="PermitNum" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2" for="LicenceAddress">
+                                                行驶证地址
+                                            </label>
+                                            <div class="col-xs-10">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="LicenceAddress" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4 class="form-section cus-form-section">
+                                        <span>其他信息</span>
+                                    </h4>
+                                    <div class="form-group-group">
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2" for="EngineNum">
+                                                发动机号
+                                            </label>
+                                            <div class="col-xs-2">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="EngineNum" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                            <label class="control-label col-xs-2" for="CarFrameNum">
+                                                车架号
+                                            </label>
+                                            <div class="col-xs-2">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="CarFrameNum" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                            <label class="control-label col-xs-2" for="FuelValue">
+                                                燃料
+                                            </label>
+                                            <div class="col-xs-2">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="FuelValue" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2" for="Weight">
+                                                总质量
+                                            </label>
+                                            <div class="col-xs-2">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="Weight" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                            <label class="control-label col-xs-2" for="Engine">
+                                                排气量
+                                            </label>
+                                            <div class="col-xs-2">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="Engine" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                            <label class="control-label col-xs-2" for="SeatNum">
+                                                座位数
+                                            </label>
+                                            <div class="col-xs-2">
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <label for="SeatNum" class="form-control-static"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script data-main="Js/View.js" src="/Modules/Component/require.js"></script>
+</body>
+</html>
