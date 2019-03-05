@@ -89,7 +89,7 @@ public class NServiceImpl implements INService {
         Unit unitPre = unitMapper.selectByPrimaryKey(dto.getId());
 
         Contacts contacts = new Contacts(unitPre.getContactsId(),dto.getName(),dto.getIdCard(),dto.getTel(),null,dto.getPhone(),dto.getEmail(),dto.getQQ(),dto.getMemo(),2,null,null);
-        contactsMapper.updateByPrimaryKey(contacts);
+        contactsMapper.updateByPrimaryKeySelective(contacts);
         Unit unit = new Unit();
         unit.setId(unitPre.getId());
         unit.setUnitName(dto.getUnitName());
@@ -254,7 +254,7 @@ public class NServiceImpl implements INService {
         }
         Unit unitPre = unitMapper.selectByPrimaryKey(dto.getId());
         Contacts contacts = new Contacts(unitPre.getContactsId(),dto.getName(),dto.getIdCard(),dto.getTel(),null,dto.getPhone(),dto.getEmail(),dto.getQQ(),dto.getMemo(),3,null,null);
-        contactsMapper.updateByPrimaryKey(contacts);
+        contactsMapper.updateByPrimaryKeySelective(contacts);
         Unit unit = new Unit();
         unit.setId(unitPre.getId());
         unit.setBusinessType(Integer.parseInt(dto.getBusinessType()));
