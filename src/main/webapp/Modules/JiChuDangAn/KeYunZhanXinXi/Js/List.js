@@ -25,27 +25,26 @@ define(['/Modules/Config/conwin.main.js'], function () {
         if(userInfo.organProvince != null && userInfo.organProvince != ''){
             $("#Province").attr("disabled","disabled");
             $("#Province").val(userInfo.organProvince);
-            if (userInfo.organizationType == 2){
-                $("#City").val(userInfo.organCity);
-                $("#City").text(userInfo.organCity);
-                $("#City").attr("disabled","disabled");
-            }
             var arr = helper.getCity(userInfo.organProvince);
             // 循环动态添加option
             for (var i = 0; i < arr.length ; i++) {
                 $("#City").append("<option value='"+arr[i]+"'>"+arr[i]+"</option>");
-            }
-            $("#Province").change(function(){
-                var province = $("#Province").val();
-                $("#City").empty();
-                var arr = helper.getCity(province);
-                // 循环动态添加option
-                $("#City").append("<option value=''>"+"请选择"+"</option>");
-                for (var i = 0; i < arr.length ; i++) {
-                    $("#City").append("<option value='"+arr[i]+"'>"+arr[i]+"</option>");
+                if (userInfo.organCity == arr[i]){
+                    $("#City").find("option[value='"+ arr[i] +"']").attr("selected",true)
+                    $("#City").attr("disabled","disabled");
                 }
-            });
+            }
         }
+        $("#Province").change(function(){
+            var province = $("#Province").val();
+            $("#City").empty();
+            var arr = helper.getCity(province);
+            // 循环动态添加option
+            $("#City").append("<option value=''>"+"请选择"+"</option>");
+            for (var i = 0; i < arr.length ; i++) {
+                $("#City").append("<option value='"+arr[i]+"'>"+arr[i]+"</option>");
+            }
+        });
 
         var initPage = function () {
             //初始化table
