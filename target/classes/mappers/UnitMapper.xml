@@ -75,7 +75,7 @@
       and u.unit_name like concat('%',#{unitName},'%')
     </if>
     <if test="businessType != 0" >
-      and u.business_type = businessType
+      and u.business_type = #{businessType}
     </if>
     limit #{index} , #{size}
   </select>

@@ -169,9 +169,7 @@
       <if test="createtime != null" >
         createtime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null" >
-        updatetime = #{updatetime,jdbcType=TIMESTAMP},
-      </if>
+        updatetime = now(),
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
