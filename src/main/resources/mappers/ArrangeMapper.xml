@@ -4,10 +4,13 @@
   <resultMap id="BaseResultMap" type="com.lyq.project.pojo.Arrange" >
     <constructor >
       <idArg column="id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="num" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="unit_id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="car_id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="route_id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="arrange_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="start_station" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="end_station" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="start_date" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="satrt_time" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="end_date" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -23,9 +26,9 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, unit_id, car_id, route_id, arrange_type, start_date, satrt_time, end_date, end_time, 
-    start_date_real, start_time_real, end_date_real, end_time_real, total_number, price, 
-    leave_number, is_cancel
+    id, num, unit_id, car_id, route_id, arrange_type, start_station, end_station, start_date, 
+    satrt_time, end_date, end_time, start_date_real, start_time_real, end_date_real, 
+    end_time_real, total_number, price, leave_number, is_cancel
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -38,14 +41,16 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.lyq.project.pojo.Arrange" >
-    insert into arrange (id, unit_id, car_id, 
-      route_id, arrange_type, start_date, 
+    insert into arrange (id, num, unit_id, 
+      car_id, route_id, arrange_type, 
+      start_station, end_station, start_date, 
       satrt_time, end_date, end_time, 
       start_date_real, start_time_real, end_date_real, 
       end_time_real, total_number, price, 
       leave_number, is_cancel)
-    values (#{id,jdbcType=VARCHAR}, #{unitId,jdbcType=VARCHAR}, #{carId,jdbcType=VARCHAR}, 
-      #{routeId,jdbcType=VARCHAR}, #{arrangeType,jdbcType=INTEGER}, #{startDate,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{num,jdbcType=VARCHAR}, #{unitId,jdbcType=VARCHAR}, 
+      #{carId,jdbcType=VARCHAR}, #{routeId,jdbcType=VARCHAR}, #{arrangeType,jdbcType=INTEGER}, 
+      #{startStation,jdbcType=VARCHAR}, #{endStation,jdbcType=VARCHAR}, #{startDate,jdbcType=VARCHAR}, 
       #{satrtTime,jdbcType=VARCHAR}, #{endDate,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, 
       #{startDateReal,jdbcType=VARCHAR}, #{startTimeReal,jdbcType=VARCHAR}, #{endDateReal,jdbcType=VARCHAR}, 
       #{endTimeReal,jdbcType=VARCHAR}, #{totalNumber,jdbcType=INTEGER}, #{price,jdbcType=INTEGER}, 
@@ -56,6 +61,9 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="num != null" >
+        num,
       </if>
       <if test="unitId != null" >
         unit_id,
@@ -68,6 +76,12 @@
       </if>
       <if test="arrangeType != null" >
         arrange_type,
+      </if>
+      <if test="startStation != null" >
+        start_station,
+      </if>
+      <if test="endStation != null" >
+        end_station,
       </if>
       <if test="startDate != null" >
         start_date,
@@ -110,6 +124,9 @@
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
+      <if test="num != null" >
+        #{num,jdbcType=VARCHAR},
+      </if>
       <if test="unitId != null" >
         #{unitId,jdbcType=VARCHAR},
       </if>
@@ -121,6 +138,12 @@
       </if>
       <if test="arrangeType != null" >
         #{arrangeType,jdbcType=INTEGER},
+      </if>
+      <if test="startStation != null" >
+        #{startStation,jdbcType=VARCHAR},
+      </if>
+      <if test="endStation != null" >
+        #{endStation,jdbcType=VARCHAR},
       </if>
       <if test="startDate != null" >
         #{startDate,jdbcType=VARCHAR},
@@ -163,6 +186,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.lyq.project.pojo.Arrange" >
     update arrange
     <set >
+      <if test="num != null" >
+        num = #{num,jdbcType=VARCHAR},
+      </if>
       <if test="unitId != null" >
         unit_id = #{unitId,jdbcType=VARCHAR},
       </if>
@@ -174,6 +200,12 @@
       </if>
       <if test="arrangeType != null" >
         arrange_type = #{arrangeType,jdbcType=INTEGER},
+      </if>
+      <if test="startStation != null" >
+        start_station = #{startStation,jdbcType=VARCHAR},
+      </if>
+      <if test="endStation != null" >
+        end_station = #{endStation,jdbcType=VARCHAR},
       </if>
       <if test="startDate != null" >
         start_date = #{startDate,jdbcType=VARCHAR},
@@ -216,10 +248,13 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lyq.project.pojo.Arrange" >
     update arrange
-    set unit_id = #{unitId,jdbcType=VARCHAR},
+    set num = #{num,jdbcType=VARCHAR},
+      unit_id = #{unitId,jdbcType=VARCHAR},
       car_id = #{carId,jdbcType=VARCHAR},
       route_id = #{routeId,jdbcType=VARCHAR},
       arrange_type = #{arrangeType,jdbcType=INTEGER},
+      start_station = #{startStation,jdbcType=VARCHAR},
+      end_station = #{endStation,jdbcType=VARCHAR},
       start_date = #{startDate,jdbcType=VARCHAR},
       satrt_time = #{satrtTime,jdbcType=VARCHAR},
       end_date = #{endDate,jdbcType=VARCHAR},

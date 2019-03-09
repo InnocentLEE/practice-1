@@ -7,13 +7,217 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8" />
-    <title>客车档案</title>
+    <title>路线管理</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta content="" name="description" />
     <meta content="" name="author" />
-    
+    <style>
+
+        .row {
+            margin-right: 0px;
+        }
+
+        .pagnav {
+            padding-right: 0px;
+        }
+
+        .form-section {
+            font-size: 22px;
+            color: #333;
+            margin: 8px 8px 15px;
+        }
+
+        .searchpanel-form {
+            border: 1px solid #eee;
+            margin-bottom: 2px;
+        }
+
+        .last {
+        }
+        /****覆盖extend.css搜索框样式***/
+        .searchpanel-main-border {
+            padding: 0;
+            border: none;
+            background-color: #fff !important;
+        }
+
+        /*****覆盖col-sm-*宽度****/
+        .col-sm-5 {
+            width: 46% !important;
+        }
+
+        .col-sm-2 {
+            width: 8% !important;
+        }
+
+        .col-sm-2-custom {
+            left: -20px;
+            margin-top: 160px;
+            padding-left: 0px;
+            padding-right: 0px;
+            text-align: center;
+        }
+
+        /*************table设置scrollY**************/
+        .dataTables_scroll {
+            border-right: 1px solid #ddd;
+            border-top: 1px solid #ddd;
+        }
+
+        .dataTables_scrollBody {
+            border-left: 1px solid #ddd;
+        }
+
+        .table-scrollable {
+            margin: 0px !important;
+            border: none;
+        }
+
+        .dataTables_scrollHead {
+            border-bottom: 1px solid #ddd !important;
+        }
+
+        .table.dataTable {
+            margin-top: 0px !important;
+        }
+
+        .dataTables_scrollBody table {
+            border-left: none;
+            border-right: none;
+        }
+
+        .dataTables_scrollHeadInner table {
+            border-right: none;
+            border-top: none;
+        }
+
+        .cus-portlet {
+            margin-top: 1px;
+            margin-bottom: 0px;
+        }
+
+        .cus-portlet .portlet-title {
+            height: 38px;
+            background-color: #01a4a4;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .cus-portlet .portlet-title .btnclose {
+            display: inline-block;
+            line-height: 44px;
+            position: absolute;
+            right: 22px;
+        }
+
+        .cus-portlet .portlet-title .btnclose a > i {
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .cus-portlet .portlet-title .caption {
+            padding: 0px;
+            margin-left: 22px;
+            line-height: 38px;
+            cursor: default;
+            color: #ffffff;
+        }
+
+        .cus-portlet .portlet-title .caption span {
+            font-size: 16px;
+        }
+
+        .cus-portlet .portlet-title .caption small {
+            margin-left: 18px;
+            font-size: 10px;
+        }
+
+        .cus-portlet .portlet-title .caption small:first-child {
+            margin-left: 24px;
+        }
+
+        .cus-portlet .portlet-title .caption small > span {
+            color: #f0ac4d;
+            font-size: 10px;
+        }
+
+        .cus-portlet .portlet-title .caption span > i {
+            font-size: 16px;
+            line-height: 16px;
+        }
+
+        .nav-tabs > li > a {
+            border: none;
+        }
+
+        .nav-tabs > li > a:hover, .nav > li > a:focus {
+            border-color: transparent;
+            background-color: transparent;
+            border-bottom: 2px solid #5CB85C;
+        }
+
+        .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+            border: none;
+            border-bottom: 2px solid #5CB85C;
+        }
+
+        .separate-line {
+            position: absolute;
+            width: 1px;
+            height: 23px;
+            background-color: #ccc;
+            top: 10px;
+        }
+
+
+        .separate-line.left {
+            left: -1px;
+        }
+
+        .separate-line.right {
+            right: -1px;
+        }
+
+        .nav-tabs {
+            padding-left: 22px;
+        }
+
+        .nav > li > a {
+            padding-left: 28px;
+            padding-right: 28px;
+            font-size: 16px;
+            color: #333 !important;
+        }
+
+        .form-control {
+            height: 28px;
+            padding-top: 2px;
+            padding-bottom: 3px;
+        }
+
+        .form-control-static {
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+
+        .form .form-bordered .form-group .control-label {
+            padding-top: 14px;
+        }
+
+        .form .form-bordered .form-group > div {
+            padding: 10px;
+        }
+
+        .row {
+            margin-right: 0px;
+        }
+
+        .cus-form-section {
+            margin-bottom: 0px !important;
+        }
+    </style>
     <link href="/Modules/Component/site.css" rel="stylesheet" />
     <link id="styleLink" href="" rel="stylesheet" />
     <!-- <script type="text/javascript" src="/Modules/Config/SetUserTheam.js"></script> -->
@@ -41,7 +245,7 @@
             <div class="page-content-wrapper">
                 <div class="page-content padding-default" style=" height:1000px;">
                     <h5 class="page-title">
-                        <i class="iconfont icon-danganguanli"></i> 客车档案
+                        <i class="iconfont icon-danganguanli"></i> 路线管理
                         <p class="popedom" style="float: right;font-size: x-small;color: red;margin-right: 10px;"></p>
                     </h5>
                     <!--搜索代码-->
@@ -49,45 +253,43 @@
                         <form class="searchpanel-form form-horizontal">
                             <input id="hdIDS" type="hidden" />
                             <input id="operationType" type="hidden" />
-                            <div class="searchpanel-main form-body searchpanel-main-border">
-                                <div class="row">
-                                    <div class="col-xs-3">
+                            <div class="searchpanel-main form-body searchpanel-main-border searchform-exist">
+                                <div class="row" style="">
+                                    <div class="col-xs-8">
                                         <div class="form-group">
-                                            <label class="col-xs-1 control-label" for="CarNum">车牌号</label>
-                                            <div class="col-xs-7">
-                                                <input type="text" name="CarNum" id="CarNum" class="form-control" />
+                                            <label class="col-xs-1 control-label" for="RouteName">路线名</label>
+                                            <div class="col-xs-4">
+                                                <input type="text" name="RouteName" id="RouteName" class="form-control" style="margin-left: -4px;width: 243px;"/>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-3">
-                                        <div class="form-group">
-                                            <label class="col-xs-1 control-label" for="CarType">车牌颜色</label>
-                                            <div class="col-xs-7">
-                                                <select name="CarType" id="CarType" class="form-control">
-                                                    <option value="0">请选择</option>
-                                                    <option value="1">蓝色</option>
-                                                    <option value="2">黄色</option>
-                                                    <option value="3">白色</option>
-                                                    <option value="4">黑色</option>
-                                                    <option value="5">绿色</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <div class="form-group">
-                                            <label class="col-xs-1 control-label" for="Status">审核状态</label>
-                                            <div class="col-xs-7">
-                                                <select name="Status" id="Status" class="form-control">
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-3">
+                                    <div class="col-xs-4">
                                         <div class="form-group">
                                             <div class="col-xs-12 pull-right">
                                                 <a id="btnSearch" accesskey="q" title="快捷键 Alt + Q" class="btn btn-success" href="javascript:;" data-rescode="20190600"><i class="iconfont icon-chaxun"></i> 查询</a>
                                                 <a id="btnReset" accesskey="r" title="快捷键 Alt + R" class="btn btn-success" href="javascript:;"><i class="iconfont icon-zhongzhi"></i> 重置</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="">
+                                    <div class="col-xs-4">
+                                        <div class="form-group">
+                                            <label class="col-md-4 col-xs-3 control-label">起点</label>
+                                            <div class="col-md-8 col-xs-9">
+                                                <select name="StartStation" id="StartStation" class="form-control">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="form-group">
+                                            <label class="col-md-4 col-xs-3 control-label">终点</label>
+                                            <div class="col-md-8 col-xs-9">
+                                                <select name="EndStation" id="EndStation" class="form-control">
+                                                    <option value="">请选择</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

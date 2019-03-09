@@ -3,6 +3,17 @@ define(['/Modules/Config/conwin.main.js'], function () {
     function ($, popdialog, tipdialog, toast, helper, common, tableheadfix, system,userinfo) {
         var userInfo = helper.GetUserInfo();
         var organizationType = null;
+        var reResult = [];
+        reResult.push({ id: "QingXuanZeBiaoZhiId", text: "请选择" });
+        reResult.push({ id: "shantou", text: "广东汕头" });
+        reResult.push({ id: "foshan", text: "广东佛山" });
+        reResult.push({ id: "jiangsu", text: "江苏" });
+        $("#StartStation").searchbox({
+            data: reResult
+        });
+        $("#EndStation").searchbox({
+            data: reResult
+        });
         if(userInfo.organizationType == "0"){
             organizationType = "平台运营商";
             $("#Status").append("<option value='2'>审核通过</option>");

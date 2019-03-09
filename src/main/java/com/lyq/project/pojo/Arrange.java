@@ -3,6 +3,8 @@ package com.lyq.project.pojo;
 public class Arrange {
     private String id;
 
+    private String num;
+
     private String unitId;
 
     private String carId;
@@ -10,6 +12,10 @@ public class Arrange {
     private String routeId;
 
     private Integer arrangeType;
+
+    private String startStation;
+
+    private String endStation;
 
     private String startDate;
 
@@ -35,12 +41,15 @@ public class Arrange {
 
     private Integer isCancel;
 
-    public Arrange(String id, String unitId, String carId, String routeId, Integer arrangeType, String startDate, String satrtTime, String endDate, String endTime, String startDateReal, String startTimeReal, String endDateReal, String endTimeReal, Integer totalNumber, Integer price, Integer leaveNumber, Integer isCancel) {
+    public Arrange(String id, String num, String unitId, String carId, String routeId, Integer arrangeType, String startStation, String endStation, String startDate, String satrtTime, String endDate, String endTime, String startDateReal, String startTimeReal, String endDateReal, String endTimeReal, Integer totalNumber, Integer price, Integer leaveNumber, Integer isCancel) {
         this.id = id;
+        this.num = num;
         this.unitId = unitId;
         this.carId = carId;
         this.routeId = routeId;
         this.arrangeType = arrangeType;
+        this.startStation = startStation;
+        this.endStation = endStation;
         this.startDate = startDate;
         this.satrtTime = satrtTime;
         this.endDate = endDate;
@@ -65,6 +74,14 @@ public class Arrange {
 
     public void setId(String id) {
         this.id = id == null ? null : id.trim();
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num == null ? null : num.trim();
     }
 
     public String getUnitId() {
@@ -97,6 +114,22 @@ public class Arrange {
 
     public void setArrangeType(Integer arrangeType) {
         this.arrangeType = arrangeType;
+    }
+
+    public String getStartStation() {
+        return startStation;
+    }
+
+    public void setStartStation(String startStation) {
+        this.startStation = startStation == null ? null : startStation.trim();
+    }
+
+    public String getEndStation() {
+        return endStation;
+    }
+
+    public void setEndStation(String endStation) {
+        this.endStation = endStation == null ? null : endStation.trim();
     }
 
     public String getStartDate() {
