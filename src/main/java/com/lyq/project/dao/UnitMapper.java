@@ -15,23 +15,43 @@ public interface UnitMapper {
 
     Unit selectByPrimaryKey(String id);
 
+    List<Unit> selectQiYeCheDuiByParentUnit(String id);
+
     List<ShengJiJianGuanBuMenListDto> selectShengJiJianGuanBuMen(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("province") String province);
+
+    int selectShengJiJianGuanBuMenCount(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("province") String province);
 
     List<KeYunQiYeListDto> selectKeYunQiYeByAdmin(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("businessType") int businessType);
 
+    int selectKeYunQiYeByAdminCount(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("businessType") int businessType);
+
     List<KeYunQiYeListDto> selectKeYunQiYeByShengJiJianGuanBuMen(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("businessType") int businessType, @Param("province") String province);
+
+    int selectKeYunQiYeByShengJiJianGuanBuMenCount(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("businessType") int businessType, @Param("province") String province);
 
     List<KeYunQiYeListDto> selectKeYunQiYeByShiJiJianGuanBuMen(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("businessType") int businessType, @Param("province") String province, @Param("city") String city);
 
+    int selectKeYunQiYeByShiJiJianGuanBuMenCount(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("businessType") int businessType, @Param("province") String province, @Param("city") String city);
+
     List<KeYunQiYeListDto> selectKeYunQiYeByKeYunZhan(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("businessType") int businessType, @Param("parentId") String parentId);
+
+    int selectKeYunQiYeByKeYunZhanCount(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("businessType") int businessType, @Param("parentId") String parentId);
 
     List<KeYunCheDuiListDto> selectKeYunCheDuiByAdmin(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName);
 
+    int selectKeYunCheDuiByAdminCount(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName);
+
     List<KeYunCheDuiListDto> selectKeYunCheDuiByShengJiJianGuanBuMen(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("province") String province);
+
+    int selectKeYunCheDuiByShengJiJianGuanBuMenCount(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("province") String province);
 
     List<KeYunCheDuiListDto> selectKeYunCheDuiByShiJiJianGuanBuMen(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("province") String province, @Param("city") String city);
 
+    int selectKeYunCheDuiByShiJiJianGuanBuMenCount(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("province") String province, @Param("city") String city);
+
     List<KeYunCheDuiListDto> selectKeYunCheDuiByKeYunZhan(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("parentId") String parentId);
+
+    int selectKeYunCheDuiByKeYunZhanCount(@Param("index") int index, @Param("size") int size, @Param("unitName") String unitName, @Param("parentId") String parentId);
 
     ShengJiJianGuanBuMenDetail selectShengJiJianGuanBuMenDetail(@Param("id") String id);
 

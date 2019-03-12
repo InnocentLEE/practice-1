@@ -5,11 +5,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.lyq.project.common.LYQRequest;
 import com.lyq.project.common.LYQResponse;
-import com.lyq.project.dto.LoginDto;
-import com.lyq.project.dto.MenudTO;
-import com.lyq.project.dto.ResourceDto;
-import com.lyq.project.dto.UserInfoDto;
+import com.lyq.project.dto.*;
 import com.lyq.project.service.IBaseService;
+import com.lyq.project.service.INService;
+import com.lyq.project.service.IQService;
+import com.lyq.project.util.IdCardGenerator;
+import com.lyq.project.util.MakeData;
 import com.lyq.project.util.ValidateCodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,10 @@ public class BaseController {
 
     @Autowired
     private IBaseService iBaseService;
+    @Autowired
+    private IQService iqService;
+    @Autowired
+    private INService inService;
 
     // region 获取验证码
     @RequestMapping(value = "base/ValidCode",method = RequestMethod.POST)
@@ -87,6 +92,18 @@ public class BaseController {
         String userInfoJSON = (String) session.getAttribute("current_user");
         UserInfoDto userInfoDto = JSON.parseObject(userInfoJSON,UserInfoDto.class);
         return iBaseService.HasResource(Integer.parseInt(userInfoDto.getRoleCode()));
+    }
+
+    // region 造数据
+    @RequestMapping(value = "base/MakeData",method = RequestMethod.POST)
+    @ResponseBody
+    public LYQResponse<List<ResourceDto>> MakeData(HttpSession session) {
+        IdCardGenerator idCardGenerator = new IdCardGenerator();
+        MakeData makeData = new MakeData();
+        String name = makeData.randomName();
+        String idCard = idCardGenerator.generate();
+        CreateShengJiJianGuanBuMenDto dto = new CreateShengJiJianGuanBuMenDto(null,"广东省道路运输总局","广东","广州市越秀区白云路27号",name,idCard,null,null,null,null,null);
+        return iqService.createShengJiJianGuanBuMen(session,dto);
     }
     // endregion
 }

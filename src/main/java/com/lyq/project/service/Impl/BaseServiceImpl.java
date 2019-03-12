@@ -12,6 +12,7 @@ import com.lyq.project.dto.UserInfoDto;
 import com.lyq.project.pojo.Contacts;
 import com.lyq.project.pojo.Unit;
 import com.lyq.project.service.IBaseService;
+import com.lyq.project.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,8 @@ public class BaseServiceImpl implements IBaseService {
 
     @Override
     public LYQResponse login(HttpSession session, LYQRequest<LoginDto> request){
-        Contacts contacts = contactsMapper.selectByCardNoAndPassword(request.getBody().getAccountName(),request.getBody().getPassword());
+        String password = MD5Util.getMD5(request.getBody().getPassword());
+        Contacts contacts = contactsMapper.selectByCardNoAndPassword(request.getBody().getAccountName(), password);
         if(contacts == null){
             return LYQResponse.createByErrorMessage("登录失败");
         }else {
@@ -198,158 +200,6 @@ public class BaseServiceImpl implements IBaseService {
                 jichudangan.setIsEnabled("True");
                 jichudangan.setCode("003300210013");
                 // endregion
-                // region 班次管理
-                // region 班车查询
-                MenudTO banchechaxun = new MenudTO();
-                banchechaxun.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                banchechaxun.setTitle("班车查询");
-                banchechaxun.setUrl("/Modules/BanCiGuanLi/BanCheChaXun/List.html");
-                banchechaxun.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> banchechaxunSub = new ArrayList<>();
-                List<MenudTO> banchechaxunExt = new ArrayList<>();
-                banchechaxun.setSubMenu(banchechaxunSub);
-                banchechaxun.setExtends(banchechaxunExt);
-                banchechaxun.setIsEnabled("True");
-                banchechaxun.setCode("003300210014");
-                // endregion
-                // region 包车查询
-                MenudTO baochechaxun = new MenudTO();
-                baochechaxun.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                baochechaxun.setTitle("包车查询");
-                baochechaxun.setUrl("/Modules/BanCiGuanLi/BaoCheChaXun/List.html");
-                baochechaxun.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> baochechaxunSub = new ArrayList<>();
-                List<MenudTO> baochechaxunExt = new ArrayList<>();
-                baochechaxun.setSubMenu(baochechaxunSub);
-                baochechaxun.setExtends(baochechaxunExt);
-                baochechaxun.setIsEnabled("True");
-                baochechaxun.setCode("003300210014");
-                // endregion
-                // region 路线管理
-                MenudTO luxianguanli = new MenudTO();
-                luxianguanli.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                luxianguanli.setTitle("路线管理");
-                luxianguanli.setUrl("/Modules/BanCiGuanLi/LuXianGuanLi/List.html");
-                luxianguanli.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> luxianguanliSub = new ArrayList<>();
-                List<MenudTO> luxianguanliExt = new ArrayList<>();
-                luxianguanli.setSubMenu(luxianguanliSub);
-                luxianguanli.setExtends(luxianguanliExt);
-                luxianguanli.setIsEnabled("True");
-                luxianguanli.setCode("003300210014");
-                // endregion
-                // region 客运排班
-                MenudTO keyunpaiban = new MenudTO();
-                keyunpaiban.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                keyunpaiban.setTitle("客运排班");
-                keyunpaiban.setUrl("/Modules/BanCiGuanLi/KeYunPaiBan/List.html");
-                keyunpaiban.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> keyunpaibanSub = new ArrayList<>();
-                List<MenudTO> keyunpaibanExt = new ArrayList<>();
-                keyunpaiban.setSubMenu(keyunpaibanSub);
-                keyunpaiban.setExtends(keyunpaibanExt);
-                keyunpaiban.setIsEnabled("True");
-                keyunpaiban.setCode("003300210014");
-                // endregion
-                // region 客车班次查询
-                MenudTO kechebancichaxun = new MenudTO();
-                kechebancichaxun.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                kechebancichaxun.setTitle("客车班次查询");
-                kechebancichaxun.setUrl("/Modules/BanCiGuanLi/KeCheBanCi/List.html");
-                kechebancichaxun.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> kechebancichaxunSub = new ArrayList<>();
-                List<MenudTO> kechebancichaxunExt = new ArrayList<>();
-                kechebancichaxun.setSubMenu(kechebancichaxunSub);
-                kechebancichaxun.setExtends(kechebancichaxunExt);
-                kechebancichaxun.setIsEnabled("True");
-                kechebancichaxun.setCode("003300210014");
-                // endregion
-                MenudTO banciguanli = new MenudTO();
-                banciguanli.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                banciguanli.setTitle("班次管理");
-                banciguanli.setUrl("/");
-                banciguanli.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> banciguanliSub = new ArrayList<>();
-                List<MenudTO> banciguanliExt = new ArrayList<>();
-                banciguanliSub.add(banchechaxun);
-                banciguanliSub.add(baochechaxun);
-                banciguanliSub.add(luxianguanli);
-                banciguanliSub.add(keyunpaiban);
-                banciguanliSub.add(kechebancichaxun);
-                banciguanli.setSubMenu(banciguanliSub);
-                banciguanli.setExtends(banciguanliExt);
-                banciguanli.setIsEnabled("True");
-                banciguanli.setCode("003300210014");
-                // endregion
-                // region 售票统计
-                // region 月度路线售票率
-                MenudTO yueduluxianshoupiaolv = new MenudTO();
-                yueduluxianshoupiaolv.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                yueduluxianshoupiaolv.setTitle("月度路线售票率");
-                yueduluxianshoupiaolv.setUrl("/Modules/ShouPiaoTongJi/YueDuLuXianShouPiaoLv/List.html");
-                yueduluxianshoupiaolv.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> yueduluxianshoupiaolvSub = new ArrayList<>();
-                List<MenudTO> yueduluxianshoupiaolvExt = new ArrayList<>();
-                yueduluxianshoupiaolv.setSubMenu(yueduluxianshoupiaolvSub);
-                yueduluxianshoupiaolv.setExtends(yueduluxianshoupiaolvExt);
-                yueduluxianshoupiaolv.setIsEnabled("True");
-                yueduluxianshoupiaolv.setCode("003300210014");
-                // endregion
-                // region 年度路线售票率
-                MenudTO nianduluxianshoupiaolv = new MenudTO();
-                nianduluxianshoupiaolv.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                nianduluxianshoupiaolv.setTitle("年度路线售票率");
-                nianduluxianshoupiaolv.setUrl("/Modules/ShouPiaoTongJi/NianDuLuXianShouPiaoLv/List.html");
-                nianduluxianshoupiaolv.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> nianduluxianshoupiaolvSub = new ArrayList<>();
-                List<MenudTO> nianduluxianshoupiaolvExt = new ArrayList<>();
-                nianduluxianshoupiaolv.setSubMenu(nianduluxianshoupiaolvSub);
-                nianduluxianshoupiaolv.setExtends(nianduluxianshoupiaolvExt);
-                nianduluxianshoupiaolv.setIsEnabled("True");
-                nianduluxianshoupiaolv.setCode("003300210014");
-                // endregion
-                // region 购票方式饼图
-                MenudTO goupiaofangshibingtu = new MenudTO();
-                goupiaofangshibingtu.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                goupiaofangshibingtu.setTitle("购票方式饼图");
-                goupiaofangshibingtu.setUrl("/Modules/ShouPiaoTongJi/GouPiaoFangShiBingTu/List.html");
-                goupiaofangshibingtu.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> goupiaofangshibingtuSub = new ArrayList<>();
-                List<MenudTO> goupiaofangshibingtuExt = new ArrayList<>();
-                goupiaofangshibingtu.setSubMenu(goupiaofangshibingtuSub);
-                goupiaofangshibingtu.setExtends(goupiaofangshibingtuExt);
-                goupiaofangshibingtu.setIsEnabled("True");
-                goupiaofangshibingtu.setCode("003300210014");
-                // endregion
-                // region 客车出勤统计
-                MenudTO kechechuqintongji = new MenudTO();
-                kechechuqintongji.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                kechechuqintongji.setTitle("客车出勤统计");
-                kechechuqintongji.setUrl("/Modules/ShouPiaoTongJi/KeCheChuQinTongJi/List.html");
-                kechechuqintongji.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> kechechuqintongjiSub = new ArrayList<>();
-                List<MenudTO> kechechuqintongjiExt = new ArrayList<>();
-                kechechuqintongji.setSubMenu(kechechuqintongjiSub);
-                kechechuqintongji.setExtends(kechechuqintongjiExt);
-                kechechuqintongji.setIsEnabled("True");
-                kechechuqintongji.setCode("003300210014");
-                // endregion
-                MenudTO shoupiaotongji = new MenudTO();
-                shoupiaotongji.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                shoupiaotongji.setTitle("售票统计");
-                shoupiaotongji.setUrl("/");
-                shoupiaotongji.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> shoupiaotongjiSub = new ArrayList<>();
-                List<MenudTO> shoupiaotongjiExt = new ArrayList<>();
-                shoupiaotongjiSub.add(yueduluxianshoupiaolv);
-                shoupiaotongjiSub.add(nianduluxianshoupiaolv);
-                shoupiaotongjiSub.add(goupiaofangshibingtu);
-                shoupiaotongjiSub.add(kechechuqintongji);
-                shoupiaotongji.setSubMenu(shoupiaotongjiSub);
-                shoupiaotongji.setExtends(shoupiaotongjiExt);
-                shoupiaotongji.setIsEnabled("True");
-                shoupiaotongji.setCode("003300210014");
-                // endregion
 
                 MenudTO guanligongneng = new MenudTO();
                 guanligongneng.setId("678bda20-b992-43df-afc0-e1343ff8d44a");
@@ -358,8 +208,6 @@ public class BaseServiceImpl implements IBaseService {
                 guanligongneng.setIcon("glyphicon glyphicon-list-alt");
                 List<MenudTO> guanligongnengSub = new ArrayList<>();
                 guanligongnengSub.add(jichudangan);
-                guanligongnengSub.add(banciguanli);
-                guanligongnengSub.add(shoupiaotongji);
                 List<MenudTO> guanligongnengExt = new ArrayList<>();
                 guanligongneng.setSubMenu(guanligongnengSub);
                 guanligongneng.setExtends(guanligongnengExt);
@@ -476,48 +324,6 @@ public class BaseServiceImpl implements IBaseService {
                 jichudangan.setIsEnabled("True");
                 jichudangan.setCode("003300210013");
                 // endregion
-                // region 班次管理
-                // region 班车查询
-                MenudTO banchechaxun = new MenudTO();
-                banchechaxun.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                banchechaxun.setTitle("班车查询");
-                banchechaxun.setUrl("/Modules/BanCiGuanLi/BanCheChaXun/List.html");
-                banchechaxun.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> banchechaxunSub = new ArrayList<>();
-                List<MenudTO> banchechaxunExt = new ArrayList<>();
-                banchechaxun.setSubMenu(banchechaxunSub);
-                banchechaxun.setExtends(banchechaxunExt);
-                banchechaxun.setIsEnabled("True");
-                banchechaxun.setCode("003300210014");
-                // endregion
-                // region 包车查询
-                MenudTO baochechaxun = new MenudTO();
-                baochechaxun.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                baochechaxun.setTitle("包车查询");
-                baochechaxun.setUrl("/Modules/BanCiGuanLi/BaoCheChaXun/List.html");
-                baochechaxun.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> baochechaxunSub = new ArrayList<>();
-                List<MenudTO> baochechaxunExt = new ArrayList<>();
-                baochechaxun.setSubMenu(baochechaxunSub);
-                baochechaxun.setExtends(baochechaxunExt);
-                baochechaxun.setIsEnabled("True");
-                baochechaxun.setCode("003300210014");
-                // endregion
-
-                MenudTO banciguanli = new MenudTO();
-                banciguanli.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                banciguanli.setTitle("班次管理");
-                banciguanli.setUrl("/");
-                banciguanli.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> banciguanliSub = new ArrayList<>();
-                List<MenudTO> banciguanliExt = new ArrayList<>();
-                banciguanliSub.add(banchechaxun);
-                banciguanliSub.add(baochechaxun);
-                banciguanli.setSubMenu(banciguanliSub);
-                banciguanli.setExtends(banciguanliExt);
-                banciguanli.setIsEnabled("True");
-                banciguanli.setCode("003300210014");
-                // endregion
 
                 MenudTO guanligongneng = new MenudTO();
                 guanligongneng.setId("678bda20-b992-43df-afc0-e1343ff8d44a");
@@ -526,7 +332,6 @@ public class BaseServiceImpl implements IBaseService {
                 guanligongneng.setIcon("glyphicon glyphicon-list-alt");
                 List<MenudTO> guanligongnengSub = new ArrayList<>();
                 guanligongnengSub.add(jichudangan);
-                guanligongnengSub.add(banciguanli);
                 List<MenudTO> guanligongnengExt = new ArrayList<>();
                 guanligongneng.setSubMenu(guanligongnengSub);
                 guanligongneng.setExtends(guanligongnengExt);
@@ -614,48 +419,6 @@ public class BaseServiceImpl implements IBaseService {
                 jichudangan.setIsEnabled("True");
                 jichudangan.setCode("003300210013");
                 // endregion
-                // region 班次管理
-                // region 班车查询
-                MenudTO banchechaxun = new MenudTO();
-                banchechaxun.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                banchechaxun.setTitle("班车查询");
-                banchechaxun.setUrl("/Modules/BanCiGuanLi/BanCheChaXun/List.html");
-                banchechaxun.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> banchechaxunSub = new ArrayList<>();
-                List<MenudTO> banchechaxunExt = new ArrayList<>();
-                banchechaxun.setSubMenu(banchechaxunSub);
-                banchechaxun.setExtends(banchechaxunExt);
-                banchechaxun.setIsEnabled("True");
-                banchechaxun.setCode("003300210014");
-                // endregion
-                // region 包车查询
-                MenudTO baochechaxun = new MenudTO();
-                baochechaxun.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                baochechaxun.setTitle("包车查询");
-                baochechaxun.setUrl("/Modules/BanCiGuanLi/BaoCheChaXun/List.html");
-                baochechaxun.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> baochechaxunSub = new ArrayList<>();
-                List<MenudTO> baochechaxunExt = new ArrayList<>();
-                baochechaxun.setSubMenu(baochechaxunSub);
-                baochechaxun.setExtends(baochechaxunExt);
-                baochechaxun.setIsEnabled("True");
-                baochechaxun.setCode("003300210014");
-                // endregion
-
-                MenudTO banciguanli = new MenudTO();
-                banciguanli.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                banciguanli.setTitle("班次管理");
-                banciguanli.setUrl("/");
-                banciguanli.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> banciguanliSub = new ArrayList<>();
-                List<MenudTO> banciguanliExt = new ArrayList<>();
-                banciguanliSub.add(banchechaxun);
-                banciguanliSub.add(baochechaxun);
-                banciguanli.setSubMenu(banciguanliSub);
-                banciguanli.setExtends(banciguanliExt);
-                banciguanli.setIsEnabled("True");
-                banciguanli.setCode("003300210014");
-                // endregion
 
                 MenudTO guanligongneng = new MenudTO();
                 guanligongneng.setId("678bda20-b992-43df-afc0-e1343ff8d44a");
@@ -664,7 +427,6 @@ public class BaseServiceImpl implements IBaseService {
                 guanligongneng.setIcon("glyphicon glyphicon-list-alt");
                 List<MenudTO> guanligongnengSub = new ArrayList<>();
                 guanligongnengSub.add(jichudangan);
-                guanligongnengSub.add(banciguanli);
                 List<MenudTO> guanligongnengExt = new ArrayList<>();
                 guanligongneng.setSubMenu(guanligongnengSub);
                 guanligongneng.setExtends(guanligongnengExt);
@@ -791,19 +553,6 @@ public class BaseServiceImpl implements IBaseService {
                 keyunpaiban.setIsEnabled("True");
                 keyunpaiban.setCode("003300210014");
                 // endregion
-                // region 客车班次查询
-                MenudTO kechebancichaxun = new MenudTO();
-                kechebancichaxun.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                kechebancichaxun.setTitle("客车班次查询");
-                kechebancichaxun.setUrl("/Modules/BanCiGuanLi/KeCheBanCi/List.html");
-                kechebancichaxun.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> kechebancichaxunSub = new ArrayList<>();
-                List<MenudTO> kechebancichaxunExt = new ArrayList<>();
-                kechebancichaxun.setSubMenu(kechebancichaxunSub);
-                kechebancichaxun.setExtends(kechebancichaxunExt);
-                kechebancichaxun.setIsEnabled("True");
-                kechebancichaxun.setCode("003300210014");
-                // endregion
                 MenudTO banciguanli = new MenudTO();
                 banciguanli.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
                 banciguanli.setTitle("班次管理");
@@ -815,7 +564,6 @@ public class BaseServiceImpl implements IBaseService {
                 banciguanliSub.add(baochechaxun);
                 banciguanliSub.add(luxianguanli);
                 banciguanliSub.add(keyunpaiban);
-                banciguanliSub.add(kechebancichaxun);
                 banciguanli.setSubMenu(banciguanliSub);
                 banciguanli.setExtends(banciguanliExt);
                 banciguanli.setIsEnabled("True");
@@ -861,19 +609,6 @@ public class BaseServiceImpl implements IBaseService {
                 goupiaofangshibingtu.setIsEnabled("True");
                 goupiaofangshibingtu.setCode("003300210014");
                 // endregion
-                // region 客车出勤统计
-                MenudTO kechechuqintongji = new MenudTO();
-                kechechuqintongji.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                kechechuqintongji.setTitle("客车出勤统计");
-                kechechuqintongji.setUrl("/Modules/ShouPiaoTongJi/KeCheChuQinTongJi/List.html");
-                kechechuqintongji.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> kechechuqintongjiSub = new ArrayList<>();
-                List<MenudTO> kechechuqintongjiExt = new ArrayList<>();
-                kechechuqintongji.setSubMenu(kechechuqintongjiSub);
-                kechechuqintongji.setExtends(kechechuqintongjiExt);
-                kechechuqintongji.setIsEnabled("True");
-                kechechuqintongji.setCode("003300210014");
-                // endregion
                 MenudTO shoupiaotongji = new MenudTO();
                 shoupiaotongji.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
                 shoupiaotongji.setTitle("售票统计");
@@ -884,7 +619,6 @@ public class BaseServiceImpl implements IBaseService {
                 shoupiaotongjiSub.add(yueduluxianshoupiaolv);
                 shoupiaotongjiSub.add(nianduluxianshoupiaolv);
                 shoupiaotongjiSub.add(goupiaofangshibingtu);
-                shoupiaotongjiSub.add(kechechuqintongji);
                 shoupiaotongji.setSubMenu(shoupiaotongjiSub);
                 shoupiaotongji.setExtends(shoupiaotongjiExt);
                 shoupiaotongji.setIsEnabled("True");
@@ -973,19 +707,6 @@ public class BaseServiceImpl implements IBaseService {
                 baochechaxun.setIsEnabled("True");
                 baochechaxun.setCode("003300210014");
                 // endregion
-                // region 客车班次查询
-                MenudTO kechebancichaxun = new MenudTO();
-                kechebancichaxun.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                kechebancichaxun.setTitle("客车班次查询");
-                kechebancichaxun.setUrl("/Modules/BanCiGuanLi/KeCheBanCi/List.html");
-                kechebancichaxun.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> kechebancichaxunSub = new ArrayList<>();
-                List<MenudTO> kechebancichaxunExt = new ArrayList<>();
-                kechebancichaxun.setSubMenu(kechebancichaxunSub);
-                kechebancichaxun.setExtends(kechebancichaxunExt);
-                kechebancichaxun.setIsEnabled("True");
-                kechebancichaxun.setCode("003300210014");
-                // endregion
                 MenudTO banciguanli = new MenudTO();
                 banciguanli.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
                 banciguanli.setTitle("班次管理");
@@ -995,38 +716,10 @@ public class BaseServiceImpl implements IBaseService {
                 List<MenudTO> banciguanliExt = new ArrayList<>();
                 banciguanliSub.add(banchechaxun);
                 banciguanliSub.add(baochechaxun);
-                banciguanliSub.add(kechebancichaxun);
                 banciguanli.setSubMenu(banciguanliSub);
                 banciguanli.setExtends(banciguanliExt);
                 banciguanli.setIsEnabled("True");
                 banciguanli.setCode("003300210014");
-                // endregion
-                // region 售票统计
-                // region 客车出勤统计
-                MenudTO kechechuqintongji = new MenudTO();
-                kechechuqintongji.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                kechechuqintongji.setTitle("客车出勤统计");
-                kechechuqintongji.setUrl("/Modules/ShouPiaoTongJi/KeCheChuQinTongJi/List.html");
-                kechechuqintongji.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> kechechuqintongjiSub = new ArrayList<>();
-                List<MenudTO> kechechuqintongjiExt = new ArrayList<>();
-                kechechuqintongji.setSubMenu(kechechuqintongjiSub);
-                kechechuqintongji.setExtends(kechechuqintongjiExt);
-                kechechuqintongji.setIsEnabled("True");
-                kechechuqintongji.setCode("003300210014");
-                // endregion
-                MenudTO shoupiaotongji = new MenudTO();
-                shoupiaotongji.setId("c419ee72-f1a9-42b6-9041-80ccd8e40a1b");
-                shoupiaotongji.setTitle("售票统计");
-                shoupiaotongji.setUrl("/");
-                shoupiaotongji.setIcon("glyphicon glyphicon-list-alt");
-                List<MenudTO> shoupiaotongjiSub = new ArrayList<>();
-                List<MenudTO> shoupiaotongjiExt = new ArrayList<>();
-                shoupiaotongjiSub.add(kechechuqintongji);
-                shoupiaotongji.setSubMenu(shoupiaotongjiSub);
-                shoupiaotongji.setExtends(shoupiaotongjiExt);
-                shoupiaotongji.setIsEnabled("True");
-                shoupiaotongji.setCode("003300210014");
                 // endregion
 
                 MenudTO guanligongneng = new MenudTO();
@@ -1037,7 +730,6 @@ public class BaseServiceImpl implements IBaseService {
                 List<MenudTO> guanligongnengSub = new ArrayList<>();
                 guanligongnengSub.add(jichudangan);
                 guanligongnengSub.add(banciguanli);
-                guanligongnengSub.add(shoupiaotongji);
                 List<MenudTO> guanligongnengExt = new ArrayList<>();
                 guanligongneng.setSubMenu(guanligongnengSub);
                 guanligongneng.setExtends(guanligongnengExt);

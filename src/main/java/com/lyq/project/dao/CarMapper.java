@@ -1,5 +1,6 @@
 package com.lyq.project.dao;
 
+import com.lyq.project.dto.CarChooseDto;
 import com.lyq.project.dto.KeCheDetail;
 import com.lyq.project.dto.KeCheListDto;
 import com.lyq.project.pojo.Car;
@@ -26,10 +27,20 @@ public interface CarMapper {
 
     List<KeCheListDto> selectByAdmin(@Param("index") int index, @Param("size") int size,@Param("carNum")String carNum,@Param("carType")int carType);
 
+    int selectByAdminCount(@Param("index") int index, @Param("size") int size,@Param("carNum")String carNum,@Param("carType")int carType);
+
     List<KeCheListDto> selectByShengJiJianGuanBuMen(@Param("index") int index, @Param("size") int size,@Param("carNum")String carNum,@Param("carType")int carType,@Param("unitId")String id);
+
+    int selectByShengJiJianGuanBuMenCount(@Param("index") int index, @Param("size") int size,@Param("carNum")String carNum,@Param("carType")int carType,@Param("unitId")String id);
 
     List<KeCheListDto> selectByShiJiJianGuanBuMen(@Param("index") int index, @Param("size") int size,@Param("carNum")String carNum,@Param("carType")int carType,@Param("unitId")String id);
 
+    int selectByShiJiJianGuanBuMenCount(@Param("index") int index, @Param("size") int size,@Param("carNum")String carNum,@Param("carType")int carType,@Param("unitId")String id);
+
     List<KeCheListDto> selectByQiYe(@Param("index") int index, @Param("size") int size,@Param("carNum")String carNum,@Param("carType")int carType,@Param("unitId")String id,@Param("status")int status, @Param("flag")int flag);
+
+    int selectByQiYeCount(@Param("index") int index, @Param("size") int size,@Param("carNum")String carNum,@Param("carType")int carType,@Param("unitId")String id,@Param("status")int status, @Param("flag")int flag);
+
+    List<CarChooseDto> selectChooseByUnitId(@Param("id")String id);
 
 }

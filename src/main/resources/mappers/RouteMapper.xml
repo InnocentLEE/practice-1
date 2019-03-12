@@ -23,18 +23,57 @@
     from route
     where id = #{id,jdbcType=VARCHAR}
   </select>
+  <select id="selectByRouteNameStartEnd" resultType="com.lyq.project.dto.RouteListDto">
+    select id as Id, `name` as RouteName, begin_id as StartStationId, end_id as EndStationId, total_time as TotalTime, status as Status
+    from route
+    where unit_id = #{unitId}
+    <if test="routeName != null" >
+      and `name` like concat('%',#{routeName},'%')
+    </if>
+    <if test="start != null" >
+      and begin_id = #{start}
+    </if>
+    <if test="end != null" >
+      and end_id = #{end}
+    </if>
+    limit #{index} , #{size}
+  </select>
+  <select id="selectByRouteNameStartEndCount" resultType="int">
+    select count(1)
+    from route
+    where unit_id = #{unitId}
+    <if test="routeName != null" >
+      and `name` like concat('%',#{routeName},'%')
+    </if>
+    <if test="start != null" >
+      and begin_id = #{start}
+    </if>
+    <if test="end != null" >
+      and end_id = #{end}
+    </if>
+  </select>
+  <select id="selectChooseByUnit" resultType="com.lyq.project.dto.RouteChooseDto">
+    select id as Id, `name` as RouteName , total_time as TotalTime
+    from route
+    where unit_id = #{id} and status = 1
+  </select>
+  <select id="countByRouteNameAndUnitId" resultType="int">
+    select count(1)
+    from route
+    where unit_id = #{unitId} and `name` = #{routeName}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from route
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.lyq.project.pojo.Route" >
-    insert into route (id, unit_id, name, 
+    insert into route (id, unit_id, `name`,
       status, begin_id, end_id, 
       total_time, createtime, updatetime
       )
     values (#{id,jdbcType=VARCHAR}, #{unitId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER}, #{beginId,jdbcType=VARCHAR}, #{endId,jdbcType=VARCHAR}, 
-      #{totalTime,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+      #{totalTime,jdbcType=VARCHAR}, now(), now()
       )
   </insert>
   <insert id="insertSelective" parameterType="com.lyq.project.pojo.Route" >
@@ -122,9 +161,7 @@
       <if test="createtime != null" >
         createtime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null" >
-        updatetime = #{updatetime,jdbcType=TIMESTAMP},
-      </if>
+        updatetime = now()
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>

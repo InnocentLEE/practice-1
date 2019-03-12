@@ -36,6 +36,113 @@
     from arrange
     where id = #{id,jdbcType=VARCHAR}
   </select>
+  <select id="selectArrange" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from arrange
+    where unit_id = #{unitId}
+    <if test="num != null" >
+      and num = #{num}
+    </if>
+    <if test="routeId != null" >
+      and route_id = #{routeId}
+    </if>
+    <if test="carId != null" >
+      and car_id = #{carId}
+    </if>
+    <if test="arrangeType != null" >
+      and arrange_type = #{arrangeType}
+    </if>
+    order by satrt_time
+    limit #{index} , #{size}
+  </select>
+  <select id="selectArrangeCount" resultType="int">
+    select count(1)
+    from arrange
+    where unit_id = #{unitId}
+    <if test="num != null" >
+      and num = #{num}
+    </if>
+    <if test="routeId != null" >
+      and route_id = #{routeId}
+    </if>
+    <if test="carId != null" >
+      and car_id = #{carId}
+    </if>
+    <if test="arrangeType != null" >
+      and arrange_type = #{arrangeType}
+    </if>
+    order by satrt_time
+  </select>
+  <select id="selectBanChe" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM arrange
+    WHERE arrange_type = 1 AND car_id IN (
+    SELECT c.`id`
+    FROM car c, car_gather cg
+    WHERE c.`id` = cg.`car_id`
+    AND c.`status` = 2
+    AND cg.unit_id = #{unitId}
+    <if test="carId != null" >
+      AND c.`id` = #{carId}
+    </if>
+    )
+    order by satrt_time
+    limit #{index} , #{size}
+  </select>
+  <select id="selectBanCheCount" resultType="int" >
+    SELECT count(1)
+    FROM arrange
+    WHERE arrange_type = 1 AND car_id IN (
+    SELECT c.`id`
+    FROM car c, car_gather cg
+    WHERE c.`id` = cg.`car_id`
+    AND c.`status` = 2
+    AND cg.unit_id = #{unitId}
+    <if test="carId != null" >
+      AND c.`id` = #{carId}
+    </if>
+    )
+    order by satrt_time
+  </select>
+  <select id="selectBaoChe" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM arrange
+    WHERE arrange_type = 2 AND car_id IN (
+    SELECT c.`id`
+    FROM car c, car_gather cg
+    WHERE c.`id` = cg.`car_id`
+    AND c.`status` = 2
+    AND cg.unit_id = #{unitId}
+    <if test="carId != null" >
+      AND c.`id` = #{carId}
+    </if>
+    )
+    order by satrt_time
+    limit #{index} , #{size}
+  </select>
+  <select id="selectBaoCheCount" resultType="int" >
+    SELECT count(1)
+    FROM arrange
+    WHERE arrange_type = 2 AND car_id IN (
+    SELECT c.`id`
+    FROM car c, car_gather cg
+    WHERE c.`id` = cg.`car_id`
+    AND c.`status` = 2
+    AND cg.unit_id = #{unitId}
+    <if test="carId != null" >
+      AND c.`id` = #{carId}
+    </if>
+    )
+    order by satrt_time
+  </select>
+  <select id="countByNumAndUnitId" resultType="int">
+    select count(1)
+    from arrange
+    where num = #{num} and unit_id = #{unitId}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from arrange
     where id = #{id,jdbcType=VARCHAR}

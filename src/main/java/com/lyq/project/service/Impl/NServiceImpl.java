@@ -13,13 +13,16 @@ import com.lyq.project.pojo.UnitGather;
 import com.lyq.project.service.INService;
 import com.lyq.project.service.IQService;
 import com.lyq.project.util.CommonUtils;
+import com.lyq.project.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -43,7 +46,8 @@ public class NServiceImpl implements INService {
         if(contactsMapper.selectCountByCardNo(dto.getIdCard()) > 0){
             return LYQResponse.createByErrorMessage("联系人身份证号已被使用");
         }
-        Contacts contacts = new Contacts(CommonUtils.getUUID(), dto.getName(), dto.getIdCard(), dto.getTel(), "111111", dto.getPhone(), dto.getEmail(), dto.getQQ(), dto.getMemo(), 2, null, null);
+        String password = MD5Util.getMD5(dto.getIdCard().substring(12));
+        Contacts contacts = new Contacts(CommonUtils.getUUID(), dto.getName(), dto.getIdCard(), dto.getTel(), password, dto.getPhone(), dto.getEmail(), dto.getQQ(), dto.getMemo(), 2, null, null);
         contactsMapper.insert(contacts);
         Unit unit = new Unit(CommonUtils.getUUID(), 2, dto.getProvince(), dto.getCity(), dto.getUnitName(), null, dto.getAddress(), null, null, null, null, contacts.getId(), null, null);
         unitMapper.insert(unit);
@@ -64,7 +68,7 @@ public class NServiceImpl implements INService {
         String province = searchDto.getData().getProvince();
         List<ShiJiJianGuanBuMenListDto> list = gnMapper.selectShiJiJianGuanBuMen((page-1)*rows,rows,unitName,province,city);
         PageList<List<ShiJiJianGuanBuMenListDto>> pageList = new PageList<>();
-        pageList.setTotalcount(list.size());
+        pageList.setTotalcount(gnMapper.selectShiJiJianGuanBuMenCount((page-1)*rows,rows,unitName,province,city));
         pageList.setItems(list);
         return LYQResponse.createBySuccess(pageList);
     }
@@ -124,8 +128,9 @@ public class NServiceImpl implements INService {
         if(unitMapper.countByPermitNum(dto.getPermitNum()) > 0){
             return LYQResponse.createByErrorMessage("经营许可证号已存在");
         }
+        String password = MD5Util.getMD5(dto.getIdCard().substring(12));
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Contacts contacts = new Contacts(CommonUtils.getUUID(), dto.getName(), dto.getIdCard(), dto.getTel(), "111111", dto.getPhone(), dto.getEmail(), dto.getQQ(), dto.getMemo(), 3, null, null);
+        Contacts contacts = new Contacts(CommonUtils.getUUID(), dto.getName(), dto.getIdCard(), dto.getTel(), password, dto.getPhone(), dto.getEmail(), dto.getQQ(), dto.getMemo(), 3, null, null);
         contactsMapper.insert(contacts);
         Date date = null;
         try {
@@ -150,7 +155,7 @@ public class NServiceImpl implements INService {
                     listDto.setPopedom(listDto.getProvince()+listDto.getCity());
                 }
                 PageList<List<KeYunZhanListDto>> pageList = new PageList<>();
-                pageList.setTotalcount(list.size());
+                pageList.setTotalcount(gnMapper.selectKeYunZhanByAdminCount((page-1)*rows,rows,searchDto.getData().getUnitName(),0,searchDto.getData().getProvince(),searchDto.getData().getCity()));
                 pageList.setItems(list);
                 return LYQResponse.createBySuccess(pageList);
             }else{
@@ -160,7 +165,7 @@ public class NServiceImpl implements INService {
                     listDto.setPopedom(listDto.getProvince()+listDto.getCity());
                 }
                 PageList<List<KeYunZhanListDto>> pageList = new PageList<>();
-                pageList.setTotalcount(list.size());
+                pageList.setTotalcount(gnMapper.selectKeYunZhanByAdminCount((page-1)*rows,rows,searchDto.getData().getUnitName(),busineeType,searchDto.getData().getProvince(),searchDto.getData().getCity()));
                 pageList.setItems(list);
                 return LYQResponse.createBySuccess(pageList);
             }
@@ -172,7 +177,7 @@ public class NServiceImpl implements INService {
                     listDto.setPopedom(listDto.getProvince()+listDto.getCity());
                 }
                 PageList<List<KeYunZhanListDto>> pageList = new PageList<>();
-                pageList.setTotalcount(list.size());
+                pageList.setTotalcount(gnMapper.selectKeYunZhanByShengJiJianGuanBuMenCount((page-1)*rows,rows,searchDto.getData().getUnitName(),0,searchDto.getData().getProvince(),searchDto.getData().getCity()));
                 pageList.setItems(list);
                 return LYQResponse.createBySuccess(pageList);
             }else{
@@ -182,7 +187,7 @@ public class NServiceImpl implements INService {
                     listDto.setPopedom(listDto.getProvince()+listDto.getCity());
                 }
                 PageList<List<KeYunZhanListDto>> pageList = new PageList<>();
-                pageList.setTotalcount(list.size());
+                pageList.setTotalcount(gnMapper.selectKeYunZhanByShengJiJianGuanBuMenCount((page-1)*rows,rows,searchDto.getData().getUnitName(),busineeType,searchDto.getData().getProvince(),searchDto.getData().getCity()));
                 pageList.setItems(list);
                 return LYQResponse.createBySuccess(pageList);
             }
@@ -194,7 +199,7 @@ public class NServiceImpl implements INService {
                     listDto.setPopedom(listDto.getProvince()+listDto.getCity());
                 }
                 PageList<List<KeYunZhanListDto>> pageList = new PageList<>();
-                pageList.setTotalcount(list.size());
+                pageList.setTotalcount(gnMapper.selectKeYunZhanByShiJiJianGuanBuMenCount((page-1)*rows,rows,searchDto.getData().getUnitName(),0,searchDto.getData().getProvince(),searchDto.getData().getCity()));
                 pageList.setItems(list);
                 return LYQResponse.createBySuccess(pageList);
             }else{
@@ -204,7 +209,7 @@ public class NServiceImpl implements INService {
                     listDto.setPopedom(listDto.getProvince()+listDto.getCity());
                 }
                 PageList<List<KeYunZhanListDto>> pageList = new PageList<>();
-                pageList.setTotalcount(list.size());
+                pageList.setTotalcount(gnMapper.selectKeYunZhanByShiJiJianGuanBuMenCount((page-1)*rows,rows,searchDto.getData().getUnitName(),busineeType,searchDto.getData().getProvince(),searchDto.getData().getCity()));
                 pageList.setItems(list);
                 return LYQResponse.createBySuccess(pageList);
             }
@@ -280,5 +285,58 @@ public class NServiceImpl implements INService {
         contactsMapper.deleteByPrimaryKey(contactId);
         unitMapper.deleteByPrimaryKey(id);
         return LYQResponse.createBySuccess(true);
+    }
+
+    @Override
+    @Transactional
+    public LYQResponse getYearShouPiaoTongJi(HttpSession session, String id){
+        List<String> yearList = gnMapper.getYearList(id);
+        List<ShouPiaoLvDataDto> shouPiaoLvDataDtos = new ArrayList<>();
+        for (String year:yearList) {
+            ShouPiaoLvDataDto shouPiaoLvDataDto = new ShouPiaoLvDataDto();
+            shouPiaoLvDataDto.setKey(year);
+            List<ShouPiaoNumberDto> shouPiaoNumberDtos = gnMapper.getShouPiaoNumberList(id,year);
+            Integer leave = 0;
+            Integer total = 0;
+            for (ShouPiaoNumberDto shouPiaoNumberDto:shouPiaoNumberDtos) {
+                leave += shouPiaoNumberDto.getLeaveNumber();
+                total += shouPiaoNumberDto.getTotalNumber();
+            }
+            float value = new BigDecimal((float)(total-leave)*100/total).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
+            shouPiaoLvDataDto.setValue(value);
+            shouPiaoLvDataDtos.add(shouPiaoLvDataDto);
+        }
+        ShouPiaoLvOption option = new ShouPiaoLvOption(shouPiaoLvDataDtos);
+        return LYQResponse.createBySuccess(option);
+    }
+
+    @Override
+    @Transactional
+    public LYQResponse getYearList(HttpSession session, String id){
+        List<String> yearList = gnMapper.getYearList(id);
+        return LYQResponse.createBySuccess(yearList);
+    }
+
+    @Override
+    @Transactional
+    public LYQResponse getMonthShouPiaoTongJi(HttpSession session, YueDuShouPiaoLvSearchDto searchDto){
+        List<String> monthList = gnMapper.getMonthList(searchDto.getRouteId(),searchDto.getYear());
+        List<ShouPiaoLvDataDto> shouPiaoLvDataDtos = new ArrayList<>();
+        for (String month:monthList) {
+            ShouPiaoLvDataDto shouPiaoLvDataDto = new ShouPiaoLvDataDto();
+            shouPiaoLvDataDto.setKey(month);
+            List<ShouPiaoNumberDto> shouPiaoNumberDtos = gnMapper.getShouPiaoNumberList(searchDto.getRouteId(),month);
+            Integer leave = 0;
+            Integer total = 0;
+            for (ShouPiaoNumberDto shouPiaoNumberDto:shouPiaoNumberDtos) {
+                leave += shouPiaoNumberDto.getLeaveNumber();
+                total += shouPiaoNumberDto.getTotalNumber();
+            }
+            float value = new BigDecimal((float)(total-leave)*100/total).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
+            shouPiaoLvDataDto.setValue(value);
+            shouPiaoLvDataDtos.add(shouPiaoLvDataDto);
+        }
+        ShouPiaoLvOption option = new ShouPiaoLvOption(shouPiaoLvDataDtos);
+        return LYQResponse.createBySuccess(option);
     }
 }

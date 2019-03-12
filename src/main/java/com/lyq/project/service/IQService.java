@@ -1,10 +1,7 @@
 package com.lyq.project.service;
 
 import com.lyq.project.common.*;
-import com.lyq.project.dto.CreateKeCheDto;
-import com.lyq.project.dto.CreateKeYunCheDuiDto;
-import com.lyq.project.dto.CreateKeYunQiYeDto;
-import com.lyq.project.dto.CreateShengJiJianGuanBuMenDto;
+import com.lyq.project.dto.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -32,4 +29,19 @@ public interface IQService {
     LYQResponse deleteKeCheDetail(HttpSession session, String id);
     LYQResponse getKeCheDetail(HttpSession session, String id);
     LYQResponse updateKeChe(HttpSession session, CreateKeCheDto createKeCheDto);
+    LYQResponse createRouteStation(HttpSession session, CreateRouteStationDto createRouteStationDto);
+    LYQResponse getRouteStation(HttpSession session, String id);
+    LYQResponse createRoute(HttpSession session, CreateRouteDto createRouteDto);
+    LYQResponse getRouteList(HttpSession session, SearchDto<RouteSearchDto> searchDto);
+    LYQResponse useRoute(HttpSession session, String id);
+    LYQResponse stopRoute(HttpSession session, String id);
+    LYQResponse getRouteChoose(HttpSession session, String id);
+    LYQResponse getCarChoose(HttpSession session, String id);
+    LYQResponse createArrage(HttpSession session, CreateArrageDto createArrageDto);
+    LYQResponse getArrangeList(HttpSession session, SearchDto<ArrangeSearchDto> searchDto);
+    LYQResponse useArrange(HttpSession session, String id);
+    LYQResponse stopArrange(HttpSession session, String id);
+    LYQResponse getBanCheList(HttpSession session, SearchDto<BanCheSearchDto> searchDto);
+    LYQResponse getBaoCheList(HttpSession session, SearchDto<BanCheSearchDto> searchDto);
+    LYQResponse makeDateCreateKeChe(HttpSession session);
 }

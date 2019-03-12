@@ -64,10 +64,10 @@
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
-        <table tableName="car" domainObjectName="Car" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <columnOverride column="licence_address" jdbcType="VARCHAR" />
-            <columnOverride column="address" jdbcType="VARCHAR" />
-        </table>
+        <!--<table tableName="car" domainObjectName="Car" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+            <!--<columnOverride column="licence_address" jdbcType="VARCHAR" />-->
+            <!--<columnOverride column="address" jdbcType="VARCHAR" />-->
+        <!--</table>-->
 
         <!--<table tableName="contacts" domainObjectName="Contacts" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
             <!--<columnOverride column="memo" jdbcType="VARCHAR" />-->
@@ -92,8 +92,8 @@
         <!--</table>-->
         <!--<table tableName="station" domainObjectName="Station" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
         <!--</table>-->
-        <!--<table tableName="arrange" domainObjectName="Arrange" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
-        <!--</table>-->
+        <table tableName="arrange" domainObjectName="Arrange" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
         <!--<table tableName="booking" domainObjectName="Booking" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
         <!--</table>-->
         <!--  mybatis插件的搭建 -->

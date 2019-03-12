@@ -20,4 +20,8 @@ public interface INService {
     LYQResponse updateKeYunZhan(HttpSession session, CreateKeYunZhanDto createKeYunZhanDto);
     LYQResponse deleteKeYunZhanDetail(HttpSession session, String id);
 
+    LYQResponse getYearShouPiaoTongJi(HttpSession session, String id);
+    LYQResponse getYearList(HttpSession session, String id);
+    LYQResponse getMonthShouPiaoTongJi(HttpSession session, YueDuShouPiaoLvSearchDto searchDto);
+
 }

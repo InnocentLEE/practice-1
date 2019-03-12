@@ -95,7 +95,7 @@ define(['/Modules/Config/conwin.main.js', '/Modules/GPSDAGL/CheLiangDangAn/Confi
                     $("#Form4 #QiYeOrgCode").val('');
                     $("#Form4 #YunYingShangOG").val('');
                     popdialog.showModal({
-                        'url': 'KuaiSuLuRuChengLiang.html',
+                        'url': 'AddStation.html',
                         'width': '1200px',
                         'showSuccess': GetKuaiSuLuRuCheLiang
                     });

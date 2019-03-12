@@ -32,7 +32,6 @@ define(['/Modules/Config/conwin.main.js'], function () {
         }
         if(userInfo.organizationType == "5"){
             organizationType = "客运车队";
-            organizationType = "客运企业";
             $("#Status").append("<option value=''>请选择</option>");
             $("#Status").append("<option value='0'>待提交</option>");
             $("#Status").append("<option value='1'>待审核</option>");

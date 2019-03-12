@@ -19,6 +19,17 @@
     from station
     where id = #{id,jdbcType=VARCHAR}
   </select>
+  <select id="selectByUnitId" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from station
+    where unit_id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="countByUnitIDAndName" resultType="int">
+    select count(1)
+    from station
+    where unit_id = #{unitId} and station_name = #{name}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from station
     where id = #{id,jdbcType=VARCHAR}
@@ -27,7 +38,7 @@
     insert into station (id, unit_id, station_name, 
       createtime, updatetime)
     values (#{id,jdbcType=VARCHAR}, #{unitId,jdbcType=VARCHAR}, #{stationName,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+      now(), now())
   </insert>
   <insert id="insertSelective" parameterType="com.lyq.project.pojo.Station" >
     insert into station

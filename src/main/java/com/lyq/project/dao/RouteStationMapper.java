@@ -1,6 +1,9 @@
 package com.lyq.project.dao;
 
 import com.lyq.project.pojo.RouteStation;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface RouteStationMapper {
     int deleteByPrimaryKey(String id);
@@ -10,6 +13,8 @@ public interface RouteStationMapper {
     int insertSelective(RouteStation record);
 
     RouteStation selectByPrimaryKey(String id);
+
+    List<RouteStation> selectByRoutId(@Param("id")String id);
 
     int updateByPrimaryKeySelective(RouteStation record);
 

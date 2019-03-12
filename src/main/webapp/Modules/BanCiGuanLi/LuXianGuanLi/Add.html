@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>新增客车档案</title>
+    <title>新增路线</title>
     <link href="/Modules/Component/site.css" rel="stylesheet" />
     <link id="styleLink" href="" rel="stylesheet" />
 </head>
@@ -15,7 +15,7 @@
         <div class="caption">
                 <span>
                     <i class="iconfont icon-bianjibiaodantaitou"></i>
-                    <span id="op">新增客车档案</span>
+                    <span id="op">新增路线</span>
                 </span>
         </div>
         <div class="btnclose">
@@ -44,182 +44,141 @@
                                 </h4>
                                 <div class="form-group-group">
                                     <div class="form-group">
-                                        <label class="control-label col-xs-2" for="CarNum">
-                                            <span class="required">*</span>车牌号码
+                                        <label class="control-label col-xs-2" for="RouteName">
+                                            <span class="required">*</span>路线名
                                         </label>
                                         <div class="col-xs-4">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" name="CarNum" id="CarNum" class="form-control required" data-cwvalid='{"blur":true,"required":true}' maxlength="50" />
+                                                <input type="text" name="RouteName" id="RouteName" class="form-control required" data-cwvalid='{"blur":true,"required":true}' maxlength="50" />
                                             </div>
                                         </div>
-                                        <label class="control-label col-xs-2">
-                                            <span class="required">*</span>车牌颜色
+                                        <label class="control-label col-xs-2" for="TotalTime">
+                                            <span class="required">*</span>总用时
                                         </label>
-                                        <div class="col-xs-2">
+                                        <div class="col-xs-4">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <select name="CarType" id="CarType" class="form-control required">
-                                                    <option value="">请选择</option>
-                                                    <option value="1">蓝色</option>
-                                                    <option value="2">黄色</option>
-                                                    <option value="3">白色</option>
-                                                    <option value="4">黑色</option>
-                                                    <option value="5">绿色</option>
-                                                </select>
+                                                <input type="text" name="TotalTime" id="TotalTime" class="form-control required" data-cwvalid='{"blur":true,"required":true}' maxlength="50" />
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-xs-2" for="Phone">
-                                            车载电话
+                                        <label class="control-label col-xs-2" for="StartStation">
+                                            <span class="required">*</span>起点
                                         </label>
                                         <div class="col-xs-4">
                                             <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" name="Phone" id="Phone" class="form-control" maxlength="50" />
+                                                <select name="StartStation" id="StartStation" class="form-control">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="EndStation">
+                                            <span class="required">*</span>终点
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <select name="EndStation" id="EndStation" class="form-control">
+                                                    <option value="">请选择</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <h4 class="form-section cus-form-section">
-                                    <span>证件信息</span>
+                                    <span>途经站点</span>
                                 </h4>
                                 <div class="form-group-group">
                                     <div class="form-group">
-                                        <label class="control-label col-xs-2" for="LicenceRegistDate">
-                                            <span class="required">*</span>行驶证注册日期
+                                        <label class="control-label col-xs-2" for="Station1">
+                                            <span class="required">*</span>途经站点1
                                         </label>
                                         <div class="col-xs-4">
                                             <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" class="form-control date-picker required" data-date-autoclose="true" data-date-language="zh-CN" data-date-format="yyyy-mm-dd" id="LicenceRegistDate" name="LicenceRegistDate"/>
-                                            </div>
-                                        </div>
-                                        <label class="control-label col-xs-2" for="LicencePublishDate">
-                                            <span class="required">*</span>行驶证发证日期
-                                        </label>
-                                        <div class="col-xs-4">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" class="form-control date-picker required" data-date-autoclose="true" data-date-language="zh-CN" data-date-format="yyyy-mm-dd" id="LicencePublishDate" name="LicencePublishDate"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-xs-2" for="ErweiDate">
-                                            <span class="required">*</span>二维日期
-                                        </label>
-                                        <div class="col-xs-4">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" class="form-control date-picker required" data-date-autoclose="true" data-date-language="zh-CN" data-date-format="yyyy-mm-dd" id="ErweiDate" name="ErweiDate"/>
-                                            </div>
-                                        </div>
-                                        <label class="control-label col-xs-2" for="ErweiDateNext">
-                                            <span class="required">*</span>下次二维日期
-                                        </label>
-                                        <div class="col-xs-4">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" class="form-control date-picker required" data-date-autoclose="true" data-date-language="zh-CN" data-date-format="yyyy-mm-dd" id="ErweiDateNext" name="ErweiDateNext"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-xs-2" for="PermitNum">
-                                            <span class="required">*</span>道路运输证号
-                                        </label>
-                                        <div class="col-xs-4">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" name="PermitNum" id="PermitNum" class="form-control required" data-cwvalid='{"blur":true,"required":true}' maxlength="50" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-xs-2" for="LicenceAddress">
-                                            <span class="required">*</span>行驶证地址
-                                        </label>
-                                        <div class="col-xs-10">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" name="LicenceAddress" id="LicenceAddress" class="form-control required" data-cwvalid='{"blur":true,"required":true}' maxlength="50" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h4 class="form-section cus-form-section">
-                                    <span>其他信息</span>
-                                </h4>
-                                <div class="form-group-group">
-                                    <div class="form-group">
-                                        <label class="control-label col-xs-2" for="EngineNum">
-                                            发动机号
-                                        </label>
-                                        <div class="col-xs-2">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" name="EngineNum" id="EngineNum" class="form-control" maxlength="50" />
-                                            </div>
-                                        </div>
-                                        <label class="control-label col-xs-2" for="CarFrameNum">
-                                            车架号
-                                        </label>
-                                        <div class="col-xs-2">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" name="CarFrameNum" id="CarFrameNum" class="form-control" maxlength="50" />
-                                            </div>
-                                        </div>
-                                        <label class="control-label col-xs-2">
-                                            燃料
-                                        </label>
-                                        <div class="col-xs-2">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <select name="Fuel" id="Fuel" class="form-control">
+                                                <select name="Station1" id="Station1" class="form-control">
                                                     <option value="">请选择</option>
-                                                    <option value="1">柴油 </option>
-                                                    <option value="2">油气双燃料</option>
-                                                    <option value="3">节能油电混合动力</option>
-                                                    <option value="4">纯电动</option>
-                                                    <option value="5">插电式混合动力</option>
-                                                    <option value="6">氢燃料</option>
-                                                    <option value="7">燃油</option>
-                                                    <option value="8">其他</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <label class="control-label col-xs-2" for="Weight">
-                                            总质量
+                                        <label class="control-label col-xs-2" for="Station2">
+                                            <span class="required">*</span>途经站点2
                                         </label>
-                                        <div class="col-xs-2">
+                                        <div class="col-xs-4">
                                             <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" name="Weight" id="Weight" class="form-control" maxlength="50" />
+                                                <select name="Station2" id="Station2" class="form-control">
+                                                    <option value="">请选择</option>
+                                                </select>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Station3">
+                                            <span class="required">*</span>途经站点3
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <select name="Station3" id="Station3" class="form-control">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="Station4">
+                                            <span class="required">*</span>途经站点4
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <select name="Station4" id="Station4" class="form-control">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Station5">
+                                            <span class="required">*</span>途经站点5
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <select name="Station5" id="Station5" class="form-control">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="Station6">
+                                            <span class="required">*</span>途经站点6
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <select name="Station6" id="Station6" class="form-control">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Station7">
+                                            <span class="required">*</span>途经站点7
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <select name="Station7" id="Station7" class="form-control">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="Station8">
+                                            <span class="required">*</span>途经站点8
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <select name="Station8" id="Station8" class="form-control">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                        <label class="control-label col-xs-2" for="Engine">
-                                            排气量
-                                        </label>
-                                        <div class="col-xs-2">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" name="Engine" id="Engine" class="form-control" maxlength="50" />
-                                            </div>
-                                        </div>
-                                        <label class="control-label col-xs-2" for="SeatNum">
-                                            座位数
-                                        </label>
-                                        <div class="col-xs-2">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" name="SeatNum" id="SeatNum" class="form-control" maxlength="50" />
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 

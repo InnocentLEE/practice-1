@@ -6,14 +6,12 @@ import com.alibaba.fastjson.TypeReference;
 import com.lyq.project.common.*;
 import com.lyq.project.dto.*;
 import com.lyq.project.service.IQService;
-import com.lyq.project.util.ValidateCodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.HttpSession;
 
@@ -196,7 +194,7 @@ public class QController {
     }
     // endregion
 
-    // region 审核客车
+    // region 删除客车
     @RequestMapping(value = "008808800064",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public LYQResponse deleteKeCheDetail(HttpSession session , @RequestBody JSONObject jsonParam) {
@@ -220,6 +218,134 @@ public class QController {
     public LYQResponse updateKeChe(HttpSession session , @RequestBody JSONObject jsonParam) {
         LYQRequest<CreateKeCheDto> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<CreateKeCheDto>>(){});
         return iqService.updateKeChe(session,request.getBody());
+    }
+    // endregion
+
+
+    // region 新增路线站点
+    @RequestMapping(value = "008808800070",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse createRouteStation(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<CreateRouteStationDto> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<CreateRouteStationDto>>(){});
+        return iqService.createRouteStation(session,request.getBody());
+    }
+    // endregion
+
+
+    // region 获取站点列表
+    @RequestMapping(value = "008808800071",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getRouteStation(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return iqService.getRouteStation(session,request.getBody());
+    }
+    // endregion
+
+    // region 新增路线
+    @RequestMapping(value = "008808800072",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse createRoute(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<CreateRouteDto> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<CreateRouteDto>>(){});
+        return iqService.createRoute(session,request.getBody());
+    }
+    // endregion
+
+    // region 获取路线列表
+    @RequestMapping(value = "008808800073",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getRouteList(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<SearchDto<RouteSearchDto>> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<SearchDto<RouteSearchDto>>>(){});
+        return iqService.getRouteList(session,request.getBody());
+    }
+    // endregion
+
+    // region 启用路线
+    @RequestMapping(value = "008808800074",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse useRoute(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return iqService.useRoute(session,request.getBody());
+    }
+    // endregion
+
+    // region 禁用路线
+    @RequestMapping(value = "008808800075",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse stopRoute(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return iqService.stopRoute(session,request.getBody());
+    }
+    // endregion
+
+    // region 禁用路线
+    @RequestMapping(value = "008808800076",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getRouteChoose(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return iqService.getRouteChoose(session,request.getBody());
+    }
+    // endregion
+
+    // region 禁用路线
+    @RequestMapping(value = "008808800077",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getCarChoose(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return iqService.getCarChoose(session,request.getBody());
+    }
+    // endregion
+
+    // region 新增排班
+    @RequestMapping(value = "008808800078",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse createArrage(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<CreateArrageDto> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<CreateArrageDto>>(){});
+        return iqService.createArrage(session,request.getBody());
+    }
+    // endregion
+
+    // region 获取班次列表
+    @RequestMapping(value = "008808800079",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getArrangeList(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<SearchDto<ArrangeSearchDto>> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<SearchDto<ArrangeSearchDto>>>(){});
+        return iqService.getArrangeList(session,request.getBody());
+    }
+    // endregion
+
+    // region 恢复班次
+    @RequestMapping(value = "008808800080",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse useArrange(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return iqService.useArrange(session,request.getBody());
+    }
+    // endregion
+
+    // region 取消班次
+    @RequestMapping(value = "008808800081",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse stopArrange(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return iqService.stopArrange(session,request.getBody());
+    }
+    // endregion
+
+    // region 获取班车班次列表
+    @RequestMapping(value = "008808800082",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getBanCheList(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<SearchDto<BanCheSearchDto>> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<SearchDto<BanCheSearchDto>>>(){});
+        return iqService.getBanCheList(session,request.getBody());
+    }
+    // endregion
+
+    // region 获取班车班次列表
+    @RequestMapping(value = "008808800083",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getBaoCheList(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<SearchDto<BanCheSearchDto>> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<SearchDto<BanCheSearchDto>>>(){});
+        return iqService.getBaoCheList(session,request.getBody());
     }
     // endregion
 }

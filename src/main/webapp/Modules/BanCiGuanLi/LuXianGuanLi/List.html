@@ -259,7 +259,7 @@
                                         <div class="form-group">
                                             <label class="col-xs-1 control-label" for="RouteName">路线名</label>
                                             <div class="col-xs-4">
-                                                <input type="text" name="RouteName" id="RouteName" class="form-control" style="margin-left: -4px;width: 243px;"/>
+                                                <input type="text" name="RouteName" id="RouteName" class="form-control" style="margin-left: -4px;width: 240px;"/>
                                             </div>
                                         </div>
                                     </div>
@@ -299,23 +299,17 @@
                         <div class="row" style="margin-top: 15px; margin-bottom: -15px; margin-left: 22px;">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <a id="btnView" accesskey="v" title="快捷键 Alt + V" class="btn c-blue " href="javascript:;" data-rescode="20190601">
-                                        <i class="fa fa-search"></i> 查看
-                                    </a>
                                     <a id="btnCreate" accesskey="c" title="快捷键 Alt + C" class="btn c-blue" href="javascript:;" data-rescode="20190602">
                                         <i class="fa fa-plus"></i> 新增
                                     </a>
-                                    <a id="btnEdit" accesskey="u" title="快捷键 Alt + U" class="btn c-green" href="javascript:;" data-rescode="20190603">
-                                        <i class="fa fa-edit"></i> 修改
+                                    <a id="btnStop" accesskey="v" title="快捷键 Alt + V" class="btn c-yellow" href="javascript:;" data-rescode="20190602">
+                                        <i class="fa fa-lock"></i> 停用
                                     </a>
-                                    <a id="btnDel" accesskey="x" title="快捷键 Alt + X" class="btn c-yellow" href="javascript:;" data-rescode="20190604">
-                                        <i class="fa fa-remove"></i> 删除
+                                    <a id="btnUse" accesskey="v" title="快捷键 Alt + V" class="btn c-green" href="javascript:;" data-rescode="20190602">
+                                        <i class="icon iconfont icon-mima"></i> 启用
                                     </a>
-                                    <a id="btnCheck" accesskey="v" title="快捷键 Alt + V" class="btn c-yellow" href="javascript:;" data-rescode="20190605">
-                                        <i class="icon iconfont icon-yonghu"></i> 审核
-                                    </a>
-                                    <a id="btnSubmit" accesskey="v" title="快捷键 Alt + V" class="btn c-blue" href="javascript:;" data-rescode="20190606">
-                                        <i class="fa fa-upload"></i> 提交
+                                    <a id="btnCreateStation" accesskey="c" title="快捷键 Alt + C" class="btn c-blue" href="javascript:;" data-rescode="20190602">
+                                        <i class="fa fa-plus"></i> 新增站点
                                     </a>
                                 </div>
                             </div>
@@ -328,20 +322,23 @@
                                 <th class="table-checkbox">
                                     <input type="checkbox" class="group-checkable" title="全选/反选" />
                                 </th>
-                                <th data-name="CarNum">
-                                    车牌号
+                                <th data-name="RouteName">
+                                    路线名
                                 </th>
-                                <th data-name="CarType">
-                                    车牌颜色
+                                <th data-name="StartStation">
+                                    起点
                                 </th>
-                                <th data-name="UnitName"style="width:40%;">
-                                    业户名称
+                                <th data-name="EndStation">
+                                    终点
                                 </th>
-                                <th data-name="Status" >
-                                    审核状态
+                                <th data-name="Station"style="width:40%;">
+                                    途经站点
                                 </th>
-                                <th data-name="PermitNum">
-                                    道路运输证号
+                                <th data-name="TotalTime" >
+                                    总用时
+                                </th>
+                                <th data-name="Status">
+                                    状态
                                 </th>
                             </tr>
                         </thead>

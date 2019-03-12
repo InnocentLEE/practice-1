@@ -24,10 +24,16 @@
     permit_num, permit_date, contacts_id, createtime, updatetiem
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from unit
     where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectQiYeCheDuiByParentUnit" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from unit
+    where id IN (select unit_id from unit_gather where parent_unit_id =#{id})
   </select>
   <select id="selectByContactId" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select
@@ -67,6 +73,17 @@
     </if>
     limit #{index} , #{size}
   </select>
+  <select id="selectShengJiJianGuanBuMenCount" resultType="int">
+    select count(1)
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 1
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="province != null and province != ''" >
+      and u.province like concat('%',#{province},'%')
+    </if>
+  </select>
   <select id="selectKeYunQiYeByAdmin" resultType="com.lyq.project.dto.KeYunQiYeListDto">
     select u.Id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.business_type as BusinessType, u.in_net_date as InNetDate, c.contact_name as ContactMen
     from unit u, contacts c
@@ -79,18 +96,40 @@
     </if>
     limit #{index} , #{size}
   </select>
+  <select id="selectKeYunQiYeByAdminCount" resultType="int">
+    select count(1)
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 4
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="businessType != 0" >
+      and u.business_type = #{businessType}
+    </if>
+  </select>
   <select id="selectKeYunQiYeByShengJiJianGuanBuMen" resultType="com.lyq.project.dto.KeYunQiYeListDto">
-  select u.Id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.business_type as BusinessType, u.in_net_date as InNetDate, c.contact_name as ContactMen
-  from unit u, contacts c
-  where u.contacts_id = c.id and u.OrgType = 4 and province = #{province}
-  <if test="unitName != null and unitName != ''" >
-    and u.unit_name like concat('%',#{unitName},'%')
-  </if>
-  <if test="businessType != 0" >
-    and u.business_type = #{businessType}
-  </if>
-  limit #{index} , #{size}
-</select>
+    select u.Id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.business_type as BusinessType, u.in_net_date as InNetDate, c.contact_name as ContactMen
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 4 and province = #{province}
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="businessType != 0" >
+      and u.business_type = #{businessType}
+    </if>
+    limit #{index} , #{size}
+  </select>
+  <select id="selectKeYunQiYeByShengJiJianGuanBuMenCount" resultType="int">
+    select count(1)
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 4 and province = #{province}
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="businessType != 0" >
+      and u.business_type = #{businessType}
+    </if>
+  </select>
   <select id="selectKeYunQiYeByShiJiJianGuanBuMen" resultType="com.lyq.project.dto.KeYunQiYeListDto">
     select u.Id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.business_type as BusinessType, u.in_net_date as InNetDate, c.contact_name as ContactMen
     from unit u, contacts c
@@ -102,6 +141,17 @@
       and u.business_type = #{businessType}
     </if>
     limit #{index} , #{size}
+  </select>
+  <select id="selectKeYunQiYeByShiJiJianGuanBuMenCount" resultType="int">
+    select count(1)
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 4 and province = #{province} and city = #{city}
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="businessType != 0" >
+      and u.business_type = #{businessType}
+    </if>
   </select>
   <select id="selectKeYunQiYeByKeYunZhan" resultType="com.lyq.project.dto.KeYunQiYeListDto">
     select u.Id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.business_type as BusinessType, u.in_net_date as InNetDate, c.contact_name as ContactMen
@@ -115,6 +165,17 @@
     </if>
     limit #{index} , #{size}
   </select>
+  <select id="selectKeYunQiYeByKeYunZhanCount" resultType="int">
+    select count(1)
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 4 and u.Id in (select unit_id from unit_gather where parent_unit_id = #{parentId} and unit_type = 4)
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="businessType != 0" >
+      and u.business_type = #{businessType}
+    </if>
+  </select>
   <select id="selectKeYunCheDuiByAdmin" resultType="com.lyq.project.dto.KeYunCheDuiListDto">
     select u.Id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.in_net_date as InNetDate, c.contact_name as ContactMen
     from unit u, contacts c
@@ -123,6 +184,14 @@
       and u.unit_name like concat('%',#{unitName},'%')
     </if>
     limit #{index} , #{size}
+  </select>
+  <select id="selectKeYunCheDuiByAdminCount" resultType="int">
+    select count(1)
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 5
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
   </select>
   <select id="selectKeYunCheDuiByShengJiJianGuanBuMen" resultType="com.lyq.project.dto.KeYunCheDuiListDto">
     select u.Id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.in_net_date as InNetDate, c.contact_name as ContactMen
@@ -133,6 +202,14 @@
     </if>
     limit #{index} , #{size}
   </select>
+  <select id="selectKeYunCheDuiByShengJiJianGuanBuMenCount" resultType="int">
+    select count(1)
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 5 and province = #{province}
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+  </select>
   <select id="selectKeYunCheDuiByShiJiJianGuanBuMen" resultType="com.lyq.project.dto.KeYunCheDuiListDto">
     select u.Id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.in_net_date as InNetDate, c.contact_name as ContactMen
     from unit u, contacts c
@@ -142,6 +219,14 @@
     </if>
     limit #{index} , #{size}
   </select>
+  <select id="selectKeYunCheDuiByShiJiJianGuanBuMenCount" resultType="int">
+    select count(1)
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 5 and province = #{province} and city = #{city}
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+  </select>
   <select id="selectKeYunCheDuiByKeYunZhan" resultType="com.lyq.project.dto.KeYunCheDuiListDto">
     select u.Id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.in_net_date as InNetDate, c.contact_name as ContactMen
     from unit u, contacts c
@@ -150,6 +235,14 @@
       and u.unit_name like concat('%',#{unitName},'%')
     </if>
     limit #{index} , #{size}
+  </select>
+  <select id="selectKeYunCheDuiByKeYunZhanCount" resultType="int">
+    select count(1)
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 5 and u.Id in (select unit_id from unit_gather where parent_unit_id = #{parentId} and unit_type = 5)
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
   </select>
   <select id="selectShengJiJianGuanBuMenDetail" resultType="com.lyq.project.dto.ShengJiJianGuanBuMenDetail">
     select u.id as Id, u.unit_name as UnitName, u.province as Province, u.in_net_date as InNetDate, u.address as Address,

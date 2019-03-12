@@ -117,4 +117,31 @@ public class NController {
         return inService.deleteKeYunZhanDetail(session,request.getBody());
     }
     // endregion
+
+    //region 年度售票率
+    @RequestMapping(value = "008808800090",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getYearShouPiaoTongJi(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return inService.getYearShouPiaoTongJi(session,request.getBody());
+    }
+    //endregion
+
+    //region 获取年度列表
+    @RequestMapping(value = "008808800091",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getYearList(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return inService.getYearList(session,request.getBody());
+    }
+    //endregion
+
+    //region 月度售票率
+    @RequestMapping(value = "008808800092",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getMonthShouPiaoTongJi(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<YueDuShouPiaoLvSearchDto> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<YueDuShouPiaoLvSearchDto>>(){});
+        return inService.getMonthShouPiaoTongJi(session,request.getBody());
+    }
+    //endregion
 }

@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>班车查询</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <style>
+
+        .row {
+            margin-right: 0px;
+        }
+
+        .pagnav {
+            padding-right: 0px;
+        }
+
+        .form-section {
+            font-size: 22px;
+            color: #333;
+            margin: 8px 8px 15px;
+        }
+
+        .searchpanel-form {
+            border: 1px solid #eee;
+            margin-bottom: 2px;
+        }
+
+        .last {
+        }
+        /****覆盖extend.css搜索框样式***/
+        .searchpanel-main-border {
+            padding: 0;
+            border: none;
+            background-color: #fff !important;
+        }
+
+        /*****覆盖col-sm-*宽度****/
+        .col-sm-5 {
+            width: 46% !important;
+        }
+
+        .col-sm-2 {
+            width: 8% !important;
+        }
+
+        .col-sm-2-custom {
+            left: -20px;
+            margin-top: 160px;
+            padding-left: 0px;
+            padding-right: 0px;
+            text-align: center;
+        }
+
+        /*************table设置scrollY**************/
+        .dataTables_scroll {
+            border-right: 1px solid #ddd;
+            border-top: 1px solid #ddd;
+        }
+
+        .dataTables_scrollBody {
+            border-left: 1px solid #ddd;
+        }
+
+        .table-scrollable {
+            margin: 0px !important;
+            border: none;
+        }
+
+        .dataTables_scrollHead {
+            border-bottom: 1px solid #ddd !important;
+        }
+
+        .table.dataTable {
+            margin-top: 0px !important;
+        }
+
+        .dataTables_scrollBody table {
+            border-left: none;
+            border-right: none;
+        }
+
+        .dataTables_scrollHeadInner table {
+            border-right: none;
+            border-top: none;
+        }
+
+        .cus-portlet {
+            margin-top: 1px;
+            margin-bottom: 0px;
+        }
+
+        .cus-portlet .portlet-title {
+            height: 38px;
+            background-color: #01a4a4;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .cus-portlet .portlet-title .btnclose {
+            display: inline-block;
+            line-height: 44px;
+            position: absolute;
+            right: 22px;
+        }
+
+        .cus-portlet .portlet-title .btnclose a > i {
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .cus-portlet .portlet-title .caption {
+            padding: 0px;
+            margin-left: 22px;
+            line-height: 38px;
+            cursor: default;
+            color: #ffffff;
+        }
+
+        .cus-portlet .portlet-title .caption span {
+            font-size: 16px;
+        }
+
+        .cus-portlet .portlet-title .caption small {
+            margin-left: 18px;
+            font-size: 10px;
+        }
+
+        .cus-portlet .portlet-title .caption small:first-child {
+            margin-left: 24px;
+        }
+
+        .cus-portlet .portlet-title .caption small > span {
+            color: #f0ac4d;
+            font-size: 10px;
+        }
+
+        .cus-portlet .portlet-title .caption span > i {
+            font-size: 16px;
+            line-height: 16px;
+        }
+
+        .nav-tabs > li > a {
+            border: none;
+        }
+
+        .nav-tabs > li > a:hover, .nav > li > a:focus {
+            border-color: transparent;
+            background-color: transparent;
+            border-bottom: 2px solid #5CB85C;
+        }
+
+        .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+            border: none;
+            border-bottom: 2px solid #5CB85C;
+        }
+
+        .separate-line {
+            position: absolute;
+            width: 1px;
+            height: 23px;
+            background-color: #ccc;
+            top: 10px;
+        }
+
+
+        .separate-line.left {
+            left: -1px;
+        }
+
+        .separate-line.right {
+            right: -1px;
+        }
+
+        .nav-tabs {
+            padding-left: 22px;
+        }
+
+        .nav > li > a {
+            padding-left: 28px;
+            padding-right: 28px;
+            font-size: 16px;
+            color: #333 !important;
+        }
+
+        .form-control {
+            height: 28px;
+            padding-top: 2px;
+            padding-bottom: 3px;
+        }
+
+        .form-control-static {
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+
+        .form .form-bordered .form-group .control-label {
+            padding-top: 14px;
+        }
+
+        .form .form-bordered .form-group > div {
+            padding: 10px;
+        }
+
+        .row {
+            margin-right: 0px;
+        }
+
+        .cus-form-section {
+            margin-bottom: 0px !important;
+        }
+    </style>
+    <link href="/Modules/Component/site.css" rel="stylesheet" />
+    <link id="styleLink" href="" rel="stylesheet" />
+    <!-- <script type="text/javascript" src="/Modules/Config/SetUserTheam.js"></script> -->
+
+    <style>
+        body {
+            background-color: #e9ecf3;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header-fixed">
+        <div class="page-header navbar navbar-fixed-top">
+            <div class="page-header-inner">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="page-container">
+            <div class="page-sidebar-wrapper">
+                <div class="page-sidebar page-sidebar-icon">
+                </div>
+
+            </div>
+
+            <div class="page-content-wrapper">
+                <div class="page-content padding-default" style=" height:1000px;">
+                    <h5 class="page-title">
+                        <i class="iconfont icon-danganguanli"></i> 班车查询
+                        <p class="popedom" style="float: right;font-size: x-small;color: red;margin-right: 10px;"></p>
+                    </h5>
+                    <!--搜索代码-->
+                    <div class="searchpanel-fixed" style="margin-bottom:15px">
+                        <form class="searchpanel-form form-horizontal">
+                            <input id="hdIDS" type="hidden" />
+                            <input id="operationType" type="hidden" />
+                            <div class="searchpanel-main form-body searchpanel-main-border searchform-exist">
+                                <div class="row" style="">
+                                    <div class="col-xs-4">
+                                        <div class="form-group">
+                                            <label class="col-md-4 col-xs-3 control-label">客车</label>
+                                            <div class="col-md-8 col-xs-9">
+                                                <select name="Car" id="Car" class="form-control">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="form-group">
+                                            <div class="col-xs-12 pull-right">
+                                                <a id="btnSearch" accesskey="q" title="快捷键 Alt + Q" class="btn btn-success" href="javascript:;" data-rescode="20190600"><i class="iconfont icon-chaxun"></i> 查询</a>
+                                                <a id="btnReset" accesskey="r" title="快捷键 Alt + R" class="btn btn-success" href="javascript:;"><i class="iconfont icon-zhongzhi"></i> 重置</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row" style="margin-top: 15px; margin-bottom: -15px; margin-left: 22px;">
+                            <div class="col-xs-12">
+                            </div>
+                        </div>
+                    </div>
+                    <table id="tb_Template" class="table table-striped table-bordered table-hover">
+                        <!--表头-->
+                        <thead>
+                            <tr>
+                                <th class="table-checkbox">
+                                    <input type="checkbox" class="group-checkable" title="全选/反选" />
+                                </th>
+                                <th data-name="Num" style="width:100px;">
+                                    编号
+                                </th>
+                                <th data-name="CarNum" style="width:100px;">
+                                    车牌号
+                                </th>
+                                <th data-name="CarType" style="width:100px;">
+                                    车牌颜色
+                                </th>
+                                <th data-name="StartStation" style="width:100px;">
+                                    起点
+                                </th>
+                                <th data-name="EndStation" style="width:100px;">
+                                    终点
+                                </th>
+                                <th data-name="Station"style="width:300px;">
+                                    途经站点
+                                </th>
+                                <th data-name="Price"  style="width:100px;">
+                                    票价
+                                </th>
+                                <th data-name="LeaveNumber" style="width:100px;">
+                                    剩余票数
+                                </th>
+                                <th data-name="StartTime" style="width:100px;">
+                                    出发时间
+                                </th>
+                                <th data-name="EndTime" style="width:100px;">
+                                    到达时间
+                                </th>
+                                <th data-name="isCancle" style="width:100px;">
+                                    是否取消
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd gradeX">
+                                <td valign="top" colspan="12" class="dataTables_empty">请先进行查询</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-sidebar page-sidebar-basic">
+        <div class="system-name"><a href=""><span class="title">&nbsp;</span></a><a href="javascript:;" class="fixedMenu-icon"><i class="fa fa-bars"></i></a></div>
+    </div>
+    <script data-main="Js/List.js" src="/Modules/Component/require.js"></script>
+</body>
+</html>

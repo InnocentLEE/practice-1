@@ -60,6 +60,17 @@
     </if>
     limit #{index} , #{size}
   </select>
+  <select id="selectByAdminCount" resultType="int">
+    select count(1)
+    from car
+    where status = 2
+    <if test="carNum != null and carNum != ''" >
+      and car_num like concat('%',#{carNum},'%')
+    </if>
+    <if test="carType != 0" >
+      and car_type = #{carType}
+    </if>
+  </select>
   <select id="selectByShengJiJianGuanBuMen" resultType="com.lyq.project.dto.KeCheListDto">
     select id as Id, car_num as CarNum, car_type as CarType, unit_name as UnitName, permit_num as PermitNum, status as Status
     from car
@@ -72,6 +83,17 @@
     </if>
     limit #{index} , #{size}
   </select>
+  <select id="selectByShengJiJianGuanBuMenCount" resultType="int">
+    select count(1)
+    from car
+    where status = 2 and id IN(SELECT DISTINCT car_id FROM car_gather WHERE unit_id IN(SELECT id FROM unit WHERE OrgType IN(3,4,5) AND province IN (SELECT province FROM unit WHERE id = #{unitId})))
+    <if test="carNum != null and carNum != ''" >
+      and car_num like concat('%',#{carNum},'%')
+    </if>
+    <if test="carType != 0" >
+      and car_type = #{carType}
+    </if>
+  </select>
   <select id="selectByShiJiJianGuanBuMen" resultType="com.lyq.project.dto.KeCheListDto">
     select id as Id, car_num as CarNum, car_type as CarType, unit_name as UnitName, permit_num as PermitNum, status as Status
     from car
@@ -83,6 +105,17 @@
       and car_type = #{carType}
     </if>
     limit #{index} , #{size}
+  </select>
+  <select id="selectByShiJiJianGuanBuMenCount" resultType="int">
+    select count(1)
+    from car
+    where status = 2 and id IN(SELECT DISTINCT car_id FROM car_gather WHERE unit_id IN(SELECT id FROM unit WHERE OrgType IN(3,4,5) AND province IN (SELECT province FROM unit WHERE id = #{unitId}) AND city IN (SELECT city FROM unit WHERE id = #{unitId})))
+    <if test="carNum != null and carNum != ''" >
+      and car_num like concat('%',#{carNum},'%')
+    </if>
+    <if test="carType != 0" >
+      and car_type = #{carType}
+    </if>
   </select>
   <select id="selectByQiYe" resultType="com.lyq.project.dto.KeCheListDto">
     select id as Id, car_num as CarNum, car_type as CarType, unit_name as UnitName, permit_num as PermitNum, status as Status
@@ -104,6 +137,37 @@
       and car_type = #{carType}
     </if>
     limit #{index} , #{size}
+  </select>
+  <select id="selectByQiYeCount" resultType="int">
+    select count(1)
+    from car
+    where id IN(SELECT DISTINCT car_id FROM car_gather WHERE unit_id = #{unitId})
+    <if test="status == 4 and flag == 0" >
+      and status in (0,1,2,3)
+    </if>
+    <if test="status == 4 and flag == 1" >
+      and status in (1,2,3)
+    </if>
+    <if test="status != 4" >
+      and status = #{status}
+    </if>
+    <if test="carNum != null and carNum != ''" >
+      and car_num like concat('%',#{carNum},'%')
+    </if>
+    <if test="carType != 0" >
+      and car_type = #{carType}
+    </if>
+  </select>
+  <select id="selectChooseByUnitId" resultType="com.lyq.project.dto.CarChooseDto">
+    select c.id as Id, c.car_num as CarNum, c.unit_name as UnitName, c.seat_num as SeatNum, CASE c.car_type
+WHEN 1 THEN '蓝色'
+WHEN 2 THEN '黄色'
+WHEN 3 THEN '白色'
+WHEN 4 THEN '黑色'
+WHEN 5 THEN '绿色'
+END AS CarType
+    from car c, car_gather cg
+    where c.id = cg.car_id and cg.unit_id = #{id} and c.status = 2
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from car

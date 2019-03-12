@@ -23,6 +23,20 @@
     </if>
     limit #{index} , #{size}
   </select>
+  <select id="selectShiJiJianGuanBuMenCount" resultType="int">
+    select count(1)
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 2
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="province != null and province != ''" >
+      and u.province = #{province}
+    </if>
+    <if test="city != null and city != ''" >
+      and u.city = #{city}
+    </if>
+  </select>
 
   <select id="selectShiJiJianGuanBuMenDetail" resultType="com.lyq.project.dto.ShiJiJianGuanBuMenDetail">
     select u.id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.in_net_date as InNetDate, u.address as Address,
@@ -53,6 +67,23 @@
     </if>
     limit #{index} , #{size}
   </select>
+  <select id="selectKeYunZhanByAdminCount" resultType="int">
+    select count(1)
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 3
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="businessType != 0" >
+      and u.business_type = #{businessType}
+    </if>
+    <if test="province != null and province != ''" >
+      and u.province = #{province}
+    </if>
+    <if test="city != null and city != ''" >
+      and u.city = #{city}
+    </if>
+  </select>
   <select id="selectKeYunZhanByShengJiJianGuanBuMen" resultType="com.lyq.project.dto.KeYunZhanListDto">
     select u.Id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.business_type as BusinessType, u.in_net_date as InNetDate, c.contact_name as ContactMen
     from unit u, contacts c
@@ -68,6 +99,20 @@
     </if>
     limit #{index} , #{size}
   </select>
+  <select id="selectKeYunZhanByShengJiJianGuanBuMenCount" resultType="int">
+    select count(1)
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 3 and province = #{province}
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="businessType != 0" >
+      and u.business_type = #{businessType}
+    </if>
+    <if test="city != null and city != ''" >
+      and u.city = #{city}
+    </if>
+  </select>
   <select id="selectKeYunZhanByShiJiJianGuanBuMen" resultType="com.lyq.project.dto.KeYunZhanListDto">
     select u.Id as Id, u.unit_name as UnitName, u.province as Province, u.city as City, u.business_type as BusinessType, u.in_net_date as InNetDate, c.contact_name as ContactMen
     from unit u, contacts c
@@ -79,6 +124,17 @@
       and u.business_type = #{businessType}
     </if>
     limit #{index} , #{size}
+  </select>
+  <select id="selectKeYunZhanByShiJiJianGuanBuMenCount" resultType="int">
+    select count(1)
+    from unit u, contacts c
+    where u.contacts_id = c.id and u.OrgType = 3 and province = #{province} and city = #{city}
+    <if test="unitName != null and unitName != ''" >
+      and u.unit_name like concat('%',#{unitName},'%')
+    </if>
+    <if test="businessType != 0" >
+      and u.business_type = #{businessType}
+    </if>
   </select>
   <select id="selectKeYunZhanDetail" resultType="com.lyq.project.dto.KeYunZhanDetail">
     select u.id as Id,
@@ -100,5 +156,22 @@
     c.memo as Memo
     from unit u, contacts c
     where u.contacts_id = c.id and u.id = #{id}
+  </select>
+  <select id="getYearList" resultType="string">
+    SELECT DISTINCT LEFT(satrt_time,4) AS result_year
+    FROM arrange
+    WHERE arrange_type = 1 AND route_id = #{routeId}
+    ORDER BY result_year DESC
+  </select>
+  <select id="getMonthList" resultType="string">
+    SELECT DISTINCT LEFT(satrt_time,7) AS result_month
+    FROM arrange
+    WHERE arrange_type = 1 AND route_id = #{routeId} AND satrt_time LIKE concat(#{year},'%')
+    ORDER BY result_month
+  </select>
+  <select id="getShouPiaoNumberList" resultType="com.lyq.project.dto.ShouPiaoNumberDto">
+    SELECT leave_number AS leaveNumber,total_number AS totalNumber
+    FROM arrange
+    WHERE arrange_type = 1 AND route_id = #{routeId} AND satrt_time LIKE concat(#{year},'%')
   </select>
 </mapper>

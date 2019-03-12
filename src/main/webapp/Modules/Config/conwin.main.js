@@ -49,6 +49,7 @@ require.config({
         'jstree': pathStaticPlugins + 'jstree/dist/jstree.min',
         'newjstree': pathStaticPlugins + 'jstree/dist/jstree.min.3.3.5',
         'crypto': pathStaticFramework + 'Plugins/crypto/crypto',
+        'echarts': pathStaticFramework + 'Plugins/echarts/echarts',
         'valid': pathStaticTheme1 + 'UIControls/conwin.valid',
         'warning': pathStaticTheme1 + 'UIControls/conwin.warning',
         "popdialog": pathStaticTheme1 + "UIControls/conwin.popdialog",
@@ -84,8 +85,7 @@ require.config({
         'laydate': pathStaticFramework + 'plugins/laydate/laydate',
         'bluebird': pathStaticFramework + 'plugins/bluebird/bluebird.min',
         'signlar': pathComponent + 'signlar',
-        'hubs': pathComponent + 'signlarhub',
-        'echarts': '../../../Modules/GPSVMS/QYJKGJHF/Js/echarts'
+        'hubs': pathComponent + 'signlarhub'
     },
     shim: {
         'vms': {

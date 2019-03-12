@@ -1,0 +1,149 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>新增班次</title>
+    <link href="/Modules/Component/site.css" rel="stylesheet" />
+    <link id="styleLink" href="" rel="stylesheet" />
+</head>
+<body>
+<div class="portlet cus-portlet">
+    <div class="portlet-title" style="background-color: #3190bc">
+        <div class="caption">
+                <span>
+                    <i class="iconfont icon-bianjibiaodantaitou"></i>
+                    <span id="op">新增班次</span>
+                </span>
+        </div>
+        <div class="btnclose">
+            <a id="btnclose" href="javascript:;">
+                <i class="glyphicon glyphicon-remove-circle"></i>
+            </a>
+        </div>
+    </div>
+    <div class="row" style="clear: both;">
+        <div class="col-sm-12" style="text-align: right; padding-right: 22px;">
+            <button id="saveBtn" type="submit" class="btn c-green"><i class="fa fa-save"></i> 保存</button>
+        </div>
+    </div>
+    <div class="portlet-body form">
+            <!--基础信息-->
+            <div class="tab-pane fade active in" id="JiChuXinXi">
+                <form action="#" id="Form1" class="form-horizontal form-horizontal form-bordered form-row-stripped form-block">
+                    <input type="hidden" id="Id" name="Id" />
+                    <input id="hdIDS" type="hidden" />
+                    <input id="operationType" type="hidden" />
+                    <div class="row">
+                        <div class="col-xs-12" style="margin-top: 10px; margin-bottom: 10px;">
+                            <div class="form-body scroller form-box">
+                                <h4 class="form-section cus-form-section">
+                                    <span>基础信息</span>
+                                </h4>
+                                <div class="form-group-group">
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Num">
+                                            <span class="required">*</span>编号
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" name="Num" id="Num" class="form-control required" data-cwvalid='{"blur":true,"required":true}' maxlength="50" />
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="ArrangeType">
+                                            <span class="required">*</span>类型
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <select name="ArrangeType" id="ArrangeType" class="form-control">
+                                                    <option value=1>班车</option>
+                                                    <option value=2>包车</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="Route">
+                                            <span class="required">*</span>路线
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <select name="Route" id="Route" class="form-control">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="Car">
+                                            <span class="required">*</span>客车
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <select name="Car" id="Car" class="form-control">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-2" for="TotalNumber">
+                                            <span class="required">*</span>总票数
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" name="TotalNumber" id="TotalNumber" class="form-control required" data-cwvalid='{"blur":true,"required":true}' maxlength="50" />
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-2" for="Price">
+                                            <span class="required">*</span>票价
+                                        </label>
+                                        <div class="col-xs-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" name="Price" id="Price" class="form-control required" data-cwvalid='{"blur":true,"required":true}' maxlength="50" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 class="form-section cus-form-section">
+                                    <span>日期信息</span>
+                                </h4>
+                                <div class="form-group-group">
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-3" for="StartDate">
+                                            <span class="required">*</span>出发日期
+                                        </label>
+                                        <div class="col-xs-2">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" class="form-control date-picker required" data-date-autoclose="true" data-date-language="zh-CN" data-date-format="yyyy-mm-dd hh:ii" id="StartDate" name="StartDate"/>
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-xs-3" for="EndDate">
+                                            <span class="required">*</span>到达日期
+                                        </label>
+                                        <div class="col-xs-2">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" class="form-control date-picker required" data-date-autoclose="true" data-date-language="zh-CN" data-date-format="yyyy-mm-dd hh:ii" id="EndDate" name="EndDate"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>
+<script data-main="Js/Add.js" src="/Modules/Component/require.js"></script>
+</body>
+</html>
+</html>
