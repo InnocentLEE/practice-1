@@ -23,5 +23,6 @@ public interface INService {
     LYQResponse getYearShouPiaoTongJi(HttpSession session, String id);
     LYQResponse getYearList(HttpSession session, String id);
     LYQResponse getMonthShouPiaoTongJi(HttpSession session, YueDuShouPiaoLvSearchDto searchDto);
+    LYQResponse getGouPiaoWayTongJi(HttpSession session, String unitId);
 
 }

@@ -34,4 +34,6 @@ public interface GNMapper {
     List<String> getMonthList(@Param("routeId") String routeId,@Param("year")String year);
 
     List<ShouPiaoNumberDto> getShouPiaoNumberList(@Param("routeId") String routeId,@Param("year")String year);
+
+    List<GouPiaoWayDto> getGouPiaoWayList(@Param("unitId")String unitId);
 }

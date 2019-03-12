@@ -25,6 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Service("inService")
 public class NServiceImpl implements INService {
@@ -338,5 +339,16 @@ public class NServiceImpl implements INService {
         }
         ShouPiaoLvOption option = new ShouPiaoLvOption(shouPiaoLvDataDtos);
         return LYQResponse.createBySuccess(option);
+    }
+
+    @Override
+    @Transactional
+    public LYQResponse getGouPiaoWayTongJi(HttpSession session, String unitId){
+        List<GouPiaoWayDto> list = gnMapper.getGouPiaoWayList(unitId);
+        int[] result = {0,0,0,0,0};
+        for (GouPiaoWayDto dto:list) {
+            result[dto.getWay()-1] = dto.getCnt();
+        }
+        return LYQResponse.createBySuccess(result);
     }
 }

@@ -174,4 +174,10 @@
     FROM arrange
     WHERE arrange_type = 1 AND route_id = #{routeId} AND satrt_time LIKE concat(#{year},'%')
   </select>
+  <select id="getGouPiaoWayList" resultType="com.lyq.project.dto.GouPiaoWayDto">
+  SELECT way,COUNT(id) AS cnt
+  FROM booking
+  WHERE arrange_id IN (SELECT id FROM arrange WHERE unit_id = #{unitId} AND arrange_type = 1)
+  GROUP BY way
+  </select>
 </mapper>

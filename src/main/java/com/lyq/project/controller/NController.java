@@ -144,4 +144,13 @@ public class NController {
         return inService.getMonthShouPiaoTongJi(session,request.getBody());
     }
     //endregion
+
+    //region 购票方式占比统计
+    @RequestMapping(value = "008808800093",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public LYQResponse getGouPiaoWayTongJi(HttpSession session , @RequestBody JSONObject jsonParam) {
+        LYQRequest<String> request = JSON.parseObject(jsonParam.toJSONString(),new TypeReference<LYQRequest<String>>(){});
+        return inService.getGouPiaoWayTongJi(session,request.getBody());
+    }
+    //endregion
 }
