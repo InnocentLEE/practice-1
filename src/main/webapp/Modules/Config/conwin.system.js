@@ -12,7 +12,7 @@
     {
         SysId: '60190FC4-5103-4C76-94E4-12A54B62C92A',
         AppId: '938B7DFE-5DEA-4BC4-AFE3-1095385AB598',
-        SysName: '你猜猜这是什么平台',
+        SysName: '客运企业信息综合服务平台',
         AppName: '',
         IsTest: true,
         AdaptLogin: false,

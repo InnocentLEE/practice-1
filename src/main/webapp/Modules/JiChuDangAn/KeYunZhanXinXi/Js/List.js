@@ -22,7 +22,7 @@ define(['/Modules/Config/conwin.main.js'], function () {
             organizationType = "客运车队"
         }
         $(".popedom").text(userInfo.organizationName+" ["+organizationType+"] - "+userInfo.organProvince + userInfo.organCity);
-        if(userInfo.organProvince != null && userInfo.organProvince != ''){
+        if(userInfo.organProvince != null && userInfo.organProvince != '' && userInfo.organizationType != '0'){
             $("#Province").attr("disabled","disabled");
             $("#Province").val(userInfo.organProvince);
             var arr = helper.getCity(userInfo.organProvince);

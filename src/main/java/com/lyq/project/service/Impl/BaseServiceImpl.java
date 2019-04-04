@@ -32,7 +32,7 @@ public class BaseServiceImpl implements IBaseService {
         String password = MD5Util.getMD5(request.getBody().getPassword());
         Contacts contacts = contactsMapper.selectByCardNoAndPassword(request.getBody().getAccountName(), password);
         if(contacts == null){
-            return LYQResponse.createByErrorMessage("登录失败");
+            return LYQResponse.createByErrorMessage("用户名或密码错误！");
         }else {
             UserInfoDto userInfoDto = new UserInfoDto();
             userInfoDto.setId(contacts.getId());

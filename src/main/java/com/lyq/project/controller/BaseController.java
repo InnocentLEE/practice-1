@@ -34,6 +34,12 @@ public class BaseController {
     @Autowired
     private INService inService;
 
+    //测试
+    @RequestMapping(value = "base/test",method = RequestMethod.POST)
+    @ResponseBody
+    public String test() {
+        return "cece";
+    }
     // region 获取验证码
     @RequestMapping(value = "base/ValidCode",method = RequestMethod.POST)
     @ResponseBody

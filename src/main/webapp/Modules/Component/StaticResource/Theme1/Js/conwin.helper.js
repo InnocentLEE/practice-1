@@ -210,6 +210,7 @@
                     require(['menu'], function (menu) {
                         if (d.publicresponse.statuscode == 0) {
                             menu.SetMenu(d);
+                            console.log(JSON.stringify(d));
                             CwHelper.Storage.set(CwHelper.GetToken() + "Menu", CwHelper.JsonToStr(d));
                         }
                     });
